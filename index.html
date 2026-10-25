@@ -1,91 +1,76 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ZUFFAUCET - Earn Crypto Free, Fast. - Old Design 204KB + BANK - Publisher 517526 Unit 2459900</title>
+<!DOCTYPE html><html lang="sk"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ZufFaucet - Earn Crypto Free, Fast. - Old Dark #0a0f1e + #00e5ff - Publisher 517526 Unit 2459900</title>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap');
-*{box-sizing:border-box}body{margin:0;background:#0a0f1e;color:#d9e2f0;font-family:Inter,sans-serif}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap');
+*{box-sizing:border-box}body{margin:0;background:#0a0f1e;color:#dbe6ff;font-family:Inter,sans-serif;padding:0}
+.container{max-width:1200px;margin:0 auto;padding:0 14px}
+.header{height:62px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.08);background:rgba(10,15,30,.92);position:sticky;top:0;z-index:10;padding:0 14px}
+.logo{font-weight:900;font-size:22px;letter-spacing:.5px}.logo span{color:#00e5ff}
+.badge{background:rgba(0,229,255,.12);border:1px solid rgba(0,229,255,.3);color:#00e5ff;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:800}
+.card{background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.11);border-radius:20px;padding:18px;margin:12px 0}
+.btn-cyan{background:#00e5ff;color:#000;font-weight:900;padding:12px 16px;border-radius:12px;border:none;cursor:pointer;width:100%;font-size:14px;box-shadow:0 0 18px rgba(0,229,255,.35)}
+.btn-dark{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#fff;padding:10px 14px;border-radius:12px;cursor:pointer}
+input{width:100%;padding:12px 14px;border-radius:12px;background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.18);color:#fff;margin:6px 0 10px;font-size:14px}
 .mono{font-family:JetBrains Mono,monospace}
-.container{max-width:1240px;margin:0 auto;padding:0 16px}
-.header{height:64px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.08);position:sticky;top:0;background:rgba(10,15,30,.92);backdrop-filter:blur(12px);z-index:20}
-.logo{font-weight:900;letter-spacing:1px;font-size:22px}.logo span{color:#00e5ff}
-.badge{display:inline-flex;align-items:center;gap:6px;background:rgba(0,229,255,.12);border:1px solid rgba(0,229,255,.3);color:#00e5ff;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700}
-.btn-cyan{background:#00e5ff;color:#000;font-weight:800;padding:10px 16px;border-radius:12px;border:none;cursor:pointer;box-shadow:0 0 18px rgba(0,229,255,.35)}
-.btn-dark{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);color:#fff;padding:10px 16px;border-radius:12px;cursor:pointer}
-.card-glass{background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.11);border-radius:20px;padding:18px;margin:12px 0;backdrop-filter:blur(10px)}
-.hero{padding:36px 0 14px;display:grid;grid-template-columns:1.1fr 0.9fr;gap:18px}
-@media(max-width:900px){.hero{grid-template-columns:1fr}}
-.h1{font-size:52px;line-height:.95;font-weight:900;letter-spacing:-1.2px;margin:14px 0}.h1 span{background:linear-gradient(90deg,#00e5ff,#7affff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}
-.stat{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:14px;text-align:center}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.tab{padding:10px 14px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);cursor:pointer;font-size:13px;font-weight:600}.tab.active{background:#00e5ff;color:#000;border-color:#00e5ff}
-.ptc-row{display:flex;justify-content:space-between;align-items:center;padding:12px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);margin:8px 0}
-input,select{width:100%;padding:12px;border-radius:10px;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.18);color:#fff;margin:6px 0 10px}
+.auth-switch{display:flex;gap:10px;margin:10px 0}
+.auth-switch button{flex:1;padding:12px;border-radius:14px;border:1px solid rgba(255,255,255,.15);cursor:pointer;font-weight:800;font-size:14px;pointer-events:auto;z-index:5;position:relative}
+.auth-switch button.active{background:#00e5ff;color:#000;border-color:#00e5ff;box-shadow:0 0 18px rgba(0,229,255,.5)}
+.auth-switch button.inactive{background:rgba(255,255,255,.06);color:rgba(255,255,255,.5)}
 .ok{background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.35);padding:10px;border-radius:10px;font-size:12px;margin:8px 0}
-.err{background:rgba(255,59,59,.12);border:1px solid rgba(255,59,59,.35);padding:10px;border-radius:10px;font-size:12px;margin:8px 0}
-.dot{width:8px;height:8px;border-radius:50%;background:#00e5ff;box-shadow:0 0 8px #00e5ff;display:inline-block;animation:pulse 1.5s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-#viewModal{position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:100;display:none;align-items:center;justify-content:center;padding:12px}
-#viewBox{background:#111827;border:1px solid rgba(0,229,255,.35);border-radius:18px;width:100%;max-width:720px;padding:16px}
-.progress{height:6px;background:rgba(255,255,255,.12);border-radius:10px;overflow:hidden;margin:10px 0}
-.progress i{display:block;height:100%;background:#00e5ff;width:0%;transition:width.2s}
-</style>
-</head><body>
+.err{background:rgba(255,59,59,.15);border:1px solid rgba(255,59,59,.4);padding:10px;border-radius:10px;font-size:12px;margin:8px 0}
+.ptc-row{display:flex;justify-content:space-between;align-items:center;padding:12px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);margin:8px 0}
+.main-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.main-tabs .tab{padding:10px 14px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);cursor:pointer;font-size:13px;font-weight:600}.main-tabs .tab.active{background:#00e5ff;color:#000}
+#viewModal{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:100;display:none;align-items:center;justify-content:center;padding:12px}
+#viewBox{background:#111827;border:2px solid #00e5ff;border-radius:18px;width:100%;max-width:720px;padding:16px}
+.progress{height:6px;background:rgba(255,255,255,.12);border-radius:10px;overflow:hidden;margin:10px 0}.progress i{display:block;height:100%;background:#00e5ff;width:0%;transition:width .2s}
+</style></head><body>
+<div class="header"><div class="logo">ZUF<span>FAUCET</span></div><div class="badge">● LIVE PAYOUTS</div><div id="balTop" class="mono" style="font-size:12px"></div></div>
 <div class="container">
-<div class="header"><div class="logo">ZUF<span>FAUCET</span></div><div style="display:flex;align-items:center;gap:10px"><div class="badge"><span class="dot"></span> LIVE PAYOUTS • LIVE PAYOUTS</div><div id="balTop" class="mono" style="font-size:12px"></div></div></div>
-
-<div class="hero">
-<div>
-<div class="badge"><span class="dot"></span> FAUCETPAY • INSTANT • SECURE</div>
-<h1 class="h1">Earn Crypto <span>Free, Fast.</span></h1>
-<p style="font-size:14px;color:rgba(255,255,255,.62);line-height:1.5;max-width:540px">Earn crypto without limits. Simple tasks, instant rewards, FaucetPay withdrawals.</p>
-<div class="stats"><div class="stat"><b>1 Coin</b><br><span style="font-size:11px;opacity:.6">$0.00001</span></div><div class="stat"><b>25 PTC + 25 Short</b><br><span style="font-size:11px;opacity:.6"> </span></div><div class="stat"><b>1000 Coins</b><br><span style="font-size:11px;opacity:.6">$0.01 Min Withdraw</span></div></div>
-<div style="margin:12px 0"><iframe data-aa='2459900' src='//ad.a-ads.com/2459900/?size=320x100' style='border:0;padding:0;width:320px;height:100px;overflow:hidden;display:block;margin:auto'></iframe></div>
-</div>
-<div>
-
-<div class="card-glass" id="authCard">
-<h3 class="mono">ZufFaucet - Prihlásenie</h3>
-<div class="tabs" style="margin:8px 0"><div class="tab active" id="tabReg" onclick="switchAuth('reg')">Register</div><div class="tab" id="tabLog" onclick="switchAuth('log')">Login</div></div>
-
-<div id="authReg">
-<input id="u" placeholder="Username malé písmená napr. sexxxxx"><input id="e" placeholder="Email napr. pazuriktomo@gmail.com"><button class="btn-cyan" style="width:100%" onclick="register()">Register</button>
-<div style="font-size:11px;opacity:.6;margin-top:8px">Vytvorí nový účet - zapíše do Firestore</div>
+<div style="text-align:center;padding:24px 0 8px"><h1 style="font-size:42px;font-weight:900;margin:0;line-height:.95">Earn Crypto <span style="color:#00e5ff">Free, Fast.</span></h1><p style="opacity:.6;font-size:13px">Old dark #0a0f1e + cyan #00e5ff - Publisher 517526 - Unit 2459900 - 2x ads in modal = 2x earnings</p>
+<div style="margin:12px 0"><iframe data-aa='2459900' src='//ad.a-ads.com/2459900/?size=320x100' style='border:0;width:320px;height:100px;display:block;margin:auto'></iframe></div>
 </div>
 
-<div id="authLog" style="display:none">
-<input id="u2" placeholder="Username napr. sexxxxx"><button class="btn-cyan" style="width:100%;background:#fff;color:#000" onclick="login()">Login</button>
-<div style="font-size:11px;opacity:.6;margin-top:8px">Prihlás existujúci účet</div>
+<div class="card" id="authCard" style="max-width:520px;margin:18px auto">
+<h3 class="mono" style="margin:0 0 10px">ZufFaucet - Prihlásenie</h3>
+
+<div class="auth-switch">
+<button id="btnReg" class="active" onclick="showAuth('reg')">Register</button>
+<button id="btnLog" class="inactive" onclick="showAuth('log')">Login</button>
+</div>
+
+<div id="boxReg">
+<input id="u" autocomplete="off" placeholder="Username malé písmená napr. sexxxxx">
+<input id="e" autocomplete="off" placeholder="Email napr. pazuriktomo@gmail.com">
+<button class="btn-cyan" onclick="register()">Register</button>
+<div style="font-size:11px;opacity:.5;margin-top:8px">Vytvorí nový účet - zapíše do Firestore</div>
+</div>
+
+<div id="boxLog" style="display:none">
+<input id="u2" autocomplete="off" placeholder="Username napr. sexxxxx">
+<button class="btn-cyan" style="background:#fff;color:#000" onclick="login()">Login</button>
+<div style="font-size:11px;opacity:.5;margin-top:8px">Prihlás existujúci účet - napr. sexxxxx</div>
 </div>
 
 <div id="am"></div>
 </div>
 
-</div>
-<div class="card-glass" id="userCard" style="display:none">
-<div style="display:flex;justify-content:space-between;align-items:center"><div class="mono" style="font-size:12px">Balance <b><span id="bal">0</span> Coins</b> = $<span id="balUsd">0.0000</span> | Level <span id="lvl">1</span> | PTC <span id="ptcDone">0</span> | Short <span id="shortDone">0</span> | BANK profit <span id="bankProfit">0</span></div><button class="btn-dark" onclick="logout()">Logout</button></div>
-<div class="mono" style="font-size:11px;opacity:.6;margin-top:6px" id="breakdown" style="display:none"></div>
-</div>
-</div>
+<div class="card" id="userCard" style="display:none">
+<div style="display:flex;justify-content:space-between;align-items:center"><div class="mono" style="font-size:12px">Balance <b><span id="bal">0</span> Coins</b> = $<span id="balUsd">0.0000</span> | Level <span id="lvl">1</span> | PTC <span id="ptcDone">0</span> | Short <span id="shortDone">0</span></div><button class="btn-dark" onclick="logout()">Logout</button></div>
 </div>
 
-<div class="tabs"><div class="tab active" onclick="setTab('faucet')">Faucet 50/20min</div><div class="tab" onclick="setTab('ptc')">PTC (25)</div><div class="tab" onclick="setTab('short')">Shortlink (25)</div><div class="tab" onclick="setTab('offer')">Offerwall</div><div class="tab" onclick="setTab('ref')">Referral 5%</div><div class="tab" onclick="setTab('wd')">Withdraw</div></div>
+<div class="main-tabs"><div class="tab active" id="mt-faucet" onclick="setMain('faucet')">Faucet 50/20min</div><div class="tab" id="mt-ptc" onclick="setMain('ptc')">PTC (25)</div><div class="tab" id="mt-short" onclick="setMain('short')">Shortlink (25)</div><div class="tab" id="mt-offer" onclick="setMain('offer')">Offerwall</div><div class="tab" id="mt-ref" onclick="setMain('ref')">Referral 5%</div><div class="tab" id="mt-wd" onclick="setMain('wd')">Withdraw</div></div>
 
-<div id="sec-faucet" class="card-glass"><h3>Faucet - 50 Coins / 20 min</h3><div style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="captcha"> <label for="captcha">I'm not robot</label></div><input id="mathAns" placeholder="5+3=? Odpoveď 8"><button class="btn-cyan" onclick="claim()">Claim 50 Coins</button><div id="fm"></div><div id="tm" class="mono" style="font-size:11px;opacity:.5"></div></div>
+<div id="sec-faucet" class="card"><h3>Faucet - 50 Coins / 20 min</h3><div style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="captcha" style="width:20px"> <label for="captcha">I'm not robot</label></div><input id="mathAns" placeholder="5+3=? Odpoveď 8"><button class="btn-cyan" onclick="claim()">Claim 50 Coins</button><div id="fm"></div></div>
+<div id="sec-ptc" class="card" style="display:none"><h3>PTC (25) - 2x A-Ads = 2x zárobok</h3><div id="ptcList"></div></div>
+<div id="sec-short" class="card" style="display:none"><h3>Shortlink (25) - 2x A-Ads</h3><div id="shortList"></div></div>
+<div id="sec-offer" class="card" style="display:none"><h3>Offerwall</h3><div id="offerList"></div></div>
+<div id="sec-ref" class="card" style="display:none"><h3>Referral 5%</h3><input id="refLink" readonly></div>
+<div id="sec-wd" class="card" style="display:none"><h3>Withdraw - Min 1000 = $0.01 - z BANK nie z tvojej peňaženky</h3><input id="waddr" placeholder="FaucetPay adresa / email"><input id="wa" placeholder="1000" value="1000"><button class="btn-cyan" onclick="wd()">Požiadať o výber - 1000 Coins</button><div id="wmsg"></div><div id="wdHistory" class="mono" style="font-size:11px;margin-top:8px"></div></div>
 
-<div id="sec-ptc" class="card-glass" style="display:none"><h3>PTC - 25x - = 2x zárobok - as many as A-Ads gives</h3><div class="mono" style="font-size:11px;opacity:.6;margin-bottom:8px">View ads, earn coins instantly</div><div id="ptcList"></div></div>
-
-<div id="sec-short" class="card-glass" style="display:none"><h3>Shortlink - 25x - shrinkme.io / fc.lc štýl - 2x A-Ads</h3><div id="shortList"></div></div>
-
-<div id="sec-offer" class="card-glass" style="display:none"><h3>Offerwalles - Complete offers and earn</h3><div id="offerList"></div><div style="margin:12px 0;padding:10px;border:1px dashed rgba(0,229,255,.3);border-radius:10px" class="mono" style="font-size:10px">TimeWall widget - vlož svoj ID: &lt;div id="timewall-widget"&gt;&lt;/div&gt;</div></div>
-
-<div id="sec-ref" class="card-glass" style="display:none"><h3>Referral 5% - nie 20%</h3><div class="mono" style="font-size:12px">Your link - 5% z toho čo zarobí referral - nie </div><input id="refLink" readonly><div class="mono" style="font-size:11px;opacity:.6;margin-top:6px" id="refStats"></div></div>
-
-<div id="sec-wd" class="card-glass" style="display:none"><h3>Withdraw - - nie z tvojej peňaženky - Min 1000 = $0.01</h3><div class="mono" style="font-size:11px;opacity:.7;margin-bottom:6px">User dá žiadosť 1000 Coins → ide do Firebase withdrawals pending → ty v ADMIN potvrdíš → odráta BANK aj USER - nie tvoja peňaženka</div><select id="wm" style="width:100%;padding:12px;border-radius:10px;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.18);color:#fff;margin:6px 0"><option value="USDT_TRC20">USDT TRC20</option><option value="BTC">BTC</option><option value="FaucetPay">FaucetPay Email</option></select><input id="waddr" placeholder="FaucetPay adresa / email"><input id="wa" placeholder="1000"><button class="btn-cyan" onclick="wd()">Požiadať o výber - 1000 Coins</button><div id="wmsg"></div><div id="wdHistory" class="mono" style="font-size:11px;margin-top:8px"></div></div>
-
-<div style="margin:18px 0"><iframe data-aa='2459900' src='//ad.a-ads.com/2459900/?size=320x100' style='border:0;padding:0;width:320px;height:100px;overflow:hidden;display:block;margin:auto'></iframe></div>
-
-<div style="text-align:center;opacity:.45;font-size:11px" class="mono">© 2025 ZUFFAUCET • FaucetPay • 1 Coin = $0.00001 • Instant Payouts</div>
+<div style="margin:18px 0"><iframe data-aa='2459900' src='//ad.a-ads.com/2459900/?size=320x100' style='border:0;width:320px;height:100px;display:block;margin:auto'></iframe></div>
+<div style="text-align:center;opacity:.4;font-size:11px" class="mono">© 2025 ZUFFAUCET • 1 Coin = $0.00001 • Publisher 517526 • Unit 2459900</div>
 </div>
 
 <div id="viewModal"><div id="viewBox">
@@ -96,127 +81,94 @@ input,select{width:100%;padding:12px;border-radius:10px;background:rgba(0,0,0,.3
 <div><iframe data-aa='2459900' src='//ad.a-ads.com/2459900/?size=320x100' style='border:0;width:100%;height:100px'></iframe></div>
 </div>
 <div id="viewAdInfo" class="mono" style="font-size:11px;opacity:.7"></div>
-<button class="btn-cyan" id="viewClose" style="width:100%;display:none" onclick="closeView()">Claim</button>
+<button class="btn-cyan" id="viewClose" style="display:none;margin-top:10px" onclick="closeView()">Claim</button>
 <button class="btn-dark" style="width:100%;margin-top:8px" onclick="closeViewCancel()">Cancel</button>
 </div></div>
 
 <script>
 const cfg={apiKey:"AIzaSyDHeEUSDBLkVbJOYI4OwaG2qTZRosc049M",authDomain:"zuffaucet.firebaseapp.com",projectId:"zuffaucet",storageBucket:"zuffaucet.firebasestorage.app",messagingSenderId:"884207720462",appId:"1:884207720462:web:fb00900a2fd84e78d0045f"};
 firebase.initializeApp(cfg);const db=firebase.firestore();
-let cur=localStorage.getItem('zuff_cur')||null;
-let pendingReward=null;
-function rew(t){return Math.floor(t*0.4);}
-const PTC=[
-{t:'Coinbase Learn & Earn $3 BTC',tot:300},{t:'Binance Academy Certificate',tot:295},{t:'Kraken Futures Bonus $50',tot:285},{t:'KuCoin Trading Bot Profit',tot:275},{t:'Bybit Copy Trading Master',tot:265},{t:'OKX Web3 Wallet Airdrop',tot:255},{t:'Gate.io Startup Free Tokens',tot:245},{t:'Bitfinex Lending Earn 12%',tot:235},{t:'Huobi Earn Flexible 8%',tot:225},{t:'Crypto.com DeFi Wallet',tot:215},
-{t:'Ledger Nano X Secure',tot:200},{t:'Exodus Wallet Backup Guide',tot:195},{t:'Blockchain.com Exchange',tot:185},{t:'CoinMarketCap Diamond',tot:175},{t:'Changelly Swap Instant',tot:165},{t:'Paxful P2P Guide',tot:155},{t:'Trust Wallet Extension',tot:150},{t:'Best Faucets List 2025',tot:145},{t:'Bybit Launchpad Tokens',tot:140},{t:'Binance Trade Like Pro',tot:135},
-{t:'Learn Staking Passive',tot:125},{t:'Atomic Wallet Stake',tot:115},{t:'Free Doge Faucet Daily',tot:105},{t:'Litecoin Faucet Claim',tot:95},{t:'Ethereum Faucet Free',tot:85}
-];
-const SHORT=[
-{t:'Best Faucet Rotator 2025 - Top Earn',tot:200},{t:'Earn Watching Ads Premium Guide',tot:195},{t:'Bitcoin $100k Prediction Analysis',tot:185},{t:'Top Crypto Exchanges Ranked 2025',tot:175},{t:'CoinPayU Premium PTC Guide',tot:165},{t:'ETH Staking 32 ETH Guide',tot:155},{t:'How Buy Crypto Safely 2025',tot:145},{t:'Top 5 Mining Apps Android',tot:135},{t:'Top 10 Altcoins Bullrun',tot:125},{t:'Crypto Tax Save Money',tot:115},
-{t:'Free BTC No Investment',tot:110},{t:'Airdrop Alert Claim Free',tot:105},{t:'NFT OpenSea Marketplace',tot:100},{t:'DeFi Yield 100% APY Guide',tot:95},{t:'Metaverse SAND Projects',tot:90},{t:'Arbitrum Layer 2 Guide',tot:85},{t:'Cold Wallet Security Tips',tot:80},{t:'Bitcoin News Daily Update',tot:75},{t:'Trading Signals Telegram',tot:70},{t:'Blockchain Jobs Remote',tot:65},
-{t:'Provably Fair Gambling',tot:60},{t:'Best Hardware Wallet 2025',tot:55},{t:'How Mine Ethereum Classic',tot:50},{t:'Solana Airdrop Hunting',tot:45},{t:'MATIC Polygon Earn',tot:40}
-];
-const OFF=[{t:'Install Trading App - Get Bonus',tot:1250},{t:'Survey - Crypto Knowledge 5min',tot:800},{t:'Sign Up Exchange - Verify KYC',tot:2000},{t:'Play Game 10 Levels',tot:600},{t:'Complete OfferToro Task',tot:900}];
+let cur=null; let pendingReward=null;
 
-function renderLists(){
- const pl=document.getElementById('ptcList');pl.innerHTML='';[..PTC].sort((a,b)=>rew(b.tot)-rew(a.tot)).forEach((p,i)=>{const r=rew(p.tot);const div=document.createElement('div');div.className='ptc-row';div.innerHTML=`<div><b>${p.t}</b><br><span style='font-size:11px;opacity:.55'>You will get ${r} Coins</span></div><button class="btn-cyan" style="padding:8px 12px" onclick="openPTC(${i})">View </button>`;pl.appendChild(div);});
- const sl=document.getElementById('shortList');sl.innerHTML='';[..SHORT].sort((a,b)=>rew(b.tot)-rew(a.tot)).forEach((p,i)=>{const r=rew(p.tot);const div=document.createElement('div');div.className='ptc-row';div.innerHTML=`<div><b>${p.t}</b><br><span style='font-size:11px;opacity:.55'>You will get ${r} Coins</span></div><button class="btn-cyan" style="padding:8px 12px" onclick="openShort(${i})">Open </button>`;sl.appendChild(div);});
- const ol=document.getElementById('offerList');ol.innerHTML='';OFF.forEach((p,i)=>{const r=rew(p.tot);const div=document.createElement('div');div.className='ptc-row';div.innerHTML=`<div><b>${p.t}</b><br><span style='font-size:11px;opacity:.55'>You will get ${r} Coins</span></div><button class="btn-cyan" style="padding:8px 12px" onclick="openOffer(${i})">Do </button>`;ol.appendChild(div);});
-}
-renderLists();
-function setTab(t){['faucet','ptc','short','offer','ref','wd'].forEach(x=>{const el=document.getElementById('sec-'+x); if(el) el.style.display='none';});document.getElementById('sec-'+t).style.display='block';document.querySelectorAll('.tab').forEach((e,i)=>{const names=['faucet','ptc','short','offer','ref','wd'];e.classList.toggle('active',names[i]===t);});}
-let timerInt=null;
-function openPTC(i){if(!cur){alert('Login first - Register');return;}const p=PTC[i];pendingReward={type:'ptc',coins:rew(p.tot),tot:p.tot};document.getElementById('viewTitle').textContent='PTC - '+p.t;document.getElementById('viewAdInfo').textContent='You will get '+rew(p.tot)+' Coins. ';document.getElementById('viewModal').style.display='flex';startTimer(10);}
-function openShort(i){if(!cur){alert('Login');return;}const p=SHORT[i];pendingReward={type:'short',coins:rew(p.tot),tot:p.tot};document.getElementById('viewTitle').textContent='Shortlink - '+p.t;document.getElementById('viewAdInfo').textContent=' Shortlink shrinkme.io style: 2x A-Ads 5s. You will get '+rew(p.tot);document.getElementById('viewModal').style.display='flex';startTimer(5);}
-function openOffer(i){if(!cur){alert('Login');return;}const p=OFF[i];pendingReward={type:'offer',coins:rew(p.tot),tot:p.tot};document.getElementById('viewTitle').textContent='Offerwall - '+p.t;document.getElementById('viewAdInfo').textContent='Offerwall TimeWall/OfferToro style 15s. You will get '+rew(p.tot)+' - No bonus';document.getElementById('viewModal').style.display='flex';startTimer(15);}
-function startTimer(sec){let left=sec;const total=sec;document.getElementById('viewTimer').textContent=left+'s';document.getElementById('viewProg').style.width='0%';document.getElementById('viewClose').style.display='none';clearInterval(timerInt);timerInt=setInterval(()=>{left--;document.getElementById('viewTimer').textContent=left+'s';document.getElementById('viewProg').style.width=((total-left)/total*100)+'%';if(left<=0){clearInterval(timerInt);document.getElementById('viewTimer').textContent='DONE!';document.getElementById('viewProg').style.width='100%';document.getElementById('viewClose').style.display='block';document.getElementById('viewClose').textContent='Claim '+pendingReward.coins+' Coins';}},1000);}
-async function closeView(){
- if(!pendingReward) return;const r=pendingReward;document.getElementById('viewClose').textContent='Crediting to Firestore..';
- try{await db.collection('users').doc(cur).update({coins:firebase.firestore.FieldValue.increment(r.coins),ptcDone:r.type==='ptc'?firebase.firestore.FieldValue.increment(1):firebase.firestore.FieldValue.increment(0),shortDone:r.type==='short'?firebase.firestore.FieldValue.increment(1):firebase.firestore.FieldValue.increment(0),totalProfitGenerated:firebase.firestore.FieldValue.increment(Math.floor(r.tot*0.6))});await db.collection('bank').doc('main').set({balance:firebase.firestore.FieldValue.increment(Math.floor(r.tot*0.6)),totalProfit:firebase.firestore.FieldValue.increment(Math.floor(r.tot*0.6)),shortProfit:r.type==='short'?firebase.firestore.FieldValue.increment(Math.floor(r.tot*0.6)):firebase.firestore.FieldValue.increment(0)},{merge:true});loadUser();document.getElementById('viewModal').style.display='none';pendingReward=null;}catch(e){alert('Firestore error: '+e.code+' '+e.message+' - Check Rules allow read,write if true and API key None');}
-}
-function closeViewCancel(){clearInterval(timerInt);document.getElementById('viewModal').style.display='none';pendingReward=null;}
-
-function switchAuth(t){
- document.getElementById('authReg').style.display=t==='reg'?'block':'none';
- document.getElementById('authLog').style.display=t==='log'?'block':'none';
- document.getElementById('tabReg').classList.toggle('active',t==='reg');
- document.getElementById('tabLog').classList.toggle('active',t==='log');
+function showAuth(t){
+ console.log('showAuth',t);
+ document.getElementById('boxReg').style.display=t==='reg'?'block':'none';
+ document.getElementById('boxLog').style.display=t==='log'?'block':'none';
+ document.getElementById('btnReg').className=t==='reg'?'active':'inactive';
+ document.getElementById('btnLog').className=t==='log'?'active':'inactive';
  document.getElementById('am').innerHTML='';
 }
+function setMain(t){
+ ['faucet','ptc','short','offer','ref','wd'].forEach(x=>{
+  const el=document.getElementById('sec-'+x); if(el) el.style.display=x===t?'block':'none';
+  const tab=document.getElementById('mt-'+x); if(tab) tab.classList.toggle('active',x===t);
+ });
+}
+function rew(tot){return Math.floor(tot*0.4);}
+const PTC=[{t:'Coinbase Learn & Earn $3 BTC',tot:300},{t:'Binance Academy Certificate',tot:295},{t:'Kraken Futures Bonus $50',tot:285},{t:'KuCoin Trading Bot Profit',tot:275},{t:'Bybit Copy Trading Master',tot:265},{t:'OKX Web3 Wallet Airdrop',tot:255},{t:'Gate.io Startup Free Tokens',tot:245},{t:'Bitfinex Lending Earn 12%',tot:235},{t:'Huobi Earn Flexible 8%',tot:225},{t:'Crypto.com DeFi Wallet',tot:215},{t:'Ledger Nano X Secure',tot:200},{t:'Exodus Wallet Backup Guide',tot:195},{t:'Blockchain.com Exchange',tot:185},{t:'CoinMarketCap Diamond',tot:175},{t:'Changelly Swap Instant',tot:165},{t:'Paxful P2P Guide',tot:155},{t:'Trust Wallet Extension',tot:150},{t:'Best Faucets List 2025',tot:145},{t:'Bybit Launchpad Tokens',tot:140},{t:'Binance Trade Like Pro',tot:135},{t:'Learn Staking Passive',tot:125},{t:'Atomic Wallet Stake',tot:115},{t:'Free Doge Faucet Daily',tot:105},{t:'Litecoin Faucet Claim',tot:95},{t:'Ethereum Faucet Free',tot:85}];
+const SHORT=[{t:'Best Faucet Rotator 2025 - Top Earn',tot:200},{t:'Earn Watching Ads Premium Guide',tot:195},{t:'Bitcoin $100k Prediction Analysis',tot:185},{t:'Top Crypto Exchanges Ranked 2025',tot:175},{t:'CoinPayU Premium PTC Guide',tot:165},{t:'ETH Staking 32 ETH Guide',tot:155},{t:'How Buy Crypto Safely 2025',tot:145},{t:'Top 5 Mining Apps Android',tot:135},{t:'Top 10 Altcoins Bullrun',tot:125},{t:'Crypto Tax Save Money',tot:115},{t:'Free BTC No Investment',tot:110},{t:'Airdrop Alert Claim Free',tot:105},{t:'NFT OpenSea Marketplace',tot:100},{t:'DeFi Yield 100% APY Guide',tot:95},{t:'Metaverse SAND Projects',tot:90},{t:'Arbitrum Layer 2 Guide',tot:85},{t:'Cold Wallet Security Tips',tot:80},{t:'Bitcoin News Daily Update',tot:75},{t:'Trading Signals Telegram',tot:70},{t:'Blockchain Jobs Remote',tot:65},{t:'Provably Fair Gambling',tot:60},{t:'Best Hardware Wallet 2025',tot:55},{t:'How Mine Ethereum Classic',tot:50},{t:'Solana Airdrop Hunting',tot:45},{t:'MATIC Polygon Earn',tot:40}];
+const OFF=[{t:'Install Trading App - Get Bonus',tot:1250},{t:'Survey - Crypto Knowledge 5min',tot:800}];
+
+function renderLists(){
+ const pl=document.getElementById('ptcList');pl.innerHTML='';PTC.forEach((p,i)=>{const r=rew(p.tot);const d=document.createElement('div');d.className='ptc-row';d.innerHTML=`<div><b>${p.t}</b><br><span style='font-size:11px;opacity:.55'>You will get ${r} Coins</span></div><button class="btn-cyan" style="width:auto;padding:8px 14px" onclick="openPTC(${i})">View</button>`;pl.appendChild(d);});
+ const sl=document.getElementById('shortList');sl.innerHTML='';SHORT.forEach((p,i)=>{const r=rew(p.tot);const d=document.createElement('div');d.className='ptc-row';d.innerHTML=`<div><b>${p.t}</b><br><span style='font-size:11px;opacity:.55'>You will get ${r} Coins</span></div><button class="btn-cyan" style="width:auto;padding:8px 14px" onclick="openShort(${i})">Open</button>`;sl.appendChild(d);});
+ const ol=document.getElementById('offerList');ol.innerHTML='';OFF.forEach((p,i)=>{const r=rew(p.tot);const d=document.createElement('div');d.className='ptc-row';d.innerHTML=`<div><b>${p.t}</b><br><span style='font-size:11px;opacity:.55'>You will get ${r} Coins</span></div><button class="btn-cyan" style="width:auto;padding:8px 14px" onclick="openOffer(${i})">Do</button>`;ol.appendChild(d);});
+}
+renderLists();
 
 async function register(){
- const u=document.getElementById('u').value.trim().toLowerCase();const e=document.getElementById('e').value.trim();
+ const u=document.getElementById('u').value.trim().toLowerCase(); const e=document.getElementById('e').value.trim();
  if(!u){document.getElementById('am').innerHTML='<div class="err">Zadaj username</div>';return;}
  if(!e){document.getElementById('am').innerHTML='<div class="err">Zadaj email</div>';return;}
  try{
- document.getElementById('am').innerHTML='<div class="ok">Registrujem '+u+'..</div>';
- const ref=db.collection('users').doc(u);const snap=await ref.get();
- if(snap.exists){document.getElementById('am').innerHTML='<div class="err">User '+u+' už existuje - daj Login</div>';switchAuth('log');document.getElementById('u2').value=u;return;}
- await ref.set({username:u,email:e,coins:0,ptcDone:0,shortDone:0,faucetLast:0,totalProfitGenerated:0,referrer:'',createdAt:firebase.firestore.FieldValue.serverTimestamp()});
- cur=u;localStorage.setItem('zuff_cur',u);document.getElementById('authCard').style.display='none';document.getElementById('userCard').style.display='block';loadUser();
- document.getElementById('am').innerHTML='<div class="ok">✅ Registrovaný '+u+' - vo Firestore</div>';
- }catch(err){document.getElementById('am').innerHTML='<div class="err">Firestore: '+err.code+' - '+err.message+'<br>Skontroluj Rules allow read,write true + API key None</div>';}
+  document.getElementById('am').innerHTML='<div class="ok">Registrujem '+u+'..</div>';
+  const ref=db.collection('users').doc(u); const snap=await ref.get();
+  if(snap.exists){document.getElementById('am').innerHTML='<div class="err">User '+u+' už existuje - daj Login</div>';showAuth('log');document.getElementById('u2').value=u;return;}
+  await ref.set({username:u,email:e,coins:0,ptcDone:0,shortDone:0,faucetLast:0,totalProfitGenerated:0,referrer:'',createdAt:firebase.firestore.FieldValue.serverTimestamp()});
+  cur=u; localStorage.setItem('zuff_cur',u); document.getElementById('authCard').style.display='none'; document.getElementById('userCard').style.display='block'; loadUser();
+ }catch(err){document.getElementById('am').innerHTML='<div class="err">Firestore: '+err.code+' - '+err.message+'<br>Rules allow read,write true + API key None</div>';}
 }
-
 async function login(){
  const u=document.getElementById('u2').value.trim().toLowerCase();
  if(!u){document.getElementById('am').innerHTML='<div class="err">Zadaj username</div>';return;}
  try{
- document.getElementById('am').innerHTML='<div class="ok">Prihlasujem '+u+'..</div>';
- const ref=db.collection('users').doc(u);const snap=await ref.get();
- if(!snap.exists){document.getElementById('am').innerHTML='<div class="err">User '+u+' neexistuje - najprv Register</div>';switchAuth('reg');document.getElementById('u').value=u;return;}
- cur=u;localStorage.setItem('zuff_cur',u);document.getElementById('authCard').style.display='none';document.getElementById('userCard').style.display='block';loadUser();
- document.getElementById('am').innerHTML='<div class="ok">✅ Prihlásený '+u+'</div>';
+  document.getElementById('am').innerHTML='<div class="ok">Prihlasujem '+u+'..</div>';
+  const ref=db.collection('users').doc(u); const snap=await ref.get();
+  if(!snap.exists){document.getElementById('am').innerHTML='<div class="err">User '+u+' neexistuje - najprv Register</div>';showAuth('reg');document.getElementById('u').value=u;return;}
+  cur=u; localStorage.setItem('zuff_cur',u); document.getElementById('authCard').style.display='none'; document.getElementById('userCard').style.display='block'; loadUser();
  }catch(err){document.getElementById('am').innerHTML='<div class="err">Firestore: '+err.code+' - '+err.message+'</div>';}
 }
-
-async function reg(){ return register(); }
-async function reg_old(){
-
- const u=document.getElementById('u').value.trim().toLowerCase();const e=document.getElementById('e').value.trim();
- if(!u){document.getElementById('am').innerHTML='<div class="err">Username</div>';return;}
- if(!e){document.getElementById('am').innerHTML='<div class="err">Email</div>';return;}
- try{
- document.getElementById('am').innerHTML='<div class="ok">Writing to Firestore users/'+u+'.. Direct write - like rianshsm which worked</div>';
- const ref=db.collection('users').doc(u);const snap=await ref.get();
- if(snap.exists){cur=u;localStorage.setItem('zuff_cur',u);document.getElementById('authCard').style.display='none';document.getElementById('userCard').style.display='block';loadUser();document.getElementById('am').innerHTML='<div class="ok">Login OK - existing user</div>';}
- else{
-  await ref.set({username:u,email:e,coins:0,ptcDone:0,shortDone:0,faucetLast:0,totalProfitGenerated:0,referrer:'',createdAt:firebase.firestore.FieldValue.serverTimestamp()});
-  cur=u;localStorage.setItem('zuff_cur',u);document.getElementById('authCard').style.display='none';document.getElementById('userCard').style.display='block';loadUser();
-  document.getElementById('am').innerHTML='<div class="ok">✅ Registered - now visible in Firebase Console users/'+u+' + Admin - Old 204KB design but DIRECT FIRESTORE WRITE - rianshsm example worked</div>';
- }
- }catch(err){document.getElementById('am').innerHTML='<div class="err">Firestore error: '+err.code+' - '+err.message+'<br>Check: 1) Firestore Rules allow read,write if true 2) API key None 3) Wait 5min after changing key</div>';}
-}
 async function loadUser(){
- if(!cur) cur=localStorage.getItem('zuff_cur');if(!cur) return;
+ if(!cur) return;
  try{
- const snap=await db.collection('users').doc(cur).get();if(!snap.exists) return;const d=snap.data();
- document.getElementById('bal').textContent=d.coins||0;document.getElementById('balUsd').textContent=((d.coins||0)*0.00001).toFixed(4);document.getElementById('balTop').textContent=(d.coins||0)+' Coins';
- document.getElementById('ptcDone').textContent=d.ptcDone||0;document.getElementById('shortDone').textContent=d.shortDone||0;document.getElementById('lvl').textContent=Math.floor(((d.ptcDone||0)+(d.shortDone||0))/10)+1;
- document.getElementById('bankProfit').textContent=d.totalProfitGenerated||0;
- /* breakdown hidden */
- document.getElementById('refLink').value=location.origin+location.pathname+'?ref='+cur;
- // wd history
- const wds=await db.collection('withdrawals').where('username','==',cur).orderBy('date','desc').limit(10).get(); let h=''; wds.forEach(doc=>{const x=doc.data(); h+=`${x.date?.toDate?.()?.toLocaleString?.()||''} - ${x.coins} Coins - ${x.status} - from BANK<br>`}); document.getElementById('wdHistory').innerHTML=h||'No withdrawals yet - will be from BANK';
+  const snap=await db.collection('users').doc(cur).get(); if(!snap.exists) return; const d=snap.data();
+  document.getElementById('bal').textContent=d.coins||0; document.getElementById('balUsd').textContent=((d.coins||0)*0.00001).toFixed(4); document.getElementById('balTop').textContent=(d.coins||0)+' Coins';
+  document.getElementById('ptcDone').textContent=d.ptcDone||0; document.getElementById('shortDone').textContent=d.shortDone||0; document.getElementById('lvl').textContent=Math.floor(((d.ptcDone||0)+(d.shortDone||0))/10)+1;
+  document.getElementById('refLink').value=location.origin+location.pathname+'?ref='+cur;
+  const wds=await db.collection('withdrawals').where('username','==',cur).orderBy('date','desc').limit(10).get(); let h=''; wds.forEach(doc=>{const x=doc.data(); h+=`${x.date?.toDate?.()?.toLocaleString?.()||''} - ${x.coins} Coins - ${x.status}<br>`}); document.getElementById('wdHistory').innerHTML=h||'No withdrawals yet';
  }catch(e){console.log(e);}
 }
 function logout(){localStorage.removeItem('zuff_cur');location.reload();}
 async function claim(){
- const cap=document.getElementById('captcha');if(!cap.checked){document.getElementById('fm').innerHTML='<div class="err">Check captcha</div>';return;}
- const ans=document.getElementById('mathAns').value.trim();if(ans!=='8'){document.getElementById('fm').innerHTML='<div class="err">Answer 8</div>';return;}
- try{const ref=db.collection('users').doc(cur);const snap=await ref.get();if(Date.now()-(snap.data().faucetLast||0)<20*60*1000){document.getElementById('fm').innerHTML='<div class="err">Wait 20min</div>';return;}await ref.update({coins:firebase.firestore.FieldValue.increment(50),faucetLast:Date.now()});document.getElementById('fm').innerHTML='<div class="ok">+50 Coins +30</div>';loadUser();}catch(e){document.getElementById('fm').innerHTML='<div class="err">'+e.message+'</div>';}
+ const cap=document.getElementById('captcha'); if(!cap.checked){document.getElementById('fm').innerHTML='<div class="err">Check captcha</div>';return;}
+ const ans=document.getElementById('mathAns').value.trim(); if(ans!=='8'){document.getElementById('fm').innerHTML='<div class="err">Answer 8</div>';return;}
+ try{const ref=db.collection('users').doc(cur); const snap=await ref.get(); if(Date.now()-(snap.data().faucetLast||0)<20*60*1000){document.getElementById('fm').innerHTML='<div class="err">Wait 20min</div>';return;} await ref.update({coins:firebase.firestore.FieldValue.increment(50),faucetLast:Date.now()}); document.getElementById('fm').innerHTML='<div class="ok">+50 Coins</div>'; loadUser();}catch(e){document.getElementById('fm').innerHTML='<div class="err">'+e.message+'</div>';}
 }
 async function wd(){
- const amt=parseInt(document.getElementById('wa').value);const addr=document.getElementById('waddr').value.trim();const method=document.getElementById('wm').value;
- if(!amt||amt<1000){document.getElementById('wmsg').innerHTML='<div class="err">Min 1000</div>';return;}if(!addr){document.getElementById('wmsg').innerHTML='<div class="err">Enter address</div>';return;}
+ const amt=parseInt(document.getElementById('wa').value); const addr=document.getElementById('waddr').value.trim();
+ if(!amt||amt<1000){document.getElementById('wmsg').innerHTML='<div class="err">Min 1000</div>';return;} if(!addr){document.getElementById('wmsg').innerHTML='<div class="err">Enter address</div>';return;}
  try{
- const snap=await db.collection('users').doc(cur).get();if((snap.data().coins||0)<amt){document.getElementById('wmsg').innerHTML='<div class="err">Not enough coins</div>';return;}
- await db.collection('withdrawals').add({username:cur,coins:amt,address:addr,method,status:'pending',date:firebase.firestore.FieldValue.serverTimestamp()});
- document.getElementById('wmsg').innerHTML='<div class="ok">Žiadosť o '+amt+' Coins odoslaná do BANK - Admin potvrdí - nie z tvojej peňaženky - odráta BANK aj USER</div>';
- loadUser();
+  const snap=await db.collection('users').doc(cur).get(); if((snap.data().coins||0)<amt){document.getElementById('wmsg').innerHTML='<div class="err">Not enough coins</div>';return;}
+  await db.collection('withdrawals').add({username:cur,coins:amt,address:addr,method:'USDT_TRC20',status:'pending',date:firebase.firestore.FieldValue.serverTimestamp()});
+  document.getElementById('wmsg').innerHTML='<div class="ok">Žiadosť o '+amt+' Coins odoslaná do BANK - Admin potvrdí</div>'; loadUser();
  }catch(e){document.getElementById('wmsg').innerHTML='<div class="err">'+e.message+'</div>';}
 }
-(function(){const saved=localStorage.getItem('zuff_cur');if(saved){cur=saved;document.getElementById('authCard').style.display='none';document.getElementById('userCard').style.display='block';loadUser();}})();
-renderLists();
+let timerInt=null;
+function openPTC(i){if(!cur){alert('Login first');return;}const p=PTC[i]; pendingReward={type:'ptc',coins:rew(p.tot),tot:p.tot}; document.getElementById('viewTitle').textContent='PTC - '+p.t; document.getElementById('viewAdInfo').textContent='You will get '+rew(p.tot)+' Coins'; document.getElementById('viewModal').style.display='flex'; startTimer(10);}
+function openShort(i){if(!cur){alert('Login');return;}const p=SHORT[i]; pendingReward={type:'short',coins:rew(p.tot),tot:p.tot}; document.getElementById('viewTitle').textContent='Shortlink - '+p.t; document.getElementById('viewAdInfo').textContent='You will get '+rew(p.tot); document.getElementById('viewModal').style.display='flex'; startTimer(5);}
+function openOffer(i){if(!cur){alert('Login');return;}const p=OFF[i]; pendingReward={type:'offer',coins:rew(p.tot),tot:p.tot}; document.getElementById('viewTitle').textContent='Offerwall - '+p.t; document.getElementById('viewAdInfo').textContent='You will get '+rew(p.tot); document.getElementById('viewModal').style.display='flex'; startTimer(15);}
+function startTimer(sec){let left=sec; const total=sec; document.getElementById('viewTimer').textContent=left+'s'; document.getElementById('viewProg').style.width='0%'; document.getElementById('viewClose').style.display='none'; clearInterval(timerInt); timerInt=setInterval(()=>{left--; document.getElementById('viewTimer').textContent=left+'s'; document.getElementById('viewProg').style.width=((total-left)/total*100)+'%'; if(left<=0){clearInterval(timerInt); document.getElementById('viewTimer').textContent='DONE!'; document.getElementById('viewProg').style.width='100%'; document.getElementById('viewClose').style.display='block'; document.getElementById('viewClose').textContent='Claim '+pendingReward.coins+' Coins';}},1000);}
+async function closeView(){if(!pendingReward) return; const r=pendingReward; document.getElementById('viewClose').textContent='Crediting..'; try{await db.collection('users').doc(cur).update({coins:firebase.firestore.FieldValue.increment(r.coins),ptcDone:r.type==='ptc'?firebase.firestore.FieldValue.increment(1):firebase.firestore.FieldValue.increment(0),shortDone:r.type==='short'?firebase.firestore.FieldValue.increment(1):firebase.firestore.FieldValue.increment(0),totalProfitGenerated:firebase.firestore.FieldValue.increment(Math.floor(r.tot*0.6))}); await db.collection('bank').doc('main').set({balance:firebase.firestore.FieldValue.increment(Math.floor(r.tot*0.6)),totalProfit:firebase.firestore.FieldValue.increment(Math.floor(r.tot*0.6)),shortProfit:r.type==='short'?firebase.firestore.FieldValue.increment(Math.floor(r.tot*0.6)):firebase.firestore.FieldValue.increment(0)},{merge:true}); loadUser(); document.getElementById('viewModal').style.display='none'; pendingReward=null;}catch(e){alert('Firestore error: '+e.code+' '+e.message);}}
+function closeViewCancel(){clearInterval(timerInt); document.getElementById('viewModal').style.display='none'; pendingReward=null;}
 </script>
 </body></html>
