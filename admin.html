@@ -1,124 +1,200 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ADMIN FULL TRANSPARENT - ZufFaucet Publisher #517526</title>
+<!DOCTYPE html><html lang="sk"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ADMIN ULTRA TRANSPARENT - ZufFaucet Publisher #517526 Unit 2459900 - BANK CENTRAL</title>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap');
-*{box-sizing:border-box}body{margin:0;background:#070b18;color:#e8eeff;font-family:Inter,sans-serif;padding:12px}
-.header{position:sticky;top:0;background:rgba(7,11,24,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.1);padding:12px;margin:-12px -12px 12px;display:flex;justify-content:space-between;align-items:center;z-index:10}
-.logo{font-weight:900;font-size:20px}.logo span{color:#00e5ff}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
-.card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:14px;margin:0}
-.kpi{font-family:JetBrains Mono,monospace;font-size:28px;font-weight:800;color:#00e5ff}
-.sub{font-size:11px;opacity:.6;font-family:JetBrains Mono,monospace}
-.btn{padding:8px 12px;border-radius:8px;border:none;font-weight:700;cursor:pointer;font-size:12px}.cyan{background:#00e5ff;color:#000}.red{background:#ff3b3b;color:#fff}.dark{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.15)}.green{background:#22c55e;color:#000}
-input,select{padding:8px;border-radius:8px;background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.2);color:#fff;width:100%;margin:4px 0;font-size:12px}
-table{width:100%;border-collapse:collapse;font-size:11px}td,th{padding:6px;border-bottom:1px solid rgba(255,255,255,.08);text-align:left;white-space:nowrap;overflow:hidden;max-width:140px;text-overflow:ellipsis}
-.badge{display:inline-flex;padding:2px 8px;border-radius:12px;font-size:10px;font-weight:700}.b-green{background:rgba(34,197,94,.2);color:#22c55e;border:1px solid rgba(34,197,94,.3)}.b-red{background:rgba(255,59,59,.15);color:#ff6b6b;border:1px solid rgba(255,59,59,.25)}.b-cyan{background:rgba(0,229,255,.15);color:#00e5ff;border:1px solid rgba(0,229,255,.25)}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap');
+*{box-sizing:border-box}body{margin:0;background:#050814;color:#dbe6ff;font-family:Inter,sans-serif;padding:10px;font-size:12px}
+.header{position:sticky;top:0;z-index:100;background:rgba(5,8,20,.96);backdrop-filter:blur(16px);border:1px solid rgba(0,229,255,.25);border-radius:12px;padding:10px 14px;margin:-4px -4px 10px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.logo{font-weight:900;font-size:18px}.logo span{color:#00e5ff}.badge{padding:2px 8px;border-radius:20px;font-size:10px;font-weight:800;background:rgba(0,229,255,.15);color:#00e5ff;border:1px solid rgba(0,229,255,.3)}
+.grid4{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px}
+.card{background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:12px}
+.kpi{font-family:JetBrains Mono,monospace;font-size:26px;font-weight:800;color:#00e5ff;line-height:1}
+.sub{font-size:10px;opacity:.55;font-family:JetBrains Mono,monospace;text-transform:uppercase;letter-spacing:.6px}
+.row{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px dashed rgba(255,255,255,.08);font-size:11px}
 .mono{font-family:JetBrains Mono,monospace}
-.tabs{display:flex;gap:6px;margin:10px 0;flex-wrap:wrap}.tab{padding:6px 10px;border-radius:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);cursor:pointer;font-size:11px}.tab.active{background:#00e5ff;color:#000;border-color:#00e5ff}
+.btn{padding:6px 10px;border-radius:8px;border:none;font-weight:800;cursor:pointer;font-size:11px}.cyan{background:#00e5ff;color:#000}.red{background:#ff3344;color:#fff}.green{background:#22c55e;color:#000}.dark{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.18)}
+input,select,textarea{padding:7px 9px;border-radius:8px;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.18);color:#fff;width:100%;font-size:11px;font-family:JetBrains Mono,monospace}
+table{width:100%;border-collapse:collapse;font-size:10.5px}th{position:sticky;top:0;background:#0a0f1e;z-index:1;padding:6px 6px;text-align:left;border-bottom:1px solid rgba(0,229,255,.25);font-size:10px;color:#00e5ff}td{padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.06);max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tabs{display:flex;gap:6px;margin:12px 0;flex-wrap:wrap;position:sticky;top:60px;z-index:90;background:rgba(5,8,20,.9);padding:6px;border-radius:10px;border:1px solid rgba(255,255,255,.1)}.tab{padding:6px 12px;border-radius:20px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);cursor:pointer;font-size:11px;font-weight:700}.tab.active{background:#00e5ff;color:#000;border-color:#00e5ff}
+.scroll{overflow:auto;max-height:520px;border-radius:10px;border:1px solid rgba(255,255,255,.1)}
+.b-green{color:#22c55e;font-weight:800}.b-red{color:#ff4455;font-weight:800}.b-cyan{color:#00e5ff;font-weight:800}
+details{margin:6px 0}summary{cursor:pointer;color:#00e5ff;font-weight:700}
 </style>
 </head><body>
-<div class="header"><div class="logo">ZUF<span>FAUCET</span> ADMIN FULL - Publisher #517526 - Unit 2459900</div><div class="mono" style="font-size:11px"><span id="clock"></span> | <span style="color:#00e5ff">● TRANSPARENT</span></div></div>
-
-<div class="grid">
-<div class="card"><div class="sub">BANK BALANCE - CENTRÁLNA PEŇAŽENKA</div><div class="kpi" id="bankBal">0</div><div class="sub" id="bankUsd">$0.0000 na výplaty userov</div><div style="margin-top:8px;font-size:11px"><div class="mono">Z PTC 60%: <span id="bankPtc">0</span> Coins = $<span id="bankPtcUsd">0</span></div><div class="mono">Z A-Ads: <span id="bankAads">0</span> Coins = $<span id="bankAadsUsd">0</span> | BTC: <span id="bankBtc">0</span></div><div class="mono">Z Shortlink 60%: <span id="bankShort">0</span> Coins</div></div></div>
-<div class="card"><div class="sub">USERI - CELKOM COINS V OBHEHU</div><div class="kpi" id="totalUsers">0</div><div class="sub">users | Coins v obehu <span id="totalCoins">0</span> = $<span id="totalCoinsUsd">0</span></div><div class="sub" style="margin-top:6px">PTC klikov celkom: <span id="totalPtcClicks">0</span> | Shortlink: <span id="totalShortClicks">0</span> | Faucet: <span id="totalFaucet">0</span></div></div>
-<div class="card"><div class="sub">A-ADS PUBLISHER #517526 - UNIT 2459900</div><div class="kpi" id="aadsStatus">Príprava</div><div class="sub" id="aadsInfo">Getting ready 2-12h - potom Active</div><div style="margin-top:8px"><a href="https://aads.com/ad-unit/2459900" target="_blank" style="color:#00e5ff;font-size:11px">aads.com/ad-unit/2459900 →</a> | <a href="https://aads.com/account/earnings" target="_blank" style="color:#00e5ff;font-size:11px">Earnings →</a></div><div class="sub" style="margin-top:6px">Impressions dnes: 2x PTC + 2x Shortlink za každý klik = max 120/deň na usera</div></div>
-<div class="card"><div class="sub">ZISK PREHĽAD - TRANSPARENT</div><div class="mono" style="font-size:11px" id="profitView">Loading...</div></div>
+<div class="header">
+<div class="logo">ZUF<span>FAUCET</span> ULTRA ADMIN <span class="badge">PUBLISHER #517526</span> <span class="badge">UNIT 2459900</span> <span class="badge">BANK CENTRAL - NE TVOJA PEŇAŽENKA</span></div>
+<div class="mono" style="font-size:11px"><span id="clock"></span> | <span style="color:#00e5ff">● LIVE FIRESTORE</span> | <a href="https://aads.com/account/earnings" target="_blank" style="color:#00e5ff">A-Ads Earnings →</a></div>
 </div>
 
-<div class="card" style="margin-top:12px"><h3 class="mono" style="margin:0 0 8px">💰 A-ADS → BANK - Pridaj zárobok z A-Ads do BANK na výplaty</h3>
-<div style="display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:8px;align-items:end">
-<div><label class="sub">BTC z A-Ads</label><input id="aadsBtc" placeholder="0.00005 BTC"></div>
-<div><label class="sub">USD ekvivalent</label><input id="aadsUsd" placeholder="$2.50"></div>
-<div><label class="sub">Poznámka</label><input id="aadsNote" placeholder="napr. výber 25.05.2025"></div>
-<div><button class="btn cyan" onclick="addAadsToBank()">+ PRIDAŤ DO BANK</button></div>
+<div class="grid4">
+<div class="card" style="border-color:rgba(0,229,255,.4);background:linear-gradient(135deg,rgba(0,229,255,.12),rgba(255,255,255,.03))">
+<div class="sub">BANK BALANCE - TU SÚ PENIAZE NA VÝPLATY - NIE Z TVOJEJ PEŇAŽENKY</div>
+<div class="kpi" id="bankBal">0</div><div class="sub" id="bankUsd">$0.0000 - MÔŽEŠ VYPLÁCAŤ Z TOHTO</div>
+<div style="margin-top:8px">
+<div class="row"><span>Z PTC 60% (180 z 300)</span><span class="mono b-green" id="bankPtc">0</span></div>
+<div class="row"><span>Z Shortlink 60%</span><span class="mono b-green" id="bankShort">0</span></div>
+<div class="row"><span>Z Faucet 60% (ak)</span><span class="mono" id="bankFaucet">0</span></div>
+<div class="row"><span>Z A-Ads BTC → Coins</span><span class="mono b-cyan" id="bankAads">0 Coins / <span id="bankBtc">0 BTC</span></span></div>
+<div class="row" style="border-top:1px solid rgba(0,229,255,.3);margin-top:4px;padding-top:6px;font-weight:800"><span>SPOLU V BANK NA VÝPLATY</span><span class="kpi" style="font-size:14px" id="bankTotal">= 0</span></div>
+<div class="row"><span>Pending výbery - čo čaká</span><span class="mono b-red" id="pendingTotal">0</span></div>
+<div class="row"><span>Voľné po odrátaní pending</span><span class="mono b-green" id="freeBal">0</span></div>
 </div>
-<div class="sub" style="margin-top:6px">Postup: a-ads.com → Earnings → Withdraw na FaucetPay → tu napíšeš sumu → pridá sa do BANK balance. Potom môžeš vyplácať userov z BANK.</div>
-<div id="aadsLog" class="mono" style="font-size:10px;opacity:.6;margin-top:6px"></div>
 </div>
 
-<div class="tabs"><div class="tab active" onclick="setTab('users')">Users Detail</div><div class="tab" onclick="setTab('withdraw')">Withdrawals - Výplaty z BANK</div><div class="tab" onclick="setTab('ptc')">PTC Log</div><div class="tab" onclick="setTab('bank')">BANK History</div><div class="tab" onclick="setTab('calc')">Kalkulačka Zisku</div></div>
+<div class="card">
+<div class="sub">USERS - VŠETKY COINS V OBHEHU - DĹŽIŠ IM</div>
+<div class="kpi" id="totalUsers">0</div><div class="sub">users registrovaných</div>
+<div style="margin-top:8px">
+<div class="row"><span>Coins v obehu u userov</span><span class="mono b-cyan" id="totalCoins">0</span></div>
+<div class="row"><span>Hodnota v $</span><span class="mono" id="totalCoinsUsd">$0.0000</span></div>
+<div class="row"><span>PTC klikov celkom (2x ads = 2x zárobok A-Ads)</span><span class="mono" id="totalPtcClicks">0</span></div>
+<div class="row"><span>Shortlink klikov celkom</span><span class="mono" id="totalShortClicks">0</span></div>
+<div class="row"><span>Faucet claimov</span><span class="mono" id="totalFaucet">0</span></div>
+<div class="row"><span>Celkový profit ktorý šiel do BANK 60%</span><span class="mono b-green" id="totalProfitBank">0</span></div>
+</div>
+</div>
 
-<div id="sec-users" class="card"><h3 class="mono">Users - Všetko priehľadné - každý coin</h3><input id="searchUser" placeholder="Hľadaj username..." oninput="loadUsers()"><div id="usersList" style="overflow:auto;max-height:400px"></div></div>
-<div id="sec-withdraw" class="card" style="display:none"><h3 class="mono">Withdrawals - Žiadosti o výplatu z BANK</h3><div id="wdList" style="overflow:auto"></div></div>
-<div id="sec-ptc" class="card" style="display:none"><h3 class="mono">PTC / Shortlink / Faucet / Offerwall - Prehľad klikov</h3><div id="ptcList" class="mono" style="font-size:11px"></div></div>
-<div id="sec-bank" class="card" style="display:none"><h3 class="mono">BANK History - Všetky pohyby</h3><div id="bankLogList" class="mono" style="font-size:11px"></div></div>
-<div id="sec-calc" class="card" style="display:none"><h3 class="mono">Kalkulačka - Koľko zarobíš</h3><div class="mono" style="font-size:12px">
-1 user urobí 30 PTC + 30 Shortlink = 30x 120 + 30x 80 = 3600+2400 = 6000 Coins pre usera (40%)<br>
-Pre teba do BANK: 60% = 9000 Coins = $0.09<br>
-+ A-Ads: 60 klikov x 2 reklamy = 120 impressions = cca $0.05-0.20 podľa A-Ads<br>
-= 1 aktívny user = cca $0.14-0.29 / deň<br>
-10 userov = $1.4-2.9 / deň | 100 userov = $14-29 / deň<br><br>
-Referrer 5% - keď user pozve kamaráta, 5% z jeho zárobku ide jemu, nie z BANK<br>
-Offerwall: user dostane 40%, ty 60% + A-Ads - žiadne bonusy, žiadne 40% text<br><br>
-BANK musí mať vždy viac ako súčet všetkých pending withdrawals, inak nemôžeš vyplácať.
+<div class="card" style="border-color:rgba(34,197,94,.35)">
+<div class="sub">A-ADS TRANSPARENT - 2 REKLAMY V MODALE = 2X ZÁROBOK</div>
+<div class="kpi" id="aadsStatus" style="color:#22c55e">Príprava</div><div class="sub">Getting ready 2-12h potom Active - zarába hneď</div>
+<div class="mono" style="font-size:10px;margin-top:8px;line-height:1.4">
+• 30 PTC × 2 iframes = 60 impressions / user / deň<br>
+• 30 Shortlink × 2 iframes = 60 impressions / user / deň<br>
+• Spolu 120 impressions / user / deň × 10 userov = 1200 / deň<br>
+• Pri CPM $0.50 = $0.60 / deň z 10 userov<br>
+• Pri CPM $2 = $2.40 / deň z 10 userov<br>
+• Všetko ide do BANK cez tlačidlo + PRIDAŤ<br>
+• Publisher ID 517526 - Unit 2459900 - 320x100<br>
+• Link: <a href="https://aads.com/ad-unit/2459900" target="_blank" style="color:#00e5ff">ad-unit/2459900</a>
+</div>
+</div>
+
+<div class="card">
+<div class="sub">ZISK VÝPOČET - 100% TRANSPARENT</div>
+<div class="mono" style="font-size:10px;line-height:1.5" id="profitCalc">
+Loading...
+</div>
+</div>
+</div>
+
+<div class="card" style="margin-top:10px">
+<h3 class="mono" style="margin:0 0 8px">💰 PRIDAŤ A-ADS ZÁROBOK DO BANK - TU SA PLATÍ Z BANK, NIE Z TVOJEJ PEŇAŽENKY</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr auto;gap:8px;align-items:end">
+<div><label class="sub">BTC z A-Ads.com → Earnings</label><input id="aadsBtc" placeholder="0.00005"></div>
+<div><label class="sub">USD suma</label><input id="aadsUsd" placeholder="2.50"></div>
+<div><label class="sub">Coins = USD / 0.00001</label><input id="aadsCoins" placeholder="auto" disabled></div>
+<div><label class="sub">Poznámka (dátum výberu)</label><input id="aadsNote" placeholder="25.05.2025 withdraw A-Ads"></div>
+<div><button class="btn cyan" onclick="addAadsToBank()">+ PRIDAŤ DO BANK NA VÝPLATY</button></div>
+</div>
+<div class="sub" style="margin-top:6px">Postup: aads.com → My Account → Earnings → Withdraw na FaucetPay → sem napíšeš koľko BTC/USD → pridá sa do BANK. Potom v Withdrawals schváliš výbery userov Z BANK.</div>
+<div id="aadsLog" class="mono" style="font-size:10px;opacity:.7;margin-top:6px;max-height:80px;overflow:auto"></div>
+</div>
+
+<div class="tabs">
+<div class="tab active" onclick="setTab('users',this)">👥 Users Detail - Každý Coin</div>
+<div class="tab" onclick="setTab('withdraw',this)">💸 Withdrawals - Žiadosti z BANK - TU POTVRDZUJEŠ</div>
+<div class="tab" onclick="setTab('ptc',this)">🖱️ PTC / Shortlink Log - 40/60 Split</div>
+<div class="tab" onclick="setTab('raw',this)">🔍 Raw Firebase - Všetko ako je v DB</div>
+<div class="tab" onclick="setTab('bank',this)">🏦 BANK History - Všetky Pohyby</div>
+<div class="tab" onclick="setTab('calc',this)">🧮 Kalkulačka Zisku</div>
+</div>
+
+<div id="sec-users" class="card"><h3 class="mono">Users Detail - 100% Transparent - vidíš každý coin, referrer 5%, profit 60% do BANK</h3><div style="display:flex;gap:8px;margin-bottom:8px"><input id="searchUser" placeholder="Hľadaj username..." oninput="loadUsers()" style="max-width:300px"><button class="btn dark" onclick="loadUsers()">Refresh</button><span class="sub" id="usersCount"></span></div><div class="scroll"><div id="usersList"></div></div></div>
+
+<div id="sec-withdraw" class="card" style="display:none"><h3 class="mono">Withdrawals - TU SA PLATÍ Z BANK, NIE Z TVOJEJ PEŇAŽENKY - User 1000 Coins → ty potvrdíš → odráta z BANK aj z usera</h3><div class="scroll"><div id="wdList"></div></div></div>
+
+<div id="sec-ptc" class="card" style="display:none"><h3 class="mono">PTC / Shortlink / Faucet - 40% user / 60% BANK - Transparent</h3><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><div><b>Top PTC</b><div id="ptcTop" class="mono" style="font-size:11px"></div></div><div><b>Top Shortlink</b><div id="shortTop" class="mono" style="font-size:11px"></div></div></div><div style="margin-top:10px"><b>Vysvetlenie splitu:</b><div class="mono" style="font-size:11px">PTC Ad total 300 → User dostane 120 (40%) → BANK dostane 180 (60%)<br>Shortlink total 200 → User 80 → BANK 120<br>User vidí len "You will get X Coins" - nevidí 40% text<br>BANK balance rastie automaticky pri každom PTC kliku</div></div></div>
+
+<div id="sec-raw" class="card" style="display:none"><h3 class="mono">Raw Firebase Collections - Všetko ako je v DB - 100% transparent</h3><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><div><b>users collection - sample 5</b><pre id="rawUsers" class="mono" style="font-size:10px;background:rgba(0,0,0,.4);padding:8px;border-radius:8px;overflow:auto;max-height:400px"></pre></div><div><b>bank / bank_log / withdrawals - sample</b><pre id="rawBank" class="mono" style="font-size:10px;background:rgba(0,0,0,.4);padding:8px;border-radius:8px;overflow:auto;max-height:400px"></pre></div></div></div>
+
+<div id="sec-bank" class="card" style="display:none"><h3 class="mono">BANK History - Každý pohyb - A-Ads pridané, PTC profit, Withdrawals schválené</h3><div class="scroll"><div id="bankLogList" class="mono" style="font-size:11px"></div></div></div>
+
+<div id="sec-calc" class="card" style="display:none"><h3 class="mono">Kalkulačka - Koľko zarobíš - Transparent</h3><div class="mono" style="font-size:12px;line-height:1.6">
+1 user urobí 30 PTC (120 priemer) + 30 Shortlink (70 priemer) = 3600 + 2100 = 5700 Coins pre usera (40%)<br>
+Pre teba do BANK: 60% = 8550 Coins = $0.0855<br>
++ A-Ads: 60 klikov × 2 reklamy = 120 impressions / user / deň<br>
+Pri CPM $1 = 120/1000×$1 = $0.12 / user / deň z A-Ads<br>
+SPOLU 1 user = $0.0855 + $0.12 = $0.2055 / deň<br>
+10 userov = $2.05 / deň | 100 userov = $20.5 / deň | 1000 userov = $205 / deň<br><br>
+Referrer 5% - keď user pozve kamaráta, 5% z jeho zárobku ide jemu, nie z BANK - tvoj BANK ostáva<br>
+Offerwall: user 40%, ty 60% + A-Ads - žiadne bonusy, žiadne 40% text v USER<br><br>
+BANK musí mať vždy viac ako súčet pending withdrawals, inak nemôžeš vyplácať - pridaj A-Ads.<br>
+User withdraw 1000 Coins = $0.01 - ty schváliš z BANK - odráta sa z BANK aj z usera - nie z tvojej peňaženky.
 </div></div>
 
 <script>
 const cfg={apiKey:"AIzaSyDHeEUSDBLkVbJOYI4OwaG2qTZRosc049M",authDomain:"zuffaucet.firebaseapp.com",projectId:"zuffaucet",storageBucket:"zuffaucet.firebasestorage.app",messagingSenderId:"884207720462",appId:"1:884207720462:web:fb00900a2fd84e78d0045f"};
 firebase.initializeApp(cfg);const db=firebase.firestore();
-function setTab(t){['users','withdraw','ptc','bank','calc'].forEach(x=>{const el=document.getElementById('sec-'+x); if(el) el.style.display='none';});document.getElementById('sec-'+t).style.display='block';document.querySelectorAll('.tabs .tab').forEach(e=>e.classList.remove('active'));event.target.classList.add('active'); if(t==='users') loadUsers(); if(t==='withdraw') loadWd(); if(t==='ptc') loadPtc(); if(t==='bank') loadBankLog();}
-
+function setTab(t,el){['users','withdraw','ptc','raw','bank','calc'].forEach(x=>{const e=document.getElementById('sec-'+x); if(e) e.style.display='none';});document.getElementById('sec-'+t).style.display='block';document.querySelectorAll('.tabs .tab').forEach(e=>e.classList.remove('active'));if(el) el.classList.add('active'); if(t==='users') loadUsers(); if(t==='withdraw') loadWd(); if(t==='ptc') loadPtc(); if(t==='raw') loadRaw(); if(t==='bank') loadBankLog();}
 async function loadAll(){
- const bankSnap=await db.collection('bank').doc('main').get(); const b=bankSnap.exists?bankSnap.data():{balance:0,totalProfit:0,aadsTotal:0,aadsBtc:0,shortProfit:0};
- document.getElementById('bankBal').textContent=b.balance||0; document.getElementById('bankUsd').textContent='$'+((b.balance||0)*0.00001).toFixed(4);
- document.getElementById('bankPtc').textContent=b.totalProfit||0; document.getElementById('bankPtcUsd').textContent=((b.totalProfit||0)*0.00001).toFixed(4);
- document.getElementById('bankAads').textContent=b.aadsTotal||0; document.getElementById('bankAadsUsd').textContent=((b.aadsTotal||0)*0.00001).toFixed(4); document.getElementById('bankBtc').textContent=b.aadsBtc||0;
- document.getElementById('bankShort').textContent=b.shortProfit||0;
- const usersSnap=await db.collection('users').get(); let totalCoins=0,totalPtc=0,totalShort=0; usersSnap.forEach(d=>{const x=d.data(); totalCoins+=(x.coins||0); totalPtc+=(x.ptcDone||0); totalShort+=(x.shortDone||0);});
- document.getElementById('totalUsers').textContent=usersSnap.size; document.getElementById('totalCoins').textContent=totalCoins; document.getElementById('totalCoinsUsd').textContent=(totalCoins*0.00001).toFixed(4);
- document.getElementById('totalPtcClicks').textContent=totalPtc; document.getElementById('totalShortClicks').textContent=totalShort;
+ const bankSnap=await db.collection('bank').doc('main').get(); const b=bankSnap.exists?bankSnap.data():{balance:0,totalProfit:0,aadsTotal:0,aadsBtc:0,shortProfit:0,faucetProfit:0};
+ const bal=b.balance||0; const ptc=b.totalProfit||0; const short=b.shortProfit||0; const faucet=b.faucetProfit||0; const aads=b.aadsTotal||0; const btc=b.aadsBtc||0;
+ document.getElementById('bankBal').textContent=bal; document.getElementById('bankUsd').textContent='$'+(bal*0.00001).toFixed(4)+' - MÔŽEŠ VYPLÁCAŤ Z TOHTO';
+ document.getElementById('bankPtc').textContent=ptc; document.getElementById('bankShort').textContent=short; document.getElementById('bankFaucet').textContent=faucet;
+ document.getElementById('bankAads').textContent=aads+' Coins'; document.getElementById('bankBtc').textContent=btc+' BTC';
+ document.getElementById('bankTotal').textContent=bal+' Coins = $'+(bal*0.00001).toFixed(4);
+ const usersSnap=await db.collection('users').get(); let totalCoins=0,totalPtc=0,totalShort=0,totalFaucet=0,totalProfit=0;
+ usersSnap.forEach(d=>{const x=d.data(); totalCoins+=(x.coins||0); totalPtc+=(x.ptcDone||0); totalShort+=(x.shortDone||0); totalProfit+=(x.totalProfitGenerated||0);});
+ document.getElementById('totalUsers').textContent=usersSnap.size; document.getElementById('totalCoins').textContent=totalCoins; document.getElementById('totalCoinsUsd').textContent='$'+(totalCoins*0.00001).toFixed(4);
+ document.getElementById('totalPtcClicks').textContent=totalPtc; document.getElementById('totalShortClicks').textContent=totalShort; document.getElementById('totalProfitBank').textContent=totalProfit;
  const wdSnap=await db.collection('withdrawals').where('status','==','pending').get(); let pendingCoins=0; wdSnap.forEach(d=>pendingCoins+=d.data().coins||0);
- document.getElementById('profitView').innerHTML=`BANK balance: ${b.balance} = $${(b.balance*0.00001).toFixed(4)}<br>Coins v obehu u userov: ${totalCoins} = $${(totalCoins*0.00001).toFixed(4)}<br>Pending výplaty: ${pendingCoins} Coins = $${(pendingCoins*0.00001).toFixed(4)}<br>Rozdiel BANK - pending = ${b.balance-pendingCoins} Coins ${b.balance-pendingCoins>=0?'<span class="b-green">OK môžeš vyplácať</span>':'<span class="b-red">MÁLO - pridaj A-Ads</span>'}<br><br>Celkový obrat: ${(b.balance||0)+totalCoins+pendingCoins} Coins<br>Z toho tvoj zisk 60% PTC: ${b.totalProfit||0}<br>Z toho A-Ads: ${b.aadsTotal||0} Coins + ${b.aadsBtc||0} BTC`;
- // A-Ads log
- const aadsLogSnap=await db.collection('bank_log').orderBy('date','desc').limit(20).get(); let html=''; aadsLogSnap.forEach(d=>{const x=d.data(); html+=`${x.date?.toDate?.()?.toLocaleString?.()||''} - ${x.type} - ${x.coins} Coins - $${x.usd} - ${x.btc||''} BTC - ${x.note||''}<br>`}); document.getElementById('aadsLog').innerHTML=html||'Zatiaľ žiadne A-Ads pridané do BANK';
- document.getElementById('bankLogList').innerHTML=html||'Žiadne záznamy';
+ document.getElementById('pendingTotal').textContent=pendingCoins+' Coins = $'+(pendingCoins*0.00001).toFixed(4);
+ document.getElementById('freeBal').textContent=(bal-pendingCoins)+' Coins = $'+((bal-pendingCoins)*0.00001).toFixed(4)+' '+(bal-pendingCoins>=0?'✅ OK':'❌ MÁLO - pridaj A-Ads');
+ document.getElementById('profitCalc').innerHTML=`BANK balance: <b>${bal}</b> = $${(bal*0.00001).toFixed(4)}<br>Coins v obehu u userov: ${totalCoins} = $${(totalCoins*0.00001).toFixed(4)}<br>Pending výplaty: ${pendingCoins} = $${(pendingCoins*0.00001).toFixed(4)}<br>Voľné: ${bal-pendingCoins} ${bal-pendingCoins>=0?'<span class="b-green">MÔŽEŠ VYPLÁCAŤ</span>':'<span class="b-red">MÁLO - pridaj A-Ads</span>'}<br><br>Celkový obrat: ${bal+totalCoins+pendingCoins} Coins<br>Z toho PTC 60% do BANK: ${ptc}<br>Z toho A-Ads: ${aads} Coins + ${btc} BTC<br>Zisk na vyplácanie: BANK - pending = ${bal-pendingCoins}`;
+ const aadsLogSnap=await db.collection('bank_log').orderBy('date','desc').limit(30).get(); let html=''; aadsLogSnap.forEach(d=>{const x=d.data(); html+=`${x.date?.toDate?.()?.toLocaleString?.()||''} | ${x.type} | ${x.coins} Coins | $${x.usd} | ${x.btc||''} BTC | ${x.note||''}<br>`}); document.getElementById('aadsLog').innerHTML=html||'Zatiaľ žiadne A-Ads pridané do BANK'; document.getElementById('bankLogList').innerHTML=html||'Žiadne záznamy';
 }
 async function loadUsers(){
- const q=document.getElementById('searchUser').value.trim().toLowerCase();
- const snap=await db.collection('users').orderBy('coins','desc').limit(100).get();
- let h='<table><tr><th>User</th><th>Email</th><th>Coins</th><th>$</th><th>PTC</th><th>Short</th><th>Profit 60% do BANK</th><th>Referrer</th><th>Akcia</th></tr>';
- snap.forEach(doc=>{const d=doc.data(); if(q && !d.username.includes(q)) return; h+=`<tr><td><b>${d.username}</b></td><td>${d.email||''}</td><td style="color:#00e5ff;font-weight:700">${d.coins||0}</td><td>$${((d.coins||0)*0.00001).toFixed(4)}</td><td>${d.ptcDone||0}</td><td>${d.shortDone||0}</td><td style="color:#22c55e">${d.totalProfitGenerated||0}</td><td>${d.referrer||'-'}</td><td><button class="btn dark" onclick="editUser('${doc.id}')">Edit</button></td></tr>`});
+ const q=(document.getElementById('searchUser').value||'').trim().toLowerCase();
+ const snap=await db.collection('users').orderBy('coins','desc').limit(200).get();
+ document.getElementById('usersCount').textContent=snap.size+' users';
+ let h='<table><tr><th>User</th><th>Email</th><th>Coins</th><th>$</th><th>PTC</th><th>Short</th><th>Profit 60% do BANK</th><th>Referrer 5%</th><th>Last</th><th>Akcia</th></tr>';
+ snap.forEach(doc=>{const d=doc.data(); if(q && !d.username?.toLowerCase().includes(q) && !d.email?.toLowerCase().includes(q)) return; const last=d.updatedAt?.toDate?.()?.toLocaleString?.()||d.createdAt?.toDate?.()?.toLocaleString?.()||''; h+=`<tr><td><b>${d.username}</b></td><td>${d.email||''}</td><td style="color:#00e5ff;font-weight:800">${d.coins||0}</td><td>$${((d.coins||0)*0.00001).toFixed(4)}</td><td>${d.ptcDone||0}</td><td>${d.shortDone||0}</td><td style="color:#22c55e;font-weight:700">${d.totalProfitGenerated||0}</td><td>${d.referrer||'-'}</td><td style="font-size:9px">${last}</td><td><button class="btn dark" onclick="editUser('${doc.id}')">Edit</button></td></tr>`});
  h+='</table>'; document.getElementById('usersList').innerHTML=h;
 }
 async function loadWd(){
- const snap=await db.collection('withdrawals').orderBy('date','desc').limit(100).get();
- let h='<table><tr><th>Dátum</th><th>User</th><th>Coins</th><th>$</th><th>Metóda</th><th>Adresa</th><th>Status</th><th>Akcia</th></tr>';
- snap.forEach(doc=>{const d=doc.data(); const usd=(d.coins*0.00001).toFixed(4); const date=d.date?.toDate?.()?.toLocaleString?.()||''; h+=`<tr><td>${date}</td><td>${d.username}</td><td>${d.coins}</td><td>$${usd}</td><td>${d.method||'USDT_TRC20'}</td><td title="${d.address}">${(d.address||'').substring(0,18)}...</td><td>${d.status==='pending'?'<span class="b-red">pending</span>':d.status==='approved'?'<span class="b-green">approved</span>':d.status}</td><td>${d.status==='pending'?`<button class="btn cyan" onclick="approve('${doc.id}',${d.coins})">Schváliť z BANK</button> <button class="btn red" onclick="reject('${doc.id}')">Zamietnuť</button>`:''}</td></tr>`});
+ const snap=await db.collection('withdrawals').orderBy('date','desc').limit(200).get();
+ let h='<table><tr><th>Dátum</th><th>User</th><th>Coins</th><th>$</th><th>Metóda</th><th>Adresa</th><th>Status</th><th>Z BANK - nie z tvojej peňaženky</th></tr>';
+ snap.forEach(doc=>{const d=doc.data(); const usd=(d.coins*0.00001).toFixed(4); const date=d.date?.toDate?.()?.toLocaleString?.()||''; const shortAddr=(d.address||'').substring(0,22)+'...'; h+=`<tr><td>${date}</td><td><b>${d.username}</b></td><td style="font-weight:800;color:#00e5ff">${d.coins}</td><td>$${usd}</td><td>${d.method||'USDT_TRC20'}</td><td title="${d.address||''}">${shortAddr}</td><td>${d.status==='pending'?'<span class="b-red">pending - čaká na teba</span>':d.status==='approved'?'<span class="b-green">approved - odrátané z BANK aj z usera</span>':d.status}</td><td>${d.status==='pending'?`<button class="btn cyan" onclick="approve('${doc.id}',${d.coins})">✅ Schváliť Z BANK - odráta BANK aj USER</button> <button class="btn red" onclick="reject('${doc.id}')">Zamietnuť</button>`:`<span class="sub">Už spracované</span>`}</td></tr>`});
  h+='</table>'; document.getElementById('wdList').innerHTML=h;
 }
 async function loadPtc(){
  const snap=await db.collection('users').orderBy('ptcDone','desc').limit(50).get();
- let h='<b>Top PTC useri:</b><br>'; snap.forEach(d=>{const x=d.data(); h+=`${x.username}: PTC ${x.ptcDone||0} | Short ${x.shortDone||0} | Coins ${x.coins||0} | Profit BANK ${x.totalProfitGenerated||0}<br>`});
- document.getElementById('ptcList').innerHTML=h;
+ let hTop=''; let hShort=''; let i=0; snap.forEach(doc=>{const x=doc.data(); if(i<25) hTop+=`${i+1}. ${x.username}: PTC ${x.ptcDone||0} | Coins ${x.coins||0} | Profit BANK ${x.totalProfitGenerated||0}<br>`; i++;});
+ const snap2=await db.collection('users').orderBy('shortDone','desc').limit(50).get(); let j=0; snap2.forEach(doc=>{const x=doc.data(); if(j<25) hShort+=`${j+1}. ${x.username}: Short ${x.shortDone||0} | Coins ${x.coins||0}<br>`; j++;});
+ document.getElementById('ptcTop').innerHTML=hTop||'Žiadne'; document.getElementById('shortTop').innerHTML=hShort||'Žiadne';
 }
-async function loadBankLog(){ /* already in loadAll */ }
-
+async function loadRaw(){
+ const snap=await db.collection('users').limit(5).get(); let out=''; snap.forEach(d=>{out+=JSON.stringify({id:d.id,...d.data()},null,2)+'\n\n';}); document.getElementById('rawUsers').textContent=out||'Žiadne users';
+ const bankSnap=await db.collection('bank').doc('main').get(); const logSnap=await db.collection('bank_log').orderBy('date','desc').limit(5).get(); const wdSnap=await db.collection('withdrawals').orderBy('date','desc').limit(5).get();
+ let out2='BANK main:\n'+JSON.stringify(bankSnap.exists?bankSnap.data():{},null,2)+'\n\nbank_log sample:\n'; logSnap.forEach(d=>{out2+=JSON.stringify(d.data(),null,2)+'\n';}); out2+='\nwithdrawals sample:\n'; wdSnap.forEach(d=>{out2+=JSON.stringify(d.data(),null,2)+'\n';}); document.getElementById('rawBank').textContent=out2;
+}
+async function loadBankLog(){ /* in loadAll */ }
 async function addAadsToBank(){
  const btc=parseFloat(document.getElementById('aadsBtc').value)||0; const usd=parseFloat(document.getElementById('aadsUsd').value)||0; const note=document.getElementById('aadsNote').value||'';
- if(!usd){alert('Zadaj USD');return;}
- const coins=Math.floor(usd/0.00001);
+ if(!usd){alert('Zadaj USD');return;} const coins=Math.floor(usd/0.00001);
+ document.getElementById('aadsCoins').value=coins;
  await db.collection('bank').doc('main').set({balance:firebase.firestore.FieldValue.increment(coins),aadsTotal:firebase.firestore.FieldValue.increment(coins),aadsBtc:firebase.firestore.FieldValue.increment(btc)},{merge:true});
  await db.collection('bank_log').add({type:'A-ADS_EARN',coins,usd,btc,note,date:firebase.firestore.FieldValue.serverTimestamp()});
- alert(`Pridané ${coins} Coins = $${usd} = ${btc} BTC do BANK z A-Ads`);
- loadAll();
+ alert(`Pridané ${coins} Coins = $${usd} = ${btc} BTC do BANK na výplaty userov - nie z tvojej peňaženky`);
+ document.getElementById('aadsBtc').value=''; document.getElementById('aadsUsd').value=''; loadAll();
 }
 async function approve(id,coins){
  const bankSnap=await db.collection('bank').doc('main').get(); const bal=bankSnap.exists?bankSnap.data().balance:0;
- if(bal < coins){alert(`V BANK máš len ${bal} Coins, user chce ${coins}. Pridaj najprv A-Ads!`);return;}
- if(!confirm(`Schváliť ${coins} Coins z BANK?`)) return;
+ if(bal < coins){alert(`V BANK máš len ${bal} Coins, user chce ${coins}. Pridaj najprv A-Ads! Nie z tvojej peňaženky, z BANK.`);return;}
+ if(!confirm(`Schváliť ${coins} Coins Z BANK? Odráta sa: BANK -${coins} a USER -${coins}. Nie z tvojej peňaženky.`)) return;
  await db.collection('bank').doc('main').set({balance:firebase.firestore.FieldValue.increment(-coins)},{merge:true});
- await db.collection('withdrawals').doc(id).update({status:'approved',approvedAt:firebase.firestore.FieldValue.serverTimestamp()});
+ await db.collection('withdrawals').doc(id).update({status:'approved',approvedAt:firebase.firestore.FieldValue.serverTimestamp(),paidFrom:'BANK'});
  const wd=await db.collection('withdrawals').doc(id).get(); const uname=wd.data().username;
- await db.collection('users').doc(uname).update({coins:firebase.firestore.FieldValue.increment(-coins)});
- await db.collection('bank_log').add({type:'WITHDRAW_APPROVED',coins,usd:coins*0.00001,note:`User ${uname} withdraw`,date:firebase.firestore.FieldValue.serverTimestamp()});
+ const userDocId=uname.toLowerCase(); try{ await db.collection('users').doc(userDocId).update({coins:firebase.firestore.FieldValue.increment(-coins)}); }catch(e){ const all=await db.collection('users').where('username','==',uname).get(); all.forEach(doc=>{doc.ref.update({coins:firebase.firestore.FieldValue.increment(-coins)});});}
+ await db.collection('bank_log').add({type:'WITHDRAW_APPROVED_FROM_BANK',coins,usd:coins*0.00001,note:`User ${uname} withdraw schválený Z BANK - nie z peňaženky majiteľa`,date:firebase.firestore.FieldValue.serverTimestamp()});
+ alert(`Schválené ${coins} Coins Z BANK - odrátané z BANK aj z usera ${uname} - teraz pošli ručne z FaucetPay`);
  loadAll(); loadWd();
 }
-async function reject(id){await db.collection('withdrawals').doc(id).update({status:'rejected'}); loadWd();}
+async function reject(id){if(!confirm('Zamietnuť?')) return; await db.collection('withdrawals').doc(id).update({status:'rejected'}); loadWd();}
 async function editUser(id){const c=prompt('Nové coins?'); if(c===null) return; const coins=parseInt(c); if(isNaN(coins)) return; await db.collection('users').doc(id).update({coins}); loadUsers(); loadAll();}
+document.getElementById('aadsUsd')?.addEventListener('input',()=>{const usd=parseFloat(document.getElementById('aadsUsd').value)||0; document.getElementById('aadsCoins').value=usd?Math.floor(usd/0.00001):'';});
 setInterval(()=>{document.getElementById('clock').textContent=new Date().toLocaleString('sk-SK');},1000);
-loadAll(); loadUsers(); loadWd();
-setInterval(loadAll,7000);
+loadAll(); loadUsers(); loadWd(); loadPtc();
+setInterval(loadAll,8000);
 </script>
 </body></html>
