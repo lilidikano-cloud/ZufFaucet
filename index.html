@@ -49,7 +49,7 @@ input,select{width:100%;padding:12px;border-radius:10px;background:rgba(0,0,0,.3
 <div style="font-size:10px;opacity:.5;margin-top:6px"></div>
 </div>
 <div class="card-glass" id="userCard" style="display:none">
-<div style="display:flex;justify-content:space-between;align-items:center"><div class="mono" style="font-size:12px">Balance <b><span id="bal">0</span> Coins</b> = $<span id="balUsd">0.0000</span> | Level <span id="lvl">1</span> | PTC <span id="ptcDone">0</span> | Short <span id="shortDone">0</span> | BANK profit <span id="bankProfit">0</span></div><button class="btn-dark" onclick="logout()">Logout</button></div>
+<div style="display:flex;justify-content:space-between;align-items:center"><div class="mono" style="font-size:12px">Balance <b><span id="bal">0</span> Coins</b> = $<span id="balUsd">0.0000</span> | Level <span id="lvl">1</span> | PTC <span id="ptcDone">0</span> | Short <span id="shortDone">0</span> </div><button class="btn-dark" onclick="logout()">Logout</button></div>
 <div class="mono" style="font-size:11px;opacity:.6;margin-top:6px" id="breakdown" style="display:none"></div>
 </div>
 </div>
@@ -126,13 +126,13 @@ async function reg(){
  if(!u){document.getElementById('am').innerHTML='<div class="err">Username</div>';return;}
  if(!e){document.getElementById('am').innerHTML='<div class="err">Email</div>';return;}
  try{
- document.getElementById('am').innerHTML='<div class="ok">Writing to Firestore users/'+u+'.. Direct write - like rianshsm which worked</div>';
+ document.getElementById('am').innerHTML='<div class="ok">Registrujem '+u+'.. </div>';
  const ref=db.collection('users').doc(u);const snap=await ref.get();
- if(snap.exists){cur=u;localStorage.setItem('zuff_cur',u);document.getElementById('authCard').style.display='none';document.getElementById('userCard').style.display='block';loadUser();document.getElementById('am').innerHTML='<div class="ok">Login OK - existing user</div>';}
+ if(snap.exists){cur=u;localStorage.setItem('zuff_cur',u);document.getElementById('authCard').style.display='none';document.getElementById('userCard').style.display='block';loadUser();document.getElementById('am').innerHTML='<div class="ok">Prihlásený - existujúci user</div>';}
  else{
   await ref.set({username:u,email:e,coins:0,ptcDone:0,shortDone:0,faucetLast:0,totalProfitGenerated:0,referrer:'',createdAt:firebase.firestore.FieldValue.serverTimestamp()});
   cur=u;localStorage.setItem('zuff_cur',u);document.getElementById('authCard').style.display='none';document.getElementById('userCard').style.display='block';loadUser();
-  document.getElementById('am').innerHTML='<div class="ok">✅ Registered - now visible in Firebase Console users/'+u+' + Admin - Old 204KB design but DIRECT FIRESTORE WRITE - rianshsm example worked</div>';
+  document.getElementById('am').innerHTML='<div class="ok">✅ Registrovaný - vidíš vo Firestore users/'+u+' + Admin - Funguje - uvidíš vo Firestore</div>';
  }
  }catch(err){document.getElementById('am').innerHTML='<div class="err">Firestore error: '+err.code+' - '+err.message+'<br>Check: 1) Firestore Rules allow read,write if true 2) API key None 3) Wait 5min after changing key</div>';}
 }
@@ -146,14 +146,14 @@ async function loadUser(){
  /* breakdown hidden */
  document.getElementById('refLink').value=location.origin+location.pathname+'?ref='+cur;
  // wd history
- const wds=await db.collection('withdrawals').where('username','==',cur).orderBy('date','desc').limit(10).get(); let h=''; wds.forEach(doc=>{const x=doc.data(); h+=`${x.date?.toDate?.()?.toLocaleString?.()||''} - ${x.coins} Coins - ${x.status} - from BANK<br>`}); document.getElementById('wdHistory').innerHTML=h||'No withdrawals yet - will be from BANK';
+ const wds=await db.collection('withdrawals').where('username','==',cur).orderBy('date','desc').limit(10).get(); let h=''; wds.forEach(doc=>{const x=doc.data(); h+=`${x.date?.toDate?.()?.toLocaleString?.()||''} - ${x.coins} Coins - ${x.status} - z banku<br>`}); document.getElementById('wdHistory').innerHTML=h||'No withdrawals yet - will be z banku';
  }catch(e){console.log(e);}
 }
 function logout(){localStorage.removeItem('zuff_cur');location.reload();}
 async function claim(){
  const cap=document.getElementById('captcha');if(!cap.checked){document.getElementById('fm').innerHTML='<div class="err">Check captcha</div>';return;}
  const ans=document.getElementById('mathAns').value.trim();if(ans!=='8'){document.getElementById('fm').innerHTML='<div class="err">Answer 8</div>';return;}
- try{const ref=db.collection('users').doc(cur);const snap=await ref.get();if(Date.now()-(snap.data().faucetLast||0)<20*60*1000){document.getElementById('fm').innerHTML='<div class="err">Wait 20min</div>';return;}await ref.update({coins:firebase.firestore.FieldValue.increment(50),faucetLast:Date.now()});document.getElementById('fm').innerHTML='<div class="ok">+50 Coins +30</div>';loadUser();}catch(e){document.getElementById('fm').innerHTML='<div class="err">'+e.message+'</div>';}
+ try{const ref=db.collection('users').doc(cur);const snap=await ref.get();if(Date.now()-(snap.data().faucetLast||0)<20*60*1000){document.getElementById('fm').innerHTML='<div class="err">Wait 20min</div>';return;}await ref.update({coins:firebase.firestore.FieldValue.increment(50),faucetLast:Date.now()});document.getElementById('fm').innerHTML='<div class="ok">+50 Coins</div>';loadUser();}catch(e){document.getElementById('fm').innerHTML='<div class="err">'+e.message+'</div>';}
 }
 async function wd(){
  const amt=parseInt(document.getElementById('wa').value);const addr=document.getElementById('waddr').value.trim();const method=document.getElementById('wm').value;
@@ -161,11 +161,13 @@ async function wd(){
  try{
  const snap=await db.collection('users').doc(cur).get();if((snap.data().coins||0)<amt){document.getElementById('wmsg').innerHTML='<div class="err">Not enough coins</div>';return;}
  await db.collection('withdrawals').add({username:cur,coins:amt,address:addr,method,status:'pending',date:firebase.firestore.FieldValue.serverTimestamp()});
- document.getElementById('wmsg').innerHTML='<div class="ok">Žiadosť o '+amt+' Coins odoslaná do BANK - Admin potvrdí - nie z tvojej peňaženky - odráta BANK aj USER</div>';
+ document.getElementById('wmsg').innerHTML='<div class="ok">Žiadosť o '+amt+' Coins odoslaná do BANK - Admin potvrdí</div>';
  loadUser();
  }catch(e){document.getElementById('wmsg').innerHTML='<div class="err">'+e.message+'</div>';}
 }
-(function(){const saved=localStorage.getItem('zuff_cur');if(saved){cur=saved;document.getElementById('authCard').style.display='none';document.getElementById('userCard').style.display='block';loadUser();}})();
+/* No auto-login - always start from Register/Login - user asked od registrácie */
+cur=null;localStorage.removeItem('zuff_cur');document.getElementById('authCard').style.display='block';document.getElementById('userCard').style.display='none';
+console.log('Start from registration - no auto login');
 renderLists();
 </script>
 </body></html>
