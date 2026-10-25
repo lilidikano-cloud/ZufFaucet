@@ -43,13 +43,27 @@ input,select{width:100%;padding:12px;border-radius:10px;background:rgba(0,0,0,.3
 <div style="margin:12px 0"><iframe data-aa='2459900' src='//ad.a-ads.com/2459900/?size=320x100' style='border:0;padding:0;width:320px;height:100px;overflow:hidden;display:block;margin:auto'></iframe></div>
 </div>
 <div>
+
 <div class="card-glass" id="authCard">
-<h3 class="mono">Register / Login</h3>
-<input id="u" placeholder="Username malé písmená napr. rianshsm"><input id="e" placeholder="Email napr. pazuriktomo@gmail.com"><button class="btn-cyan" style="width:100%" onclick="reg()">Register</button><div id="am"></div>
-<div style="font-size:10px;opacity:.5;margin-top:6px"></div>
+<h3 class="mono">ZufFaucet - Prihlásenie</h3>
+<div class="tabs" style="margin:8px 0"><div class="tab active" id="tabReg" onclick="switchAuth('reg')">Register</div><div class="tab" id="tabLog" onclick="switchAuth('log')">Login</div></div>
+
+<div id="authReg">
+<input id="u" placeholder="Username malé písmená napr. sexxxxx"><input id="e" placeholder="Email napr. pazuriktomo@gmail.com"><button class="btn-cyan" style="width:100%" onclick="register()">Register</button>
+<div style="font-size:11px;opacity:.6;margin-top:8px">Vytvorí nový účet - zapíše do Firestore</div>
+</div>
+
+<div id="authLog" style="display:none">
+<input id="u2" placeholder="Username napr. sexxxxx"><button class="btn-cyan" style="width:100%;background:#fff;color:#000" onclick="login()">Login</button>
+<div style="font-size:11px;opacity:.6;margin-top:8px">Prihlás existujúci účet</div>
+</div>
+
+<div id="am"></div>
+</div>
+
 </div>
 <div class="card-glass" id="userCard" style="display:none">
-<div style="display:flex;justify-content:space-between;align-items:center"><div class="mono" style="font-size:12px">Balance <b><span id="bal">0</span> Coins</b> = $<span id="balUsd">0.0000</span> | Level <span id="lvl">1</span> | PTC <span id="ptcDone">0</span> | Short <span id="shortDone">0</span> </div><button class="btn-dark" onclick="logout()">Logout</button></div>
+<div style="display:flex;justify-content:space-between;align-items:center"><div class="mono" style="font-size:12px">Balance <b><span id="bal">0</span> Coins</b> = $<span id="balUsd">0.0000</span> | Level <span id="lvl">1</span> | PTC <span id="ptcDone">0</span> | Short <span id="shortDone">0</span> | BANK profit <span id="bankProfit">0</span></div><button class="btn-dark" onclick="logout()">Logout</button></div>
 <div class="mono" style="font-size:11px;opacity:.6;margin-top:6px" id="breakdown" style="display:none"></div>
 </div>
 </div>
@@ -121,18 +135,55 @@ async function closeView(){
  try{await db.collection('users').doc(cur).update({coins:firebase.firestore.FieldValue.increment(r.coins),ptcDone:r.type==='ptc'?firebase.firestore.FieldValue.increment(1):firebase.firestore.FieldValue.increment(0),shortDone:r.type==='short'?firebase.firestore.FieldValue.increment(1):firebase.firestore.FieldValue.increment(0),totalProfitGenerated:firebase.firestore.FieldValue.increment(Math.floor(r.tot*0.6))});await db.collection('bank').doc('main').set({balance:firebase.firestore.FieldValue.increment(Math.floor(r.tot*0.6)),totalProfit:firebase.firestore.FieldValue.increment(Math.floor(r.tot*0.6)),shortProfit:r.type==='short'?firebase.firestore.FieldValue.increment(Math.floor(r.tot*0.6)):firebase.firestore.FieldValue.increment(0)},{merge:true});loadUser();document.getElementById('viewModal').style.display='none';pendingReward=null;}catch(e){alert('Firestore error: '+e.code+' '+e.message+' - Check Rules allow read,write if true and API key None');}
 }
 function closeViewCancel(){clearInterval(timerInt);document.getElementById('viewModal').style.display='none';pendingReward=null;}
-async function reg(){
+
+function switchAuth(t){
+ document.getElementById('authReg').style.display=t==='reg'?'block':'none';
+ document.getElementById('authLog').style.display=t==='log'?'block':'none';
+ document.getElementById('tabReg').classList.toggle('active',t==='reg');
+ document.getElementById('tabLog').classList.toggle('active',t==='log');
+ document.getElementById('am').innerHTML='';
+}
+
+async function register(){
+ const u=document.getElementById('u').value.trim().toLowerCase();const e=document.getElementById('e').value.trim();
+ if(!u){document.getElementById('am').innerHTML='<div class="err">Zadaj username</div>';return;}
+ if(!e){document.getElementById('am').innerHTML='<div class="err">Zadaj email</div>';return;}
+ try{
+ document.getElementById('am').innerHTML='<div class="ok">Registrujem '+u+'..</div>';
+ const ref=db.collection('users').doc(u);const snap=await ref.get();
+ if(snap.exists){document.getElementById('am').innerHTML='<div class="err">User '+u+' už existuje - daj Login</div>';switchAuth('log');document.getElementById('u2').value=u;return;}
+ await ref.set({username:u,email:e,coins:0,ptcDone:0,shortDone:0,faucetLast:0,totalProfitGenerated:0,referrer:'',createdAt:firebase.firestore.FieldValue.serverTimestamp()});
+ cur=u;localStorage.setItem('zuff_cur',u);document.getElementById('authCard').style.display='none';document.getElementById('userCard').style.display='block';loadUser();
+ document.getElementById('am').innerHTML='<div class="ok">✅ Registrovaný '+u+' - vo Firestore</div>';
+ }catch(err){document.getElementById('am').innerHTML='<div class="err">Firestore: '+err.code+' - '+err.message+'<br>Skontroluj Rules allow read,write true + API key None</div>';}
+}
+
+async function login(){
+ const u=document.getElementById('u2').value.trim().toLowerCase();
+ if(!u){document.getElementById('am').innerHTML='<div class="err">Zadaj username</div>';return;}
+ try{
+ document.getElementById('am').innerHTML='<div class="ok">Prihlasujem '+u+'..</div>';
+ const ref=db.collection('users').doc(u);const snap=await ref.get();
+ if(!snap.exists){document.getElementById('am').innerHTML='<div class="err">User '+u+' neexistuje - najprv Register</div>';switchAuth('reg');document.getElementById('u').value=u;return;}
+ cur=u;localStorage.setItem('zuff_cur',u);document.getElementById('authCard').style.display='none';document.getElementById('userCard').style.display='block';loadUser();
+ document.getElementById('am').innerHTML='<div class="ok">✅ Prihlásený '+u+'</div>';
+ }catch(err){document.getElementById('am').innerHTML='<div class="err">Firestore: '+err.code+' - '+err.message+'</div>';}
+}
+
+async function reg(){ return register(); }
+async function reg_old(){
+
  const u=document.getElementById('u').value.trim().toLowerCase();const e=document.getElementById('e').value.trim();
  if(!u){document.getElementById('am').innerHTML='<div class="err">Username</div>';return;}
  if(!e){document.getElementById('am').innerHTML='<div class="err">Email</div>';return;}
  try{
- document.getElementById('am').innerHTML='<div class="ok">Registrujem '+u+'.. </div>';
+ document.getElementById('am').innerHTML='<div class="ok">Writing to Firestore users/'+u+'.. Direct write - like rianshsm which worked</div>';
  const ref=db.collection('users').doc(u);const snap=await ref.get();
- if(snap.exists){cur=u;localStorage.setItem('zuff_cur',u);document.getElementById('authCard').style.display='none';document.getElementById('userCard').style.display='block';loadUser();document.getElementById('am').innerHTML='<div class="ok">Prihlásený - existujúci user</div>';}
+ if(snap.exists){cur=u;localStorage.setItem('zuff_cur',u);document.getElementById('authCard').style.display='none';document.getElementById('userCard').style.display='block';loadUser();document.getElementById('am').innerHTML='<div class="ok">Login OK - existing user</div>';}
  else{
   await ref.set({username:u,email:e,coins:0,ptcDone:0,shortDone:0,faucetLast:0,totalProfitGenerated:0,referrer:'',createdAt:firebase.firestore.FieldValue.serverTimestamp()});
   cur=u;localStorage.setItem('zuff_cur',u);document.getElementById('authCard').style.display='none';document.getElementById('userCard').style.display='block';loadUser();
-  document.getElementById('am').innerHTML='<div class="ok">✅ Registrovaný - vidíš vo Firestore users/'+u+' + Admin - Funguje - uvidíš vo Firestore</div>';
+  document.getElementById('am').innerHTML='<div class="ok">✅ Registered - now visible in Firebase Console users/'+u+' + Admin - Old 204KB design but DIRECT FIRESTORE WRITE - rianshsm example worked</div>';
  }
  }catch(err){document.getElementById('am').innerHTML='<div class="err">Firestore error: '+err.code+' - '+err.message+'<br>Check: 1) Firestore Rules allow read,write if true 2) API key None 3) Wait 5min after changing key</div>';}
 }
@@ -146,14 +197,14 @@ async function loadUser(){
  /* breakdown hidden */
  document.getElementById('refLink').value=location.origin+location.pathname+'?ref='+cur;
  // wd history
- const wds=await db.collection('withdrawals').where('username','==',cur).orderBy('date','desc').limit(10).get(); let h=''; wds.forEach(doc=>{const x=doc.data(); h+=`${x.date?.toDate?.()?.toLocaleString?.()||''} - ${x.coins} Coins - ${x.status} - z banku<br>`}); document.getElementById('wdHistory').innerHTML=h||'No withdrawals yet - will be z banku';
+ const wds=await db.collection('withdrawals').where('username','==',cur).orderBy('date','desc').limit(10).get(); let h=''; wds.forEach(doc=>{const x=doc.data(); h+=`${x.date?.toDate?.()?.toLocaleString?.()||''} - ${x.coins} Coins - ${x.status} - from BANK<br>`}); document.getElementById('wdHistory').innerHTML=h||'No withdrawals yet - will be from BANK';
  }catch(e){console.log(e);}
 }
 function logout(){localStorage.removeItem('zuff_cur');location.reload();}
 async function claim(){
  const cap=document.getElementById('captcha');if(!cap.checked){document.getElementById('fm').innerHTML='<div class="err">Check captcha</div>';return;}
  const ans=document.getElementById('mathAns').value.trim();if(ans!=='8'){document.getElementById('fm').innerHTML='<div class="err">Answer 8</div>';return;}
- try{const ref=db.collection('users').doc(cur);const snap=await ref.get();if(Date.now()-(snap.data().faucetLast||0)<20*60*1000){document.getElementById('fm').innerHTML='<div class="err">Wait 20min</div>';return;}await ref.update({coins:firebase.firestore.FieldValue.increment(50),faucetLast:Date.now()});document.getElementById('fm').innerHTML='<div class="ok">+50 Coins</div>';loadUser();}catch(e){document.getElementById('fm').innerHTML='<div class="err">'+e.message+'</div>';}
+ try{const ref=db.collection('users').doc(cur);const snap=await ref.get();if(Date.now()-(snap.data().faucetLast||0)<20*60*1000){document.getElementById('fm').innerHTML='<div class="err">Wait 20min</div>';return;}await ref.update({coins:firebase.firestore.FieldValue.increment(50),faucetLast:Date.now()});document.getElementById('fm').innerHTML='<div class="ok">+50 Coins +30</div>';loadUser();}catch(e){document.getElementById('fm').innerHTML='<div class="err">'+e.message+'</div>';}
 }
 async function wd(){
  const amt=parseInt(document.getElementById('wa').value);const addr=document.getElementById('waddr').value.trim();const method=document.getElementById('wm').value;
@@ -161,13 +212,11 @@ async function wd(){
  try{
  const snap=await db.collection('users').doc(cur).get();if((snap.data().coins||0)<amt){document.getElementById('wmsg').innerHTML='<div class="err">Not enough coins</div>';return;}
  await db.collection('withdrawals').add({username:cur,coins:amt,address:addr,method,status:'pending',date:firebase.firestore.FieldValue.serverTimestamp()});
- document.getElementById('wmsg').innerHTML='<div class="ok">Žiadosť o '+amt+' Coins odoslaná do BANK - Admin potvrdí</div>';
+ document.getElementById('wmsg').innerHTML='<div class="ok">Žiadosť o '+amt+' Coins odoslaná do BANK - Admin potvrdí - nie z tvojej peňaženky - odráta BANK aj USER</div>';
  loadUser();
  }catch(e){document.getElementById('wmsg').innerHTML='<div class="err">'+e.message+'</div>';}
 }
-/* No auto-login - always start from Register/Login - user asked od registrácie */
-cur=null;localStorage.removeItem('zuff_cur');document.getElementById('authCard').style.display='block';document.getElementById('userCard').style.display='none';
-console.log('Start from registration - no auto login');
+(function(){const saved=localStorage.getItem('zuff_cur');if(saved){cur=saved;document.getElementById('authCard').style.display='none';document.getElementById('userCard').style.display='block';loadUser();}})();
 renderLists();
 </script>
 </body></html>
