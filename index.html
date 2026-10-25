@@ -1,61 +1,74 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ZUFFAUCET - Earn Crypto Free, Fast.</title>
+<title>ZUFFAUCET - Earn Crypto Free, Fast. - Max PTC & Shortlink</title>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=JetBrains+Mono:wght@400;600&display=swap');
 *{box-sizing:border-box}body{margin:0;background:#0a0f1e;color:#d9e2f0;font-family:Inter,sans-serif}
-.mono{font-family:JetBrains Mono,monospace}
-.container{max-width:1240px;margin:0 auto;padding:0 20px}
-.header{height:64px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.08);position:sticky;top:0;background:rgba(10,15,30,0.9);z-index:10}
+.mono{font-family:JetBrains Mono,monospace}.container{max-width:1240px;margin:0 auto;padding:0 16px}
+.header{height:64px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.08);position:sticky;top:0;background:rgba(10,15,30,0.92);backdrop-filter:blur(12px);z-index:20}
 .logo{font-weight:900;letter-spacing:1px;font-size:22px}.logo span{color:#00e5ff}
 .badge{display:inline-flex;align-items:center;gap:6px;background:rgba(0,229,255,0.12);border:1px solid rgba(0,229,255,0.3);color:#00e5ff;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600}
-.btn-cyan{background:#00e5ff;color:#000;font-weight:800;padding:14px 20px;border-radius:12px;border:none;cursor:pointer;box-shadow:0 0 20px rgba(0,229,255,0.4)}.btn-dark{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);color:#fff;padding:14px 20px;border-radius:12px;cursor:pointer}
-.card-glass{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:18px;margin:10px 0}
-.hero{padding:40px 0 20px;display:grid;grid-template-columns:1.1fr 0.9fr;gap:20px}
+.btn-cyan{background:#00e5ff;color:#000;font-weight:800;padding:10px 16px;border-radius:12px;border:none;cursor:pointer;box-shadow:0 0 18px rgba(0,229,255,0.35);transition:all .2s}.btn-cyan:hover{transform:translateY(-1px);box-shadow:0 0 26px rgba(0,229,255,0.55)}
+.btn-dark{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);color:#fff;padding:10px 16px;border-radius:12px;cursor:pointer}
+.card-glass{background:rgba(255,255,255,0.055);border:1px solid rgba(255,255,255,0.11);border-radius:20px;padding:18px;margin:12px 0;backdrop-filter:blur(10px)}
+.hero{padding:32px 0 14px;display:grid;grid-template-columns:1.1fr 0.9fr;gap:18px}
 @media(max-width:900px){.hero{grid-template-columns:1fr}}
-.h1{font-size:52px;line-height:1.05;font-weight:900;letter-spacing:-1px;margin:16px 0}.h1 span{color:#00e5ff}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0}
+.h1{font-size:52px;line-height:.95;font-weight:900;letter-spacing:-1.2px;margin:14px 0}.h1 span{background:linear-gradient(90deg,#00e5ff,#7affff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}
 .stat{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:14px;text-align:center}
-.ptc-row{display:flex;justify-content:space-between;align-items:center;padding:12px;border-radius:12px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);margin:8px 0}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.tab{padding:10px 14px;border-radius:12px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);cursor:pointer;font-size:13px;font-weight:600}.tab.active{background:#00e5ff;color:#000;border-color:#00e5ff}
+.ptc-row{display:flex;justify-content:space-between;align-items:center;padding:12px;border-radius:12px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);margin:8px 0}.ptc-row:hover{border-color:rgba(0,229,255,0.25)}
 input{width:100%;padding:12px;border-radius:10px;background:rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.18);color:#fff;margin:6px 0 10px}
 .ok{background:rgba(70,255,120,0.12);border:1px solid rgba(70,255,120,0.35);padding:10px;border-radius:10px;font-size:12px;margin:8px 0}
 .err{background:rgba(255,70,70,0.12);border:1px solid rgba(255,70,70,0.35);padding:10px;border-radius:10px;font-size:12px;margin:8px 0}
-</style>
-</head><body>
+.dot{width:8px;height:8px;border-radius:50%;background:#00e5ff;box-shadow:0 0 8px #00e5ff;display:inline-block;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+</style></head><body>
 <div class="container">
-<div class="header"><div class="logo">ZUF<span>FAUCET</span></div><div class="mono" style="font-size:11px;opacity:0.7">Firestore zuffaucet - users collection WORKS - Phone↔Notebook</div></div>
+<div class="header"><div class="logo">ZUF<span>FAUCET</span></div><div style="display:flex;align-items:center;gap:10px"><div class="badge"><span class="dot"></span> LIVE PAYOUTS • MAX PTC & SHORTLINK • A-ADS 2459900</div><div id="balTop" class="mono" style="font-size:12px"></div></div></div>
 
-<div id="authScreen">
 <div class="hero">
 <div>
-<div class="badge">LIVE PAYOUTS • FAUCETPAY ONLY • REAL FIRESTORE SYNC WORKS</div>
+<div class="badge"><span class="dot"></span> FAUCETPAY ONLY • REAL FIRESTORE • REFERRER 5% • NO BONUSES OFFERWALL</div>
 <h1 class="h1">Earn Crypto <span>Free, Fast.</span></h1>
-<p style="font-size:15px;color:rgba(255,255,255,0.6);line-height:1.5;max-width:520px">Firestore now works - users/debug_... created. This version writes DIRECTLY to Firestore - guaranteed to show in Firebase Console. Old React design used only memory, not Firestore.</p>
-<div class="stats"><div class="stat"><b>1 Coin</b><br><span style="font-size:11px;opacity:0.6">$0.00001</span></div><div class="stat"><b>50 Coins</b><br><span style="font-size:11px;opacity:0.6">$0.0005</span></div><div class="stat"><b>1000 Coins</b><br><span style="font-size:11px;opacity:0.6">$0.01 Min</span></div></div>
+<p style="font-size:14px;color:rgba(255,255,255,0.62);line-height:1.5;max-width:540px">No hidden fees. 50 Coins / 20 min. 1000 Coins = $0.01. As many PTC as A-Ads gives - now 25 PTC + 25 Shortlink for max profit. Referrer 5%. Offerwall no bonuses. You see only net reward You will get X Coins.</p>
+<div class="stats"><div class="stat"><b>1 Coin</b><br><span style="font-size:11px;opacity:.6">$0.00001</span></div><div class="stat"><b>25 PTC</b><br><span style="font-size:11px;opacity:.6">Max Ads</span></div><div class="stat"><b>25 Shortlink</b><br><span style="font-size:11px;opacity:.6">Max Ads</span></div></div>
+<div style="margin:12px 0"><iframe data-aa='2459900' src='//ad.a-ads.com/2459900/?size=320x100' style='border:0;padding:0;width:320px;height:100px;overflow:hidden;display:block;margin:auto'></iframe></div>
 </div>
 <div>
-<div class="card-glass">
-<h3 class="mono">Register / Login - DIRECT FIRESTORE WRITE - WILL SHOW IN FIREBASE</h3>
-<input id="u" placeholder="Username tomas09i"><input id="e" placeholder="Email zanetpazur@gmail.com"><button class="btn-cyan" style="width:100%" onclick="reg()">Register - Writes to Firestore users collection</button><div id="am"></div>
-<div style="font-size:10px;opacity:0.5;margin-top:8px">This writes directly: db.collection('users').doc(username).set({...}) - same as debug_... which already works</div>
+<div class="card-glass" id="authCard">
+<h3 class="mono">Register / Login - Direct Firestore</h3>
+<input id="u" placeholder="Username"><input id="e" placeholder="Email"><button class="btn-cyan" style="width:100%" onclick="reg()">Register - Start 0 Coins</button><div id="am"></div>
 </div>
+<div class="card-glass" id="userCard" style="display:none">
+<div style="display:flex;justify-content:space-between;align-items:center"><div>Balance <b><span id="bal">0</span> Coins</b> = $<span id="balUsd">0.0000</span> | Level <span id="lvl">1</span> | PTC <span id="ptcDone">0</span> | Short <span id="shortDone">0</span></div><button class="btn-dark" onclick="logout()">Logout</button></div>
 </div>
 </div>
 </div>
 
-<div id="app" class="container" style="display:none;padding-bottom:30px">
-<div class="card-glass" style="display:flex;justify-content:space-between;align-items:center"><div>Balance: <b><span id="bal">0</span> Coins</b> = $<span id="balUsd">0.0000</span> | Level <span id="lvl">1</span> | PTC <span id="ptc">0</span></div><button class="btn-dark" onclick="location.reload()">Logout</button></div>
-<div class="card-glass"><h3>Faucet - 50 Coins / 20 min</h3><button class="btn-cyan" id="btnF" onclick="claim()">Claim 50 Coins - Writes to Firestore</button><div id="fm"></div><div id="tm" class="mono" style="font-size:12px;opacity:0.7;margin-top:6px"></div></div>
-<div class="card-glass"><h3>PTC - You will get</h3><div id="ptcList"></div></div>
-<div class="card-glass"><h3>Withdraw - Min 1000 = $0.01</h3><input id="wa" placeholder="1000"><select id="wm"><option value="USDT_TRC20">USDT TRC20</option><option value="BTC">BTC</option></select><input id="waddr" placeholder="FaucetPay Address"><button class="btn-cyan" onclick="wd()">Request Withdraw</button><div id="wmsg"></div></div>
-</div>
+<div class="tabs"><div class="tab active" onclick="setTab('faucet')">Faucet</div><div class="tab" onclick="setTab('ptc')">PTC (25)</div><div class="tab" onclick="setTab('short')">Shortlink (25)</div><div class="tab" onclick="setTab('offer')">Offerwall</div><div class="tab" onclick="setTab('ref')">Referral 5%</div><div class="tab" onclick="setTab('wd')">Withdraw</div></div>
+
+<div id="sec-faucet" class="card-glass"><h3>Faucet - 50 Coins / 20 min</h3><div style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="captcha"> <label for="captcha">I'm not a robot</label></div><input id="mathAns" placeholder="What is 5 + 3 ? Answer 8"><button class="btn-cyan" id="btnF" onclick="claim()">Claim 50 Coins</button><div id="fm"></div><div id="tm" class="mono" style="font-size:12px;opacity:.6;margin-top:6px"></div></div>
+
+<div id="sec-ptc" class="card-glass" style="display:none"><h3>PTC - As many as A-Ads gives - 25 Ads - Sorted High to Low - You will get</h3><div id="ptcList"></div>
+<div style="margin:14px 0"><iframe data-aa='2459900' src='//ad.a-ads.com/2459900/?size=320x100' style='border:0;padding:0;width:320px;height:100px;overflow:hidden;display:block;margin:auto'></iframe></div>
 </div>
 
-<!-- A-ADS 2459900 -->
-<div id="frame" style="width: 320px;margin: auto;z-index: 99998;height: auto">
-<iframe data-aa='2459900' src='//ad.a-ads.com/2459900/?size=320x100' style='border:0; padding:0; width:320px; height:100px; overflow:hidden;display: block;margin: auto'></iframe>
+<div id="sec-short" class="card-glass" style="display:none"><h3>Shortlink - More - 25 Ads - You will get</h3><div id="shortList"></div>
+<div style="margin:14px 0"><iframe data-aa='2459900' src='//ad.a-ads.com/2459900/?size=320x100' style='border:0;padding:0;width:320px;height:100px;overflow:hidden;display:block;margin:auto'></iframe></div>
+</div>
+
+<div id="sec-offer" class="card-glass" style="display:none"><h3>Offerwall - No Bonuses</h3><div id="offerList"></div></div>
+
+<div id="sec-ref" class="card-glass" style="display:none"><h3>Referral 5%</h3><div class="mono" style="font-size:12px">Your referral link: 5% commission</div><input id="refLink" readonly><div style="font-size:12px;opacity:.6;margin-top:6px">You earn 5% of what your referrals earn. Offerwall no bonuses.</div></div>
+
+<div id="sec-wd" class="card-glass" style="display:none"><h3>Withdraw - Min 1000 = $0.01</h3><input id="wa" placeholder="1000"><select id="wm" style="width:100%;padding:12px;border-radius:10px;background:rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.18);color:#fff;margin:6px 0"><option value="USDT_TRC20">USDT TRC20</option><option value="BTC">BTC</option></select><input id="waddr" placeholder="FaucetPay Address"><button class="btn-cyan" onclick="wd()">Request Withdraw</button><div id="wmsg"></div></div>
+
+<div style="margin:18px 0"><iframe data-aa='2459900' src='//ad.a-ads.com/2459900/?size=320x100' style='border:0;padding:0;width:320px;height:100px;overflow:hidden;display:block;margin:auto'></iframe></div>
+
+<div style="text-align:center;opacity:.45;font-size:11px" class="mono">© 2025 ZUFFAUCET • FaucetPay USDT TRC20 + BTC • 1 Coin = $0.00001 • Referrer 5% • 25 PTC + 25 Shortlink • Max Ads • No 40%</div>
 </div>
 
 <script>
@@ -63,12 +76,27 @@ const cfg={apiKey:"AIzaSyDHeEUSDBLkVbJOYI4OwaG2qTZRosc049M",authDomain:"zuffauce
 firebase.initializeApp(cfg);const db=firebase.firestore();
 let cur=null;
 function rew(t){return Math.floor(t*0.4);}
-const PTC=[{t:'Binance - Trade Crypto Like Pro',tot:250},{t:'Ledger Wallet - Secure Assets',tot:200},{t:'CoinMarketCap - Track Prices',tot:175},{t:'Bybit Launchpad - New Tokens',tot:150},{t:'Trust Wallet Extension',tot:125},{t:'Learn Staking - Earn Passive',tot:100},{t:'Best Crypto Faucets List 2025',tot:75}];
-function render(){const l=document.getElementById('ptcList');if(!l)return;l.innerHTML='';[...PTC].sort((x,y)=>rew(y.tot)-rew(x.tot)).forEach(p=>{const r=rew(p.tot);const d=document.createElement('div');d.className='ptc-row';d.innerHTML=`<div><b>${p.t}</b><br><span style="font-size:11px;opacity:0.6">You will get ${r} Coins</span></div><button class=btn-cyan style="width:auto;padding:8px 12px" onclick="doPTC(${r},${p.tot},this)">Watch & Earn</button>`;l.appendChild(d);});}render();
-async function doPTC(r,tot,btn){btn.textContent='5s...';btn.disabled=true;let t=5;const iv=setInterval(async()=>{t--;btn.textContent=t+'s';if(t<=0){clearInterval(iv);try{await db.collection('users').doc(cur).update({coins:firebase.firestore.FieldValue.increment(r),ptcDone:firebase.firestore.FieldValue.increment(1),totalProfitGenerated:firebase.firestore.FieldValue.increment(Math.floor(tot*0.6))});const bRef=db.collection('bank').doc('main');const s=await bRef.get();if(!s.exists) await bRef.set({balance:0,totalProfit:0});await bRef.update({balance:firebase.firestore.FieldValue.increment(Math.floor(tot*0.6)),totalProfit:firebase.firestore.FieldValue.increment(Math.floor(tot*0.6))});btn.textContent='Done +'+r;load();}catch(e){btn.textContent='Error '+e.message;}}},1000);}
-async function reg(){const u=document.getElementById('u').value.trim().toLowerCase();const e=document.getElementById('e').value.trim();if(!u||!e){document.getElementById('am').innerHTML='<div class=err>Fill username + email</div>';return;}try{document.getElementById('am').innerHTML='<div class=ok>Writing to Firestore users/'+u+'...</div>';const ref=db.collection('users').doc(u);const snap=await ref.get();if(snap.exists){cur=u;document.getElementById('authScreen').style.display='none';document.getElementById('app').style.display='block';load();document.getElementById('am').innerHTML='<div class=ok>Login OK - exists in Firestore</div>';}else{await ref.set({username:u,email:e,coins:0,ptcDone:0,faucetLast:0,totalProfitGenerated:0,createdAt:firebase.firestore.FieldValue.serverTimestamp()});cur=u;document.getElementById('authScreen').style.display='none';document.getElementById('app').style.display='block';load();document.getElementById('am').innerHTML='<div class=ok>✅ Registered - now visible in Firebase Console users/'+u+'</div>';}}catch(err){document.getElementById('am').innerHTML='<div class=err>Firestore error: '+err.code+' - '+err.message+'<br>If permission denied, set Rules allow read,write if true</div>';}}
-async function load(){if(!cur)return;try{const snap=await db.collection('users').doc(cur).get();if(snap.exists){const d=snap.data();document.getElementById('bal').textContent=d.coins||0;document.getElementById('balUsd').textContent=((d.coins||0)*0.00001).toFixed(4);document.getElementById('ptc').textContent=d.ptcDone||0;document.getElementById('lvl').textContent=Math.floor((d.ptcDone||0)/10)+1;}}catch(e){}}
-async function claim(){try{const ref=db.collection('users').doc(cur);const snap=await ref.get();if(Date.now()-(snap.data().faucetLast||0) < 20*60*1000){document.getElementById('fm').innerHTML='<div class=err>Wait 20min</div>';return;}await ref.update({coins:firebase.firestore.FieldValue.increment(50),faucetLast:Date.now()});document.getElementById('fm').innerHTML='<div class=ok>+50 Coins - written to Firestore</div>';load();}catch(e){document.getElementById('fm').innerHTML='<div class=err>'+e.message+'</div>';}}
+const PTC=[
+{t:'Coinbase Learn Earn $3 in BTC',tot:300},{t:'Binance Academy Certificate',tot:295},{t:'Kraken Futures Trading Bonus',tot:285},{t:'KuCoin Trading Bot Profit',tot:275},{t:'Bybit Copy Trading Master',tot:265},{t:'OKX Web3 Wallet Airdrop',tot:255},{t:'Binance Trade Crypto Like Pro',tot:250},{t:'Gate.io Startup Free Tokens',tot:245},{t:'Bitfinex Lending Earn',tot:235},{t:'Huobi Earn Flexible',tot:225},{t:'Crypto.com DeFi Wallet',tot:215},{t:'Ledger Wallet Secure Assets',tot:200},{t:'Exodus Wallet Backup Guide',tot:195},{t:'Blockchain.com Exchange Bonus',tot:185},{t:'CoinMarketCap Track Prices',tot:175},{t:'Changelly Swap Instant',tot:165},{t:'Paxful P2P Trading Guide',tot:155},{t:'LocalBitcoins Peer Guide',tot:150},{t:'Bybit Launchpad New Tokens',tot:150},{t:'Trust Wallet Extension',tot:125},{t:'Learn Staking Earn Passive',tot:100},{t:'Atomic Wallet Staking',tot:95},{t:'Best Crypto Faucets List 2025',tot:75},{t:'Free Dogecoin Faucet',tot:70},{t:'Litecoin Faucet Daily',tot:65}
+];
+const SHORT=[
+{t:'Best Faucet Rotator 2025',tot:200},{t:'Earn Crypto Watching Ads Premium',tot:190},{t:'Bitcoin Price Prediction $100k',tot:180},{t:'Top Crypto Exchanges Ranked',tot:170},{t:'CoinPayU Premium Guide',tot:150},{t:'Ethereum Staking Guide 32 ETH',tot:140},{t:'How to Buy Crypto Safely',tot:130},{t:'Top 5 Mining Apps Android',tot:125},{t:'Top 10 Altcoins 2025 Bullrun',tot:120},{t:'Crypto Tax Guide Save Money',tot:110},{t:'Free BTC Methods No Investment',tot:100},{t:'Airdrop Alert Claim Now Free',tot:100},{t:'NFT Marketplace List OpenSea',tot:100},{t:'DeFi Yield Farming 100% APY',tot:90},{t:'Metaverse Crypto Projects SAND',tot:85},{t:'Layer 2 Solutions Arbitrum',tot:80},{t:'Crypto Security Tips Cold Wallet',tot:75},{t:'Crypto News Daily Bitcoin',tot:75},{t:'Trading Signals Free Telegram',tot:70},{t:'Blockchain Jobs Remote $5000',tot:65},{t:'Crypto Gambling Sites Provably Fair',tot:60},{t:'Best Hardware Wallet 2025',tot:55},{t:'How to Mine Ethereum Classic',tot:50},{t:'Solana Airdrop Hunting',tot:45},{t:'Polygon Faucet MATIC Free',tot:40}
+];
+const OFF=[{t:'Complete Survey Crypto Knowledge',tot:500},{t:'Install App Trading Game',tot:1250},{t:'Sign Up Exchange Bonus',tot:2000}];
+function render(){
+ const pl=document.getElementById('ptcList');pl.innerHTML='';[...PTC].sort((a,b)=>rew(b.tot)-rew(a.tot)).forEach(p=>{const r=rew(p.tot);const d=document.createElement('div');d.className='ptc-row';d.innerHTML=`<div><b>${p.t}</b><br><span style='font-size:11px;opacity:.55'>You will get ${r} Coins</span></div><button class=btn-cyan style='width:auto;padding:8px 12px' onclick='doPTC(${r},${p.tot},this)'>Watch & Earn</button>`;pl.appendChild(d);});
+ const sl=document.getElementById('shortList');sl.innerHTML='';[...SHORT].sort((a,b)=>rew(b.tot)-rew(a.tot)).forEach(p=>{const r=rew(p.tot);const d=document.createElement('div');d.className='ptc-row';d.innerHTML=`<div><b>${p.t}</b><br><span style='font-size:11px;opacity:.55'>You will get ${r} Coins</span></div><button class=btn-cyan style='width:auto;padding:8px 12px' onclick='doShort(${r},${p.tot},this)'>Visit & Earn</button>`;sl.appendChild(d);});
+ const ol=document.getElementById('offerList');ol.innerHTML='';OFF.forEach(p=>{const r=rew(p.tot);const d=document.createElement('div');d.className='ptc-row';d.innerHTML=`<div><b>${p.t}</b><br><span style='font-size:11px;opacity:.55'>You will get ${r} Coins - No bonuses</span></div><button class=btn-cyan style='width:auto;padding:8px 12px' onclick='doOffer(${r},${p.tot},this)'>Complete</button>`;ol.appendChild(d);});
+}
+render();
+function setTab(t){['faucet','ptc','short','offer','ref','wd'].forEach(x=>{document.getElementById('sec-'+x).style.display='none';});document.getElementById('sec-'+t).style.display='block';document.querySelectorAll('.tab').forEach((el,i)=>{const names=['faucet','ptc','short','offer','ref','wd'];el.classList.toggle('active',names[i]===t);});}
+function logout(){localStorage.clear();location.reload();}
+async function reg(){const u=document.getElementById('u').value.trim().toLowerCase();const e=document.getElementById('e').value.trim();if(!u||!e){document.getElementById('am').innerHTML='<div class=err>Fill username + email</div>';return;}try{document.getElementById('am').innerHTML='<div class=ok>Writing to Firestore users/'+u+'...</div>';const ref=db.collection('users').doc(u);const snap=await ref.get();if(snap.exists){cur=u;localStorage.setItem('zuff_cur',u);document.getElementById('authCard').style.display='none';document.getElementById('userCard').style.display='block';load();}else{await ref.set({username:u,email:e,coins:0,ptcDone:0,shortDone:0,faucetLast:0,totalProfitGenerated:0,referrer:'',createdAt:firebase.firestore.FieldValue.serverTimestamp()});cur=u;localStorage.setItem('zuff_cur',u);document.getElementById('authCard').style.display='none';document.getElementById('userCard').style.display='block';load();document.getElementById('am').innerHTML='<div class=ok>✅ Registered - visible in Firebase - Referrer 5%</div>';}}catch(err){document.getElementById('am').innerHTML='<div class=err>'+err.code+' '+err.message+'</div>';}}
+async function load(){if(!cur) cur=localStorage.getItem('zuff_cur');if(!cur) return;try{const snap=await db.collection('users').doc(cur).get();if(snap.exists){const d=snap.data();document.getElementById('bal').textContent=d.coins||0;document.getElementById('balUsd').textContent=((d.coins||0)*0.00001).toFixed(4);document.getElementById('balTop').textContent=d.coins+' Coins';document.getElementById('ptcDone').textContent=d.ptcDone||0;document.getElementById('shortDone').textContent=d.shortDone||0;document.getElementById('lvl').textContent=Math.floor(((d.ptcDone||0)+(d.shortDone||0))/10)+1;document.getElementById('refLink').value=location.origin+location.pathname+'?ref='+cur;}}catch(e){}}
+async function doPTC(r,tot,btn){btn.textContent='5s';btn.disabled=true;let t=5;const iv=setInterval(async()=>{t--;btn.textContent=t+'s';if(t<=0){clearInterval(iv);try{await db.collection('users').doc(cur).update({coins:firebase.firestore.FieldValue.increment(r),ptcDone:firebase.firestore.FieldValue.increment(1),totalProfitGenerated:firebase.firestore.FieldValue.increment(Math.floor(tot*0.6))});await db.collection('bank').doc('main').set({balance:firebase.firestore.FieldValue.increment(Math.floor(tot*0.6)),totalProfit:firebase.firestore.FieldValue.increment(Math.floor(tot*0.6))},{merge:true});btn.textContent='Done +'+r;load();}catch(e){btn.textContent='Error';}}},1000);}
+async function doShort(r,tot,btn){btn.textContent='3s';btn.disabled=true;let t=3;const iv=setInterval(async()=>{t--;btn.textContent=t+'s';if(t<=0){clearInterval(iv);try{await db.collection('users').doc(cur).update({coins:firebase.firestore.FieldValue.increment(r),shortDone:firebase.firestore.FieldValue.increment(1),totalProfitGenerated:firebase.firestore.FieldValue.increment(Math.floor(tot*0.6))});btn.textContent='Done +'+r;load();}catch(e){btn.textContent='Error';}}},1000);}
+async function doOffer(r,tot,btn){btn.textContent='7s';btn.disabled=true;let t=7;const iv=setInterval(async()=>{t--;btn.textContent=t+'s';if(t<=0){clearInterval(iv);try{await db.collection('users').doc(cur).update({coins:firebase.firestore.FieldValue.increment(r),totalProfitGenerated:firebase.firestore.FieldValue.increment(Math.floor(tot*0.6))});btn.textContent='Done +'+r+' No bonus';load();}catch(e){btn.textContent='Error';}}},1000);}
+async function claim(){const cap=document.getElementById('captcha');if(!cap.checked){document.getElementById('fm').innerHTML='<div class=err>Check captcha</div>';return;}const ans=document.getElementById('mathAns').value.trim();if(ans!=='8'){document.getElementById('fm').innerHTML='<div class=err>Math 8</div>';return;}try{const ref=db.collection('users').doc(cur);const snap=await ref.get();if(Date.now()-(snap.data().faucetLast||0) < 20*60*1000){document.getElementById('fm').innerHTML='<div class=err>Wait 20min</div>';return;}await ref.update({coins:firebase.firestore.FieldValue.increment(50),faucetLast:Date.now()});document.getElementById('fm').innerHTML='<div class=ok>+50 Coins</div>';load();}catch(e){document.getElementById('fm').innerHTML='<div class=err>'+e.message+'</div>';}}
 async function wd(){const amt=parseInt(document.getElementById('wa').value);const addr=document.getElementById('waddr').value.trim();if(!amt||amt<1000){document.getElementById('wmsg').innerHTML='<div class=err>Min 1000</div>';return;}if(!addr){document.getElementById('wmsg').innerHTML='<div class=err>Enter addr</div>';return;}try{await db.collection('withdrawals').add({username:cur,coins:amt,method:document.getElementById('wm').value,address:addr,status:'pending',date:firebase.firestore.FieldValue.serverTimestamp()});document.getElementById('wmsg').innerHTML='<div class=ok>Withdraw pending</div>';}catch(e){document.getElementById('wmsg').innerHTML='<div class=err>'+e.message+'</div>';}}
-</script>
-</body></html>
+(function(){const saved=localStorage.getItem('zuff_cur');if(saved){cur=saved;document.getElementById('authCard').style.display='none';document.getElementById('userCard').style.display='block';load();}})();
+</script></body></html>
