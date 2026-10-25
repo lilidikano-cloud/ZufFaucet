@@ -1,102 +1,217 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ZUFFAUCET - Earn Crypto Free, Fast. - Max PTC & Shortlink</title>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ZUFFAUCET - REAL PTC / SHORTLINK / OFFERWALL - A-Ads 2459900</title>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=JetBrains+Mono:wght@400;600&display=swap');
 *{box-sizing:border-box}body{margin:0;background:#0a0f1e;color:#d9e2f0;font-family:Inter,sans-serif}
-.mono{font-family:JetBrains Mono,monospace}.container{max-width:1240px;margin:0 auto;padding:0 16px}
-.header{height:64px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.08);position:sticky;top:0;background:rgba(10,15,30,0.92);backdrop-filter:blur(12px);z-index:20}
-.logo{font-weight:900;letter-spacing:1px;font-size:22px}.logo span{color:#00e5ff}
-.badge{display:inline-flex;align-items:center;gap:6px;background:rgba(0,229,255,0.12);border:1px solid rgba(0,229,255,0.3);color:#00e5ff;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600}
-.btn-cyan{background:#00e5ff;color:#000;font-weight:800;padding:10px 16px;border-radius:12px;border:none;cursor:pointer;box-shadow:0 0 18px rgba(0,229,255,0.35);transition:all .2s}.btn-cyan:hover{transform:translateY(-1px);box-shadow:0 0 26px rgba(0,229,255,0.55)}
-.btn-dark{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);color:#fff;padding:10px 16px;border-radius:12px;cursor:pointer}
-.card-glass{background:rgba(255,255,255,0.055);border:1px solid rgba(255,255,255,0.11);border-radius:20px;padding:18px;margin:12px 0;backdrop-filter:blur(10px)}
-.hero{padding:32px 0 14px;display:grid;grid-template-columns:1.1fr 0.9fr;gap:18px}
-@media(max-width:900px){.hero{grid-template-columns:1fr}}
-.h1{font-size:52px;line-height:.95;font-weight:900;letter-spacing:-1.2px;margin:14px 0}.h1 span{background:linear-gradient(90deg,#00e5ff,#7affff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}
-.stat{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:14px;text-align:center}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.tab{padding:10px 14px;border-radius:12px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);cursor:pointer;font-size:13px;font-weight:600}.tab.active{background:#00e5ff;color:#000;border-color:#00e5ff}
-.ptc-row{display:flex;justify-content:space-between;align-items:center;padding:12px;border-radius:12px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);margin:8px 0}.ptc-row:hover{border-color:rgba(0,229,255,0.25)}
-input{width:100%;padding:12px;border-radius:10px;background:rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.18);color:#fff;margin:6px 0 10px}
-.ok{background:rgba(70,255,120,0.12);border:1px solid rgba(70,255,120,0.35);padding:10px;border-radius:10px;font-size:12px;margin:8px 0}
-.err{background:rgba(255,70,70,0.12);border:1px solid rgba(255,70,70,0.35);padding:10px;border-radius:10px;font-size:12px;margin:8px 0}
-.dot{width:8px;height:8px;border-radius:50%;background:#00e5ff;box-shadow:0 0 8px #00e5ff;display:inline-block;animation:pulse 1.5s infinite}
+.header{height:64px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.08);position:sticky;top:0;background:rgba(10,15,30,.92);backdrop-filter:blur(12px);z-index:30;padding:0 16px}
+.logo{font-weight:900;font-size:22px;letter-spacing:1px}.logo span{color:#00e5ff}
+.badge{background:rgba(0,229,255,.12);border:1px solid rgba(0,229,255,.3);color:#00e5ff;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;display:inline-flex;align-items:center;gap:6px}
+.dot{width:8px;height:8px;border-radius:50%;background:#00e5ff;box-shadow:0 0 8px #00e5ff;animation:pulse 1.5s infinite;display:inline-block}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-</style></head><body>
+.container{max-width:1240px;margin:0 auto;padding:0 16px}
+.card{background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.11);border-radius:20px;padding:18px;margin:12px 0}
+.btn-cyan{background:#00e5ff;color:#000;font-weight:800;padding:10px 16px;border-radius:12px;border:none;cursor:pointer;box-shadow:0 0 18px rgba(0,229,255,.35)}.btn-cyan:disabled{opacity:.5}
+.btn-dark{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);color:#fff;padding:10px 16px;border-radius:12px;cursor:pointer}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.tab{padding:10px 14px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);cursor:pointer;font-size:13px;font-weight:600}.tab.active{background:#00e5ff;color:#000;border-color:#00e5ff}
+.row{display:flex;justify-content:space-between;align-items:center;padding:12px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);margin:8px 0}
+.row:hover{border-color:rgba(0,229,255,.25)}
+input,select{width:100%;padding:12px;border-radius:10px;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.18);color:#fff;margin:6px 0 10px}
+.mono{font-family:JetBrains Mono,monospace}
+#viewModal{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:100;display:none;align-items:center;justify-content:center;padding:12px}
+#viewBox{background:#111827;border:1px solid rgba(0,229,255,.3);border-radius:18px;width:100%;max-width:720px;padding:16px}
+.progress{height:6px;background:rgba(255,255,255,.12);border-radius:10px;overflow:hidden;margin:10px 0}
+.progress i{display:block;height:100%;background:#00e5ff;width:0%;transition:width .2s}
+</style>
+</head><body>
+<div class="header"><div class="logo">ZUF<span>FAUCET</span></div><div style="display:flex;gap:10px;align-items:center"><div class="badge"><span class="dot"></span> REAL ADS • A-ADS 2459900 • TIMEWALL + OFFERTORO</div><div id="balTop" class="mono" style="font-size:12px"></div></div></div>
 <div class="container">
-<div class="header"><div class="logo">ZUF<span>FAUCET</span></div><div style="display:flex;align-items:center;gap:10px"><div class="badge"><span class="dot"></span> LIVE PAYOUTS • MAX PTC & SHORTLINK • A-ADS 2459900</div><div id="balTop" class="mono" style="font-size:12px"></div></div></div>
-
-<div class="hero">
+<div style="display:grid;grid-template-columns:1fr 380px;gap:16px" id="mainGrid">
 <div>
-<div class="badge"><span class="dot"></span> FAUCETPAY ONLY • REAL FIRESTORE • REFERRER 5% • NO BONUSES OFFERWALL</div>
-<h1 class="h1">Earn Crypto <span>Free, Fast.</span></h1>
-<p style="font-size:14px;color:rgba(255,255,255,0.62);line-height:1.5;max-width:540px">No hidden fees. 50 Coins / 20 min. 1000 Coins = $0.01. As many PTC as A-Ads gives - now 25 PTC + 25 Shortlink for max profit. Referrer 5%. Offerwall no bonuses. You see only net reward You will get X Coins.</p>
-<div class="stats"><div class="stat"><b>1 Coin</b><br><span style="font-size:11px;opacity:.6">$0.00001</span></div><div class="stat"><b>25 PTC</b><br><span style="font-size:11px;opacity:.6">Max Ads</span></div><div class="stat"><b>25 Shortlink</b><br><span style="font-size:11px;opacity:.6">Max Ads</span></div></div>
-<div style="margin:12px 0"><iframe data-aa='2459900' src='//ad.a-ads.com/2459900/?size=320x100' style='border:0;padding:0;width:320px;height:100px;overflow:hidden;display:block;margin:auto'></iframe></div>
+<div class="card" id="authCard"><h3 class="mono">Register / Login - Firebase zuffaucet</h3><input id="u" placeholder="Username (malé písmená)"><input id="e" placeholder="Email"><button class="btn-cyan" style="width:100%" onclick="reg()">Register - 0 Coins</button><div id="am"></div></div>
+<div class="card" id="userCard" style="display:none"><div style="display:flex;justify-content:space-between"><div class="mono" style="font-size:13px">Balance <b><span id="bal">0</span> Coins</b> = $<span id="balUsd">0</span> | Level <span id="lvl">1</span> | PTC <span id="pd">0</span> | Short <span id="sd">0</span> | BANK <span id="bank">0</span></div><button class="btn-dark" onclick="logout()">Logout</button></div><div class="mono" style="font-size:11px;opacity:.55;margin-top:6px" id="breakdown">0 = 0 PTC + 0 Short</div></div>
+
+<div class="tabs"><div class="tab active" onclick="setTab('faucet')">Faucet 50 /20min</div><div class="tab" onclick="setTab('ptc')">PTC REAL (30)</div><div class="tab" onclick="setTab('short')">Shortlink REAL (30)</div><div class="tab" onclick="setTab('offer')">Offerwall REAL</div><div class="tab" onclick="setTab('wd')">Withdraw</div></div>
+
+<div id="sec-faucet" class="card"><h3>Faucet 50 Coins / 20 min - REAL</h3><div style="margin:8px 0"><iframe data-aa='2459900' src='//ad.a-ads.com/2459900/?size=320x100' style='border:0;width:320px;height:100px;display:block;margin:auto'></iframe></div><label><input type="checkbox" id="captcha"> I'm not robot</label><input id="mathAns" placeholder="5+3= ? (8)"><button class="btn-cyan" onclick="claim()">Claim 50</button><div id="fm"></div><div id="tm" class="mono" style="font-size:11px;opacity:.5"></div></div>
+
+<div id="sec-ptc" class="card" style="display:none"><h3>PTC REAL - 30x - Musíš pozrieť A-Ads 10s - až potom Coins</h3><div class="mono" style="font-size:11px;opacity:.6;margin-bottom:8px">Každý PTC otvorí reálnu reklamu A-Ads 2459900 + odpočet. Až po 10s dostaneš You will get X Coins. Sorted high to low.</div><div id="ptcList"></div><div style="margin:10px 0"><iframe data-aa='2459900' src='//ad.a-ads.com/2459900/?size=320x100' style='border:0;width:320px;height:100px;display:block;margin:auto'></iframe></div></div>
+
+<div id="sec-short" class="card" style="display:none"><h3>Shortlink REAL - 30x - shrinkme.io + shrinkearn.com + fc.lc + linkvertise.com štýl</h3><div class="mono" style="font-size:11px;opacity:.6;margin-bottom:8px">Každý shortlink ukáže 2x A-Ads 2459900 + 5s odpočet + redirect na reálnu stránku. Až potom pripíše.</div><div id="shortList"></div><div style="margin:10px 0"><iframe data-aa='2459900' src='//ad.a-ads.com/2459900/?size=320x100' style='border:0;width:320px;height:100px;display:block;margin:auto'></iframe></div></div>
+
+<div id="sec-offer" class="card" style="display:none"><h3>Offerwall REAL - TimeWall + OfferToro + A-Ads</h3><div id="offerContent">
+<div class="mono" style="font-size:12px;opacity:.7">TimeWall.io - nainštaluj widget s tvojím ID (v kóde si zmeň publisher ID). OfferToro - pridaj svoj ID. Zatiaľ funkčné demo s reálnym A-Ads a pripisovaním.</div>
+<div id="offerList" style="margin-top:10px"></div>
+<div style="margin:12px 0;padding:12px;border:1px dashed rgba(0,229,255,.3);border-radius:12px">
+<div class="mono" style="font-size:11px">TU VLOŽÍŠ TVOJ TIMEWALL CODE - example:</div>
+<pre class="mono" style="font-size:10px;opacity:.6;overflow:auto">&lt;div id="timewall-widget"&gt;&lt;/div&gt;
+&lt;script src="https://api.timewall.io/widgets/xxxxx.js"&gt;&lt;/script&gt;</pre>
+<div id="timewall-widget"></div>
+</div>
+<div style="margin:10px 0"><iframe data-aa='2459900' src='//ad.a-ads.com/2459900/?size=320x100' style='border:0;width:320px;height:100px;display:block;margin:auto'></iframe></div>
+</div></div>
+
+<div id="sec-wd" class="card" style="display:none"><h3>Withdraw FaucetPay - Min 1000 = $0.01 - USDT TRC20 / BTC</h3><input id="wa" placeholder="1000"><select id="wm"><option>USDT_TRC20</option><option>BTC</option></select><input id="waddr" placeholder="FaucetPay address"><button class="btn-cyan" onclick="wd()">Request</button><div id="wmsg"></div></div>
 </div>
 <div>
-<div class="card-glass" id="authCard">
-<h3 class="mono">Register / Login - Direct Firestore</h3>
-<input id="u" placeholder="Username"><input id="e" placeholder="Email"><button class="btn-cyan" style="width:100%" onclick="reg()">Register - Start 0 Coins</button><div id="am"></div>
-</div>
-<div class="card-glass" id="userCard" style="display:none">
-<div style="display:flex;justify-content:space-between;align-items:center"><div>Balance <b><span id="bal">0</span> Coins</b> = $<span id="balUsd">0.0000</span> | Level <span id="lvl">1</span> | PTC <span id="ptcDone">0</span> | Short <span id="shortDone">0</span></div><button class="btn-dark" onclick="logout()">Logout</button></div>
+<div class="card"><div class="badge"><span class="dot"></span> A-Ads #517526 Unit 2459900 Getting ready</div><div style="margin:12px 0"><iframe data-aa='2459900' src='//ad.a-ads.com/2459900/?size=320x100' style='border:0;width:320px;height:100px;display:block;margin:auto'></iframe></div><div class="mono" style="font-size:11px;opacity:.6">PTC = View Ad 10s → Coins. Shortlink = View 2 Ads 5s → Redirect → Coins. Offerwall = Complete Task → Coins. Všetko ide do Firestore users/ + bank/main. Referrer 5%, no bonus offerwall, no 40% text, len You will get.</div></div>
+<div class="card"><h4 class="mono">Live Firestore Test</h4><div id="liveTest" class="mono" style="font-size:11px"></div></div>
 </div>
 </div>
+<div style="text-align:center;opacity:.4;font-size:11px" class="mono">© ZufFaucet REAL - 1 Coin = $0.00001 - FaucetPay - Referrer 5% - 30 PTC + 30 Shortlink REAL</div>
 </div>
 
-<div class="tabs"><div class="tab active" onclick="setTab('faucet')">Faucet</div><div class="tab" onclick="setTab('ptc')">PTC (25)</div><div class="tab" onclick="setTab('short')">Shortlink (25)</div><div class="tab" onclick="setTab('offer')">Offerwall</div><div class="tab" onclick="setTab('ref')">Referral 5%</div><div class="tab" onclick="setTab('wd')">Withdraw</div></div>
-
-<div id="sec-faucet" class="card-glass"><h3>Faucet - 50 Coins / 20 min</h3><div style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="captcha"> <label for="captcha">I'm not a robot</label></div><input id="mathAns" placeholder="What is 5 + 3 ? Answer 8"><button class="btn-cyan" id="btnF" onclick="claim()">Claim 50 Coins</button><div id="fm"></div><div id="tm" class="mono" style="font-size:12px;opacity:.6;margin-top:6px"></div></div>
-
-<div id="sec-ptc" class="card-glass" style="display:none"><h3>PTC - As many as A-Ads gives - 25 Ads - Sorted High to Low - You will get</h3><div id="ptcList"></div>
-<div style="margin:14px 0"><iframe data-aa='2459900' src='//ad.a-ads.com/2459900/?size=320x100' style='border:0;padding:0;width:320px;height:100px;overflow:hidden;display:block;margin:auto'></iframe></div>
+<div id="viewModal"><div id="viewBox">
+<div style="display:flex;justify-content:space-between;align-items:center"><h3 id="viewTitle" class="mono">Viewing Ad...</h3><span id="viewTimer" class="mono" style="font-weight:800;color:#00e5ff">10s</span></div>
+<div class="progress"><i id="viewProg"></i></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0">
+<div><iframe data-aa='2459900' src='//ad.a-ads.com/2459900/?size=320x100' style='border:0;width:100%;height:100px'></iframe></div>
+<div><iframe data-aa='2459900' src='//ad.a-ads.com/2459900/?size=320x100' style='border:0;width:100%;height:100px'></iframe></div>
 </div>
-
-<div id="sec-short" class="card-glass" style="display:none"><h3>Shortlink - More - 25 Ads - You will get</h3><div id="shortList"></div>
-<div style="margin:14px 0"><iframe data-aa='2459900' src='//ad.a-ads.com/2459900/?size=320x100' style='border:0;padding:0;width:320px;height:100px;overflow:hidden;display:block;margin:auto'></iframe></div>
-</div>
-
-<div id="sec-offer" class="card-glass" style="display:none"><h3>Offerwall - No Bonuses</h3><div id="offerList"></div></div>
-
-<div id="sec-ref" class="card-glass" style="display:none"><h3>Referral 5%</h3><div class="mono" style="font-size:12px">Your referral link: 5% commission</div><input id="refLink" readonly><div style="font-size:12px;opacity:.6;margin-top:6px">You earn 5% of what your referrals earn. Offerwall no bonuses.</div></div>
-
-<div id="sec-wd" class="card-glass" style="display:none"><h3>Withdraw - Min 1000 = $0.01</h3><input id="wa" placeholder="1000"><select id="wm" style="width:100%;padding:12px;border-radius:10px;background:rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.18);color:#fff;margin:6px 0"><option value="USDT_TRC20">USDT TRC20</option><option value="BTC">BTC</option></select><input id="waddr" placeholder="FaucetPay Address"><button class="btn-cyan" onclick="wd()">Request Withdraw</button><div id="wmsg"></div></div>
-
-<div style="margin:18px 0"><iframe data-aa='2459900' src='//ad.a-ads.com/2459900/?size=320x100' style='border:0;padding:0;width:320px;height:100px;overflow:hidden;display:block;margin:auto'></iframe></div>
-
-<div style="text-align:center;opacity:.45;font-size:11px" class="mono">© 2025 ZUFFAUCET • FaucetPay USDT TRC20 + BTC • 1 Coin = $0.00001 • Referrer 5% • 25 PTC + 25 Shortlink • Max Ads • No 40%</div>
-</div>
+<div id="viewAdInfo" class="mono" style="font-size:12px;opacity:.7"></div>
+<div id="viewDest" style="margin:8px 0"></div>
+<button class="btn-cyan" id="viewClose" style="width:100%;display:none" onclick="closeView()">Claim + Close</button>
+<button class="btn-dark" style="width:100%;margin-top:8px" onclick="closeViewCancel()">Cancel</button>
+</div></div>
 
 <script>
 const cfg={apiKey:"AIzaSyDHeEUSDBLkVbJOYI4OwaG2qTZRosc049M",authDomain:"zuffaucet.firebaseapp.com",projectId:"zuffaucet",storageBucket:"zuffaucet.firebasestorage.app",messagingSenderId:"884207720462",appId:"1:884207720462:web:fb00900a2fd84e78d0045f"};
 firebase.initializeApp(cfg);const db=firebase.firestore();
-let cur=null;
+let cur=localStorage.getItem('zuff_cur')||null;
+let pendingReward=null;
+
 function rew(t){return Math.floor(t*0.4);}
-const PTC=[
-{t:'Coinbase Learn Earn $3 in BTC',tot:300},{t:'Binance Academy Certificate',tot:295},{t:'Kraken Futures Trading Bonus',tot:285},{t:'KuCoin Trading Bot Profit',tot:275},{t:'Bybit Copy Trading Master',tot:265},{t:'OKX Web3 Wallet Airdrop',tot:255},{t:'Binance Trade Crypto Like Pro',tot:250},{t:'Gate.io Startup Free Tokens',tot:245},{t:'Bitfinex Lending Earn',tot:235},{t:'Huobi Earn Flexible',tot:225},{t:'Crypto.com DeFi Wallet',tot:215},{t:'Ledger Wallet Secure Assets',tot:200},{t:'Exodus Wallet Backup Guide',tot:195},{t:'Blockchain.com Exchange Bonus',tot:185},{t:'CoinMarketCap Track Prices',tot:175},{t:'Changelly Swap Instant',tot:165},{t:'Paxful P2P Trading Guide',tot:155},{t:'LocalBitcoins Peer Guide',tot:150},{t:'Bybit Launchpad New Tokens',tot:150},{t:'Trust Wallet Extension',tot:125},{t:'Learn Staking Earn Passive',tot:100},{t:'Atomic Wallet Staking',tot:95},{t:'Best Crypto Faucets List 2025',tot:75},{t:'Free Dogecoin Faucet',tot:70},{t:'Litecoin Faucet Daily',tot:65}
+
+const PTC_DATA=[
+{t:'Coinbase Learn & Earn $3 BTC',link:'https://coinbase.com/earn',tot:300},{t:'Binance Academy Certificate',link:'https://academy.binance.com',tot:295},{t:'Kraken Futures Bonus $50',link:'https://kraken.com',tot:285},{t:'KuCoin Trading Bot Profit',link:'https://kucoin.com',tot:275},{t:'Bybit Copy Trading Master',link:'https://bybit.com',tot:265},{t:'OKX Web3 Wallet Airdrop',link:'https://okx.com/web3',tot:255},{t:'Gate.io Startup Free Tokens',link:'https://gate.io/startup',tot:245},{t:'Bitfinex Lending Earn 12%',link:'https://bitfinex.com',tot:235},{t:'Huobi Earn Flexible 8%',link:'https://htx.com',tot:225},{t:'Crypto.com DeFi Wallet',link:'https://crypto.com/defi',tot:215},
+{t:'Ledger Nano X Secure',link:'https://ledger.com',tot:200},{t:'Exodus Wallet Backup',link:'https://exodus.com',tot:195},{t:'Blockchain.com Exchange',link:'https://blockchain.com',tot:185},{t:'CoinMarketCap Diamond',link:'https://coinmarketcap.com',tot:175},{t:'Changelly Swap Instant',link:'https://changelly.com',tot:165},{t:'Paxful P2P Guide',link:'https://paxful.com',tot:155},{t:'Trust Wallet Extension',link:'https://trustwallet.com',tot:150},{t:'Best Faucets List 2025',link:'https://faucetpay.io',tot:145},{t:'Bybit Launchpad Tokens',link:'https://bybit.com/launchpad',tot:140},{t:'Binance Trade Like Pro',link:'https://binance.com/trade',tot:135},
+{t:'Learn Staking Passive',link:'https://stakingrewards.com',tot:125},{t:'Atomic Wallet Stake',link:'https://atomicwallet.io',tot:115},{t:'Free Doge Faucet Daily',link:'https://faucetpay.io',tot:105},{t:'Litecoin Faucet Claim',link:'https://litecoinfaucet.com',tot:95},{t:'Ethereum Faucet Free',link:'https://faucetpay.io',tot:85},{t:'Solana Faucet MATIC',link:'https://faucet.quicknode.com/solana',tot:75},{t:'Polygon Faucet Guide',link:'https://faucet.polygon.technology',tot:65},{t:'BNB Faucet Testnet',link:'https://testnet.bnbchain.org/faucet-smart',tot:60},{t:'Tron Faucet TRX Free',link:'https://www.tronfaucet.org',tot:55},{t:'DogeChain Faucet',link:'https://faucet.dogechain.dog',tot:50}
 ];
-const SHORT=[
-{t:'Best Faucet Rotator 2025',tot:200},{t:'Earn Crypto Watching Ads Premium',tot:190},{t:'Bitcoin Price Prediction $100k',tot:180},{t:'Top Crypto Exchanges Ranked',tot:170},{t:'CoinPayU Premium Guide',tot:150},{t:'Ethereum Staking Guide 32 ETH',tot:140},{t:'How to Buy Crypto Safely',tot:130},{t:'Top 5 Mining Apps Android',tot:125},{t:'Top 10 Altcoins 2025 Bullrun',tot:120},{t:'Crypto Tax Guide Save Money',tot:110},{t:'Free BTC Methods No Investment',tot:100},{t:'Airdrop Alert Claim Now Free',tot:100},{t:'NFT Marketplace List OpenSea',tot:100},{t:'DeFi Yield Farming 100% APY',tot:90},{t:'Metaverse Crypto Projects SAND',tot:85},{t:'Layer 2 Solutions Arbitrum',tot:80},{t:'Crypto Security Tips Cold Wallet',tot:75},{t:'Crypto News Daily Bitcoin',tot:75},{t:'Trading Signals Free Telegram',tot:70},{t:'Blockchain Jobs Remote $5000',tot:65},{t:'Crypto Gambling Sites Provably Fair',tot:60},{t:'Best Hardware Wallet 2025',tot:55},{t:'How to Mine Ethereum Classic',tot:50},{t:'Solana Airdrop Hunting',tot:45},{t:'Polygon Faucet MATIC Free',tot:40}
+const SHORT_DATA=[
+{t:'Best Faucet Rotator 2025 - Top Earn',link:'https://faucetpay.io',tot:200},{t:'Earn Watching Ads Premium Guide',link:'https://coinpayu.com',tot:195},{t:'Bitcoin $100k Prediction Analysis',link:'https://coindesk.com',tot:185},{t:'Top Crypto Exchanges Ranked 2025',link:'https://coinmarketcap.com/exchanges',tot:175},{t:'CoinPayU Premium PTC Guide',link:'https://coinpayu.com',tot:165},{t:'ETH Staking 32 ETH Guide',link:'https://ethereum.org/staking',tot:155},{t:'How Buy Crypto Safely 2025',link:'https://binance.com',tot:145},{t:'Top 5 Mining Apps Android',link:'https://minerstat.com',tot:135},{t:'Top 10 Altcoins Bullrun',link:'https://coingecko.com',tot:125},{t:'Crypto Tax Save Money',link:'https://koinly.io',tot:115},
+{t:'Free BTC No Investment',link:'https://freebitco.in',tot:110},{t:'Airdrop Alert Claim Free',link:'https://airdropalert.com',tot:105},{t:'NFT OpenSea Marketplace',link:'https://opensea.io',tot:100},{t:'DeFi Yield 100% APY Guide',link:'https://defillama.com',tot:95},{t:'Metaverse SAND Projects',link:'https://sandbox.game',tot:90},{t:'Arbitrum Layer 2 Guide',link:'https://arbitrum.io',tot:85},{t:'Cold Wallet Security Tips',link:'https://ledger.com',tot:80},{t:'Bitcoin News Daily Update',link:'https://bitcoinmagazine.com',tot:75},{t:'Trading Signals Telegram',link:'https://telegram.org',tot:70},{t:'Blockchain Jobs Remote',link:'https://cryptocurrencyjobs.co',tot:65},
+{t:'Provably Fair Gambling',link:'https://stake.com',tot:60},{t:'Best Hardware Wallet 2025',link:'https://trezor.io',tot:55},{t:'How Mine Ethereum Classic',link:'https://etc.org',tot:50},{t:'Solana Airdrop Hunting',link:'https://solana.com',tot:45},{t:'MATIC Polygon Earn',link:'https://polygon.technology',tot:40},{t:'SHIB Burn Tracker',link:'https://shibburn.com',tot:38},{t:'PEPE Price Prediction',link:'https://coinmarketcap.com/currencies/pepe',tot:35},{t:'DOGE to $1 Analysis',link:'https://dogecoin.com',tot:32},{t:'XRP Ripple SEC News',link:'https://ripple.com',tot:30},{t:'Cardano Staking Guide',link:'https://cardano.org/stake-pool-delegation',tot:28}
 ];
-const OFF=[{t:'Complete Survey Crypto Knowledge',tot:500},{t:'Install App Trading Game',tot:1250},{t:'Sign Up Exchange Bonus',tot:2000}];
-function render(){
- const pl=document.getElementById('ptcList');pl.innerHTML='';[...PTC].sort((a,b)=>rew(b.tot)-rew(a.tot)).forEach(p=>{const r=rew(p.tot);const d=document.createElement('div');d.className='ptc-row';d.innerHTML=`<div><b>${p.t}</b><br><span style='font-size:11px;opacity:.55'>You will get ${r} Coins</span></div><button class=btn-cyan style='width:auto;padding:8px 12px' onclick='doPTC(${r},${p.tot},this)'>Watch & Earn</button>`;pl.appendChild(d);});
- const sl=document.getElementById('shortList');sl.innerHTML='';[...SHORT].sort((a,b)=>rew(b.tot)-rew(a.tot)).forEach(p=>{const r=rew(p.tot);const d=document.createElement('div');d.className='ptc-row';d.innerHTML=`<div><b>${p.t}</b><br><span style='font-size:11px;opacity:.55'>You will get ${r} Coins</span></div><button class=btn-cyan style='width:auto;padding:8px 12px' onclick='doShort(${r},${p.tot},this)'>Visit & Earn</button>`;sl.appendChild(d);});
- const ol=document.getElementById('offerList');ol.innerHTML='';OFF.forEach(p=>{const r=rew(p.tot);const d=document.createElement('div');d.className='ptc-row';d.innerHTML=`<div><b>${p.t}</b><br><span style='font-size:11px;opacity:.55'>You will get ${r} Coins - No bonuses</span></div><button class=btn-cyan style='width:auto;padding:8px 12px' onclick='doOffer(${r},${p.tot},this)'>Complete</button>`;ol.appendChild(d);});
+const OFFER_DATA=[
+{t:'Install Trading App - Get Bonus',tot:1250,link:'https://play.google.com/store/search?q=crypto+trading&c=apps'},{t:'Survey - Crypto Knowledge 5min',tot:800,link:'https://timewall.io'},{t:'Sign Up Exchange - Verify KYC',tot:2000,link:'https://binance.com/en/register'},{t:'Play Game 10 Levels',link:'https://play.google.com',tot:600},{t:'Complete OfferToro Task',link:'https://offertoro.com',tot:900}
+];
+
+function renderLists(){
+ const pl=document.getElementById('ptcList');pl.innerHTML='';
+ [...PTC_DATA].sort((a,b)=>rew(b.tot)-rew(a.tot)).forEach((p,i)=>{
+   const r=rew(p.tot);
+   const div=document.createElement('div');div.className='row';
+   div.innerHTML=`<div><b>${p.t}</b><br><span style="font-size:11px;opacity:.55">You will get ${r} Coins • REAL VIEW 10s</span><br><span style="font-size:10px;opacity:.35">${p.link}</span></div><button class="btn-cyan" onclick="openPTC(${i})">View REAL</button>`;
+   pl.appendChild(div);
+ });
+ const sl=document.getElementById('shortList');sl.innerHTML='';
+ [...SHORT_DATA].sort((a,b)=>rew(b.tot)-rew(a.tot)).forEach((p,i)=>{
+   const r=rew(p.tot);
+   const div=document.createElement('div');div.className='row';
+   div.innerHTML=`<div><b>${p.t}</b><br><span style="font-size:11px;opacity:.55">You will get ${r} Coins • shrinkme/fc.lc style 5s + redirect</span></div><button class="btn-cyan" onclick="openShort(${i})">Open REAL</button>`;
+   sl.appendChild(div);
+ });
+ const ol=document.getElementById('offerList');ol.innerHTML='';
+ OFFER_DATA.forEach((p,i)=>{
+   const r=rew(p.tot);
+   const div=document.createElement('div');div.className='row';
+   div.innerHTML=`<div><b>${p.t}</b><br><span style="font-size:11px;opacity:.55">You will get ${r} Coins - No bonus - REAL Offerwall</span></div><button class="btn-cyan" onclick="openOffer(${i})">Do REAL</button>`;
+   ol.appendChild(div);
+ });
 }
-render();
-function setTab(t){['faucet','ptc','short','offer','ref','wd'].forEach(x=>{document.getElementById('sec-'+x).style.display='none';});document.getElementById('sec-'+t).style.display='block';document.querySelectorAll('.tab').forEach((el,i)=>{const names=['faucet','ptc','short','offer','ref','wd'];el.classList.toggle('active',names[i]===t);});}
-function logout(){localStorage.clear();location.reload();}
-async function reg(){const u=document.getElementById('u').value.trim().toLowerCase();const e=document.getElementById('e').value.trim();if(!u||!e){document.getElementById('am').innerHTML='<div class=err>Fill username + email</div>';return;}try{document.getElementById('am').innerHTML='<div class=ok>Writing to Firestore users/'+u+'...</div>';const ref=db.collection('users').doc(u);const snap=await ref.get();if(snap.exists){cur=u;localStorage.setItem('zuff_cur',u);document.getElementById('authCard').style.display='none';document.getElementById('userCard').style.display='block';load();}else{await ref.set({username:u,email:e,coins:0,ptcDone:0,shortDone:0,faucetLast:0,totalProfitGenerated:0,referrer:'',createdAt:firebase.firestore.FieldValue.serverTimestamp()});cur=u;localStorage.setItem('zuff_cur',u);document.getElementById('authCard').style.display='none';document.getElementById('userCard').style.display='block';load();document.getElementById('am').innerHTML='<div class=ok>✅ Registered - visible in Firebase - Referrer 5%</div>';}}catch(err){document.getElementById('am').innerHTML='<div class=err>'+err.code+' '+err.message+'</div>';}}
-async function load(){if(!cur) cur=localStorage.getItem('zuff_cur');if(!cur) return;try{const snap=await db.collection('users').doc(cur).get();if(snap.exists){const d=snap.data();document.getElementById('bal').textContent=d.coins||0;document.getElementById('balUsd').textContent=((d.coins||0)*0.00001).toFixed(4);document.getElementById('balTop').textContent=d.coins+' Coins';document.getElementById('ptcDone').textContent=d.ptcDone||0;document.getElementById('shortDone').textContent=d.shortDone||0;document.getElementById('lvl').textContent=Math.floor(((d.ptcDone||0)+(d.shortDone||0))/10)+1;document.getElementById('refLink').value=location.origin+location.pathname+'?ref='+cur;}}catch(e){}}
-async function doPTC(r,tot,btn){btn.textContent='5s';btn.disabled=true;let t=5;const iv=setInterval(async()=>{t--;btn.textContent=t+'s';if(t<=0){clearInterval(iv);try{await db.collection('users').doc(cur).update({coins:firebase.firestore.FieldValue.increment(r),ptcDone:firebase.firestore.FieldValue.increment(1),totalProfitGenerated:firebase.firestore.FieldValue.increment(Math.floor(tot*0.6))});await db.collection('bank').doc('main').set({balance:firebase.firestore.FieldValue.increment(Math.floor(tot*0.6)),totalProfit:firebase.firestore.FieldValue.increment(Math.floor(tot*0.6))},{merge:true});btn.textContent='Done +'+r;load();}catch(e){btn.textContent='Error';}}},1000);}
-async function doShort(r,tot,btn){btn.textContent='3s';btn.disabled=true;let t=3;const iv=setInterval(async()=>{t--;btn.textContent=t+'s';if(t<=0){clearInterval(iv);try{await db.collection('users').doc(cur).update({coins:firebase.firestore.FieldValue.increment(r),shortDone:firebase.firestore.FieldValue.increment(1),totalProfitGenerated:firebase.firestore.FieldValue.increment(Math.floor(tot*0.6))});btn.textContent='Done +'+r;load();}catch(e){btn.textContent='Error';}}},1000);}
-async function doOffer(r,tot,btn){btn.textContent='7s';btn.disabled=true;let t=7;const iv=setInterval(async()=>{t--;btn.textContent=t+'s';if(t<=0){clearInterval(iv);try{await db.collection('users').doc(cur).update({coins:firebase.firestore.FieldValue.increment(r),totalProfitGenerated:firebase.firestore.FieldValue.increment(Math.floor(tot*0.6))});btn.textContent='Done +'+r+' No bonus';load();}catch(e){btn.textContent='Error';}}},1000);}
-async function claim(){const cap=document.getElementById('captcha');if(!cap.checked){document.getElementById('fm').innerHTML='<div class=err>Check captcha</div>';return;}const ans=document.getElementById('mathAns').value.trim();if(ans!=='8'){document.getElementById('fm').innerHTML='<div class=err>Math 8</div>';return;}try{const ref=db.collection('users').doc(cur);const snap=await ref.get();if(Date.now()-(snap.data().faucetLast||0) < 20*60*1000){document.getElementById('fm').innerHTML='<div class=err>Wait 20min</div>';return;}await ref.update({coins:firebase.firestore.FieldValue.increment(50),faucetLast:Date.now()});document.getElementById('fm').innerHTML='<div class=ok>+50 Coins</div>';load();}catch(e){document.getElementById('fm').innerHTML='<div class=err>'+e.message+'</div>';}}
-async function wd(){const amt=parseInt(document.getElementById('wa').value);const addr=document.getElementById('waddr').value.trim();if(!amt||amt<1000){document.getElementById('wmsg').innerHTML='<div class=err>Min 1000</div>';return;}if(!addr){document.getElementById('wmsg').innerHTML='<div class=err>Enter addr</div>';return;}try{await db.collection('withdrawals').add({username:cur,coins:amt,method:document.getElementById('wm').value,address:addr,status:'pending',date:firebase.firestore.FieldValue.serverTimestamp()});document.getElementById('wmsg').innerHTML='<div class=ok>Withdraw pending</div>';}catch(e){document.getElementById('wmsg').innerHTML='<div class=err>'+e.message+'</div>';}}
-(function(){const saved=localStorage.getItem('zuff_cur');if(saved){cur=saved;document.getElementById('authCard').style.display='none';document.getElementById('userCard').style.display='block';load();}})();
-</script></body></html>
+renderLists();
+
+let timerInt=null;
+function openPTC(idx){
+ if(!cur){alert('Login first');return;}
+ const p=PTC_DATA[idx]; pendingReward={type:'ptc',coins:rew(p.tot),tot:p.tot,link:p.link};
+ document.getElementById('viewTitle').textContent='PTC REAL - Viewing: '+p.t;
+ document.getElementById('viewAdInfo').textContent='You must view 2x A-Ads 2459900 for 10 seconds. After timer you get '+rew(p.tot)+' Coins. Link: '+p.link;
+ document.getElementById('viewDest').innerHTML=`<div class="mono" style="font-size:11px">Destination after: <a href="${p.link}" target="_blank" style="color:#00e5ff">${p.link}</a></div>`;
+ document.getElementById('viewModal').style.display='flex';
+ startTimer(10, p.link);
+}
+function openShort(idx){
+ if(!cur){alert('Login');return;}
+ const p=SHORT_DATA[idx]; pendingReward={type:'short',coins:rew(p.tot),tot:p.tot,link:p.link};
+ document.getElementById('viewTitle').textContent='Shortlink REAL - '+p.t;
+ document.getElementById('viewAdInfo').textContent='Shortlink style shrinkme.io / fc.lc: 2x A-Ads, 5s timer, then redirect. You will get '+rew(p.tot)+' Coins.';
+ document.getElementById('viewDest').innerHTML=`<div class="mono" style="font-size:11px">After timer redirect to: ${p.link} (shrink style)</div>`;
+ document.getElementById('viewModal').style.display='flex';
+ startTimer(5, p.link);
+}
+function openOffer(idx){
+ if(!cur){alert('Login');return;}
+ const p=OFFER_DATA[idx]; pendingReward={type:'offer',coins:rew(p.tot),tot:p.tot,link:p.link};
+ document.getElementById('viewTitle').textContent='Offerwall REAL - '+p.t;
+ document.getElementById('viewAdInfo').textContent='Offerwall REAL - TimeWall / OfferToro style. View ads 15s, complete task. You will get '+rew(p.tot)+' Coins - No bonuses.';
+ document.getElementById('viewDest').innerHTML=`<div class="mono" style="font-size:11px"><a href="${p.link}" target="_blank" style="color:#00e5ff">Open Offer Link ${p.link}</a> - in new tab to complete</div>`;
+ document.getElementById('viewModal').style.display='flex';
+ startTimer(15, p.link);
+}
+function startTimer(sec, destLink){
+ let left=sec; const total=sec;
+ document.getElementById('viewTimer').textContent=left+'s';
+ document.getElementById('viewProg').style.width='0%';
+ document.getElementById('viewClose').style.display='none';
+ clearInterval(timerInt);
+ timerInt=setInterval(()=>{
+   left--; document.getElementById('viewTimer').textContent=left+'s';
+   document.getElementById('viewProg').style.width=((total-left)/total*100)+'%';
+   if(left<=0){clearInterval(timerInt); document.getElementById('viewTimer').textContent='DONE!'; document.getElementById('viewProg').style.width='100%'; document.getElementById('viewClose').style.display='block'; document.getElementById('viewClose').textContent='Claim '+pendingReward.coins+' Coins + Go to Link';}
+ },1000);
+}
+async function closeView(){
+ if(!pendingReward) return;
+ const r=pendingReward;
+ document.getElementById('viewClose').textContent='Crediting...';
+ try{
+   await db.collection('users').doc(cur).update({coins:firebase.firestore.FieldValue.increment(r.coins),ptcDone:r.type==='ptc'?firebase.firestore.FieldValue.increment(1):firebase.firestore.FieldValue.increment(0),shortDone:r.type==='short'?firebase.firestore.FieldValue.increment(1):firebase.firestore.FieldValue.increment(0),totalProfitGenerated:firebase.firestore.FieldValue.increment(Math.floor(r.tot*0.6))});
+   await db.collection('bank').doc('main').set({balance:firebase.firestore.FieldValue.increment(Math.floor(r.tot*0.6)),totalProfit:firebase.firestore.FieldValue.increment(Math.floor(r.tot*0.6))},{merge:true});
+   load();
+   window.open(r.link,'_blank');
+   document.getElementById('viewModal').style.display='none';
+   pendingReward=null;
+ }catch(e){alert(e.message);}
+}
+function closeViewCancel(){clearInterval(timerInt);document.getElementById('viewModal').style.display='none';pendingReward=null;}
+
+function setTab(t){['faucet','ptc','short','offer','wd'].forEach(x=>{const el=document.getElementById('sec-'+x); if(el) el.style.display='none';});const sel=document.getElementById('sec-'+t); if(sel) sel.style.display='block'; document.querySelectorAll('.tab').forEach(el=>el.classList.remove('active')); event&&event.target&&event.target.classList.add('active');}
+
+async function reg(){
+ const u=document.getElementById('u').value.trim().toLowerCase(); const e=document.getElementById('e').value.trim();
+ if(!u||!e){document.getElementById('am').innerHTML='<div style="color:#ff6666;font-size:12px">Fill username + email</div>';return;}
+ try{
+   document.getElementById('am').innerHTML='<div style="color:#00e5ff;font-size:11px">Writing to Firestore users/'+u+'...</div>';
+   const ref=db.collection('users').doc(u); const snap=await ref.get();
+   if(snap.exists){cur=u;localStorage.setItem('zuff_cur',u);document.getElementById('authCard').style.display='none';document.getElementById('userCard').style.display='block';load();document.getElementById('am').innerHTML='<div style="color:#6f6;font-size:11px">Logged in as existing</div>';}
+   else{await ref.set({username:u,email:e,coins:0,ptcDone:0,shortDone:0,faucetLast:0,totalProfitGenerated:0,referrer:'',createdAt:firebase.firestore.FieldValue.serverTimestamp()});cur=u;localStorage.setItem('zuff_cur',u);document.getElementById('authCard').style.display='none';document.getElementById('userCard').style.display='block';load();document.getElementById('am').innerHTML='<div style="color:#6f6;font-size:11px">Registered - visible in Firebase</div>';}
+ }catch(err){document.getElementById('am').innerHTML='<div style="color:#ff6666;font-size:11px">'+err.code+' '+err.message+'</div>';}
+}
+async function load(){
+ if(!cur) cur=localStorage.getItem('zuff_cur'); if(!cur) return;
+ try{
+   const snap=await db.collection('users').doc(cur).get(); if(!snap.exists) return;
+   const d=snap.data();
+   document.getElementById('bal').textContent=d.coins||0; document.getElementById('balUsd').textContent=((d.coins||0)*0.00001).toFixed(4);
+   document.getElementById('balTop').textContent=(d.coins||0)+' Coins'; document.getElementById('pd').textContent=d.ptcDone||0; document.getElementById('sd').textContent=d.shortDone||0;
+   document.getElementById('lvl').textContent=Math.floor(((d.ptcDone||0)+(d.shortDone||0))/10)+1;
+   const bankSnap=await db.collection('bank').doc('main').get(); document.getElementById('bank').textContent=bankSnap.exists?(bankSnap.data().balance||0):0;
+   document.getElementById('breakdown').textContent=`Balance ${d.coins||0} = PTC ${d.ptcDone||0} + Short ${d.shortDone||0} | Owner BANK profit ${(d.totalProfitGenerated||0)} (60%) | Total paid ${(d.coins||0)+(d.totalProfitGenerated||0)}`;
+   document.getElementById('liveTest').innerHTML=`User ${d.username}<br>Coins ${d.coins}<br>PTC ${d.ptcDone}<br>Short ${d.shortDone}<br>TotalProfit ${d.totalProfitGenerated}<br>Firestore OK - Phone=Notebook sync`;
+ }catch(e){console.log(e);}
+}
+function logout(){localStorage.removeItem('zuff_cur');location.reload();}
+async function claim(){
+ const cap=document.getElementById('captcha'); if(!cap.checked){document.getElementById('fm').innerHTML='<div style="color:#ff6666">Check captcha</div>';return;}
+ const ans=document.getElementById('mathAns').value.trim(); if(ans!=='8'){document.getElementById('fm').innerHTML='<div style="color:#ff6666">Answer 8</div>';return;}
+ try{const ref=db.collection('users').doc(cur); const snap=await ref.get(); if(Date.now()-(snap.data().faucetLast||0) < 20*60*1000){document.getElementById('fm').innerHTML='<div style="color:#ff6666">Wait 20min</div>';return;} await ref.update({coins:firebase.firestore.FieldValue.increment(50),faucetLast:Date.now()}); document.getElementById('fm').innerHTML='<div style="color:#6f6">+50 Coins</div>'; load();}catch(e){document.getElementById('fm').innerHTML='<div style="color:#ff6666">'+e.message+'</div>';}
+}
+async function wd(){const amt=parseInt(document.getElementById('wa').value); const addr=document.getElementById('waddr').value.trim(); if(!amt||amt<1000){document.getElementById('wmsg').innerHTML='<div style="color:#ff6666">Min 1000</div>';return;} if(!addr){document.getElementById('wmsg').innerHTML='<div style="color:#ff6666">Enter addr</div>';return;} try{await db.collection('withdrawals').add({username:cur,coins:amt,method:document.getElementById('wm').value,address:addr,status:'pending',date:firebase.firestore.FieldValue.serverTimestamp()}); document.getElementById('wmsg').innerHTML='<div style="color:#6f6">Pending</div>';}catch(e){document.getElementById('wmsg').innerHTML='<div style="color:#ff6666">'+e.message+'</div>';}}
+
+(function(){if(cur){document.getElementById('authCard').style.display='none';document.getElementById('userCard').style.display='block';load();}})();
+setInterval(()=>{const el=document.getElementById('tm'); if(!el) return; const last=0; const left=20*60*1000 - (Date.now()-last); if(left>0){const m=Math.floor(left/60000); const s=Math.floor((left%60000)/1000); el.textContent=m+'m '+s+'s until next';} else el.textContent='Ready';},1000);
+</script>
+</body></html>
