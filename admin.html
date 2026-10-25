@@ -37,80 +37,21 @@ Error generating stack: `+o.message+`
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <script>
 const firebaseConfig={apiKey:"AIzaSyDHeEUSDBLkVbJOYI4OwaG2qTZRosc049M",authDomain:"zuffaucet.firebaseapp.com",projectId:"zuffaucet",storageBucket:"zuffaucet.firebasestorage.app",messagingSenderId:"884207720462",appId:"1:884207720462:web:fb00900a2fd84e78d0045f"};
-firebase.initializeApp(firebaseConfig);
-const db=firebase.firestore();
-window.ZUFF_FIRESTORE=db;
-console.log('ZUFFAUCET OLD DESIGN + REAL FIRESTORE SYNC - Phone ↔ Notebook active - project zuffaucet');
-// Override localStorage for users to sync to Firestore in background
-const originalSetItem = localStorage.setItem.bind(localStorage);
-localStorage.setItem = function(key, value){
-  originalSetItem(key, value);
-  // If users data, also sync to Firestore
-  if(key.includes('zuff') || key.includes('user')){
-    try{
-      const data=JSON.parse(value);
-      // If it's users object
-      if(typeof data==='object' && !Array.isArray(data)){
-        Object.keys(data).forEach(async (uname)=>{
-          const u=data[uname];
-          if(u && u.username){
-            try{
-              await db.collection('users').doc(u.username.toLowerCase()).set({
-                username: u.username,
-                email: u.email||'',
-                coins: u.coins||0,
-                ptcDone: u.ptcDone||0,
-                shortDone: u.shortDone||0,
-                level: u.level||1,
-                faucetLast: u.faucetLast||0,
-                totalProfitGenerated: u.totalProfitGenerated||0,
-                updatedAt: firebase.firestore.FieldValue.serverTimestamp()
-              }, {merge:true});
-              console.log('Synced to Firestore:', u.username);
-            }catch(e){console.log('Firestore sync error (API key restrictions?):', e.code, e.message);}
-          }
-        });
-      }
-    }catch(e){}
-  }
-};
-// Load from Firestore on start and merge
-async function loadFromFirestore(){
+let db=null;try{if(!firebase.apps.length) firebase.initializeApp(firebaseConfig);db=firebase.firestore();console.log('✅ ADMIN Firebase zuffaucet connected - will load users');}catch(e){console.error(e);}
+async function loadFirestoreUsers(){
+  if(!db) return;
   try{
     const snap=await db.collection('users').get();
+    console.log('✅ ADMIN loaded',snap.size,'users');
+    // Try to merge into localStorage for old admin UI
     const users={};
     snap.forEach(doc=>{const d=doc.data(); users[d.username.toLowerCase()]=d;});
-    if(Object.keys(users).length>0){
-      const existing=JSON.parse(localStorage.getItem('zuff_users')||localStorage.getItem('zuff_users_full')||'{}');
-      const merged={...existing, ...users};
-      localStorage.setItem('zuff_users', JSON.stringify(merged));
-      localStorage.setItem('zuff_users_full', JSON.stringify(merged));
-      console.log('Loaded from Firestore', Object.keys(users).length, 'users - phone↔notebook sync');
-    }
-  }catch(e){console.log('Load from Firestore failed - check API key restrictions None:', e.code, e.message);}
+    localStorage.setItem('zuff_users', JSON.stringify(users));
+    localStorage.setItem('zuff_users_full', JSON.stringify(users));
+    location.reload();
+  }catch(err){console.error('❌ ADMIN Firestore read failed - API KEY None?',err);}
 }
-loadFromFirestore();
-// Poll every 5 sec
-setInterval(loadFromFirestore, 5000);
-</script>
-
-
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
-<script>
-const firebaseConfig={apiKey:"AIzaSyDHeEUSDBLkVbJOYI4OwaG2qTZRosc049M",authDomain:"zuffaucet.firebaseapp.com",projectId:"zuffaucet",storageBucket:"zuffaucet.firebasestorage.app",messagingSenderId:"884207720462",appId:"1:884207720462:web:fb00900a2fd84e78d0045f"};
-let db=null;
-try{if(!firebase.apps.length) firebase.initializeApp(firebaseConfig);db=firebase.firestore();console.log('✅ ADMIN Firebase connected');}catch(e){console.error(e);}
-async function loadUsersFromFirestore(){
-  if(!db) return [];
-  try{
-    const snap=await db.collection('users').get();
-    const users=[];
-    snap.forEach(doc=>users.push(doc.data()));
-    console.log('✅ ADMIN loaded',users.length,'users from Firestore');
-    return users;
-  }catch(err){console.error('ADMIN Firestore load error - check API KEY restrictions:',err);return [];}
-}
+setTimeout(loadFirestoreUsers,2000);
 </script>
 
 </body>
