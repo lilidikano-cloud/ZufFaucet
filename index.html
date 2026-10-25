@@ -28,7 +28,7 @@ input,select{width:100%;padding:12px;border-radius:10px;background:rgba(0,0,0,.3
 #viewModal{position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:100;display:none;align-items:center;justify-content:center;padding:12px}
 #viewBox{background:#111827;border:1px solid rgba(0,229,255,.35);border-radius:18px;width:100%;max-width:720px;padding:16px}
 .progress{height:6px;background:rgba(255,255,255,.12);border-radius:10px;overflow:hidden;margin:10px 0}
-.progress i{display:block;height:100%;background:#00e5ff;width:0%;transition:width .2s}
+.progress i{display:block;height:100%;background:#00e5ff;width:0%;transition:width.2s}
 </style>
 </head><body>
 <div class="container">
@@ -39,7 +39,7 @@ input,select{width:100%;padding:12px;border-radius:10px;background:rgba(0,0,0,.3
 <div class="badge"><span class="dot"></span> FAUCETPAY • INSTANT • SECURE</div>
 <h1 class="h1">Earn Crypto <span>Free, Fast.</span></h1>
 <p style="font-size:14px;color:rgba(255,255,255,.62);line-height:1.5;max-width:540px">Earn crypto without limits. Simple tasks, instant rewards, FaucetPay withdrawals.</p>
-<div class="stats"><div class="stat"><b>1 Coin</b><br><span style="font-size:11px;opacity:.6">$0.00001</span></div><div class="stat"><b>25 PTC + 25 Short</b><br><span style="font-size:11px;opacity:.6">REAL A-Ads 2459900</span></div><div class="stat"><b>1000 Coins</b><br><span style="font-size:11px;opacity:.6">$0.01 Min Withdraw</span></div></div>
+<div class="stats"><div class="stat"><b>1 Coin</b><br><span style="font-size:11px;opacity:.6">$0.00001</span></div><div class="stat"><b>25 PTC + 25 Short</b><br><span style="font-size:11px;opacity:.6"> </span></div><div class="stat"><b>1000 Coins</b><br><span style="font-size:11px;opacity:.6">$0.01 Min Withdraw</span></div></div>
 <div style="margin:12px 0"><iframe data-aa='2459900' src='//ad.a-ads.com/2459900/?size=320x100' style='border:0;padding:0;width:320px;height:100px;overflow:hidden;display:block;margin:auto'></iframe></div>
 </div>
 <div>
@@ -55,15 +55,15 @@ input,select{width:100%;padding:12px;border-radius:10px;background:rgba(0,0,0,.3
 </div>
 </div>
 
-<div class="tabs"><div class="tab active" onclick="setTab('faucet')">Faucet 50/20min</div><div class="tab" onclick="setTab('ptc')">PTC REAL (25)</div><div class="tab" onclick="setTab('short')">Shortlink REAL (25)</div><div class="tab" onclick="setTab('offer')">Offerwall - No Bonus</div><div class="tab" onclick="setTab('ref')">Referral 5%</div><div class="tab" onclick="setTab('wd')">Withdraw Z BANK</div></div>
+<div class="tabs"><div class="tab active" onclick="setTab('faucet')">Faucet 50/20min</div><div class="tab" onclick="setTab('ptc')">PTC (25)</div><div class="tab" onclick="setTab('short')">Shortlink (25)</div><div class="tab" onclick="setTab('offer')">Offerwall</div><div class="tab" onclick="setTab('ref')">Referral 5%</div><div class="tab" onclick="setTab('wd')">Withdraw Z BANK</div></div>
 
-<div id="sec-faucet" class="card-glass"><h3>Faucet - 50 Coins / 20 min - REAL - BANK</h3><div style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="captcha"> <label for="captcha">I'm not robot</label></div><input id="mathAns" placeholder="5+3=? Odpoveď 8"><button class="btn-cyan" onclick="claim()">Claim 50 Coins</button><div id="fm"></div><div id="tm" class="mono" style="font-size:11px;opacity:.5"></div></div>
+<div id="sec-faucet" class="card-glass"><h3>Faucet - 50 Coins / 20 min - - BANK</h3><div style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="captcha"> <label for="captcha">I'm not robot</label></div><input id="mathAns" placeholder="5+3=? Odpoveď 8"><button class="btn-cyan" onclick="claim()">Claim 50 Coins</button><div id="fm"></div><div id="tm" class="mono" style="font-size:11px;opacity:.5"></div></div>
 
-<div id="sec-ptc" class="card-glass" style="display:none"><h3>PTC REAL - 25x - 2x A-Ads 2459900 = 2x zárobok - as many as A-Ads gives</h3><div class="mono" style="font-size:11px;opacity:.6;margin-bottom:8px">View ads, earn coins instantly</div><div id="ptcList"></div></div>
+<div id="sec-ptc" class="card-glass" style="display:none"><h3>PTC - 25x - = 2x zárobok - as many as A-Ads gives</h3><div class="mono" style="font-size:11px;opacity:.6;margin-bottom:8px">View ads, earn coins instantly</div><div id="ptcList"></div></div>
 
-<div id="sec-short" class="card-glass" style="display:none"><h3>Shortlink REAL - 25x - shrinkme.io / fc.lc štýl - 2x A-Ads</h3><div id="shortList"></div></div>
+<div id="sec-short" class="card-glass" style="display:none"><h3>Shortlink - 25x - shrinkme.io / fc.lc štýl - 2x A-Ads</h3><div id="shortList"></div></div>
 
-<div id="sec-offer" class="card-glass" style="display:none"><h3>Offerwall - No Bonuses - Complete offers and earn</h3><div id="offerList"></div><div style="margin:12px 0;padding:10px;border:1px dashed rgba(0,229,255,.3);border-radius:10px" class="mono" style="font-size:10px">TimeWall widget - vlož svoj ID: &lt;div id="timewall-widget"&gt;&lt;/div&gt;</div></div>
+<div id="sec-offer" class="card-glass" style="display:none"><h3>Offerwalles - Complete offers and earn</h3><div id="offerList"></div><div style="margin:12px 0;padding:10px;border:1px dashed rgba(0,229,255,.3);border-radius:10px" class="mono" style="font-size:10px">TimeWall widget - vlož svoj ID: &lt;div id="timewall-widget"&gt;&lt;/div&gt;</div></div>
 
 <div id="sec-ref" class="card-glass" style="display:none"><h3>Referral 5% - nie 20%</h3><div class="mono" style="font-size:12px">Your link - 5% z toho čo zarobí referral - nie z BANK</div><input id="refLink" readonly><div class="mono" style="font-size:11px;opacity:.6;margin-top:6px" id="refStats"></div></div>
 
@@ -75,7 +75,7 @@ input,select{width:100%;padding:12px;border-radius:10px;background:rgba(0,0,0,.3
 </div>
 
 <div id="viewModal"><div id="viewBox">
-<div style="display:flex;justify-content:space-between;align-items:center"><h3 id="viewTitle" class="mono">Viewing Ad...</h3><span id="viewTimer" class="mono" style="font-weight:800;color:#00e5ff">10s</span></div>
+<div style="display:flex;justify-content:space-between;align-items:center"><h3 id="viewTitle" class="mono">Viewing Ad..</h3><span id="viewTimer" class="mono" style="font-weight:800;color:#00e5ff">10s</span></div>
 <div class="progress"><i id="viewProg"></i></div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0">
 <div><iframe data-aa='2459900' src='//ad.a-ads.com/2459900/?size=320x100' style='border:0;width:100%;height:100px'></iframe></div>
@@ -105,19 +105,19 @@ const SHORT=[
 const OFF=[{t:'Install Trading App - Get Bonus',tot:1250},{t:'Survey - Crypto Knowledge 5min',tot:800},{t:'Sign Up Exchange - Verify KYC',tot:2000},{t:'Play Game 10 Levels',tot:600},{t:'Complete OfferToro Task',tot:900}];
 
 function renderLists(){
- const pl=document.getElementById('ptcList');pl.innerHTML='';[...PTC].sort((a,b)=>rew(b.tot)-rew(a.tot)).forEach((p,i)=>{const r=rew(p.tot);const div=document.createElement('div');div.className='ptc-row';div.innerHTML=`<div><b>${p.t}</b><br><span style='font-size:11px;opacity:.55'>You will get ${r} Coins</span></div><button class="btn-cyan" style="padding:8px 12px" onclick="openPTC(${i})">View REAL</button>`;pl.appendChild(div);});
- const sl=document.getElementById('shortList');sl.innerHTML='';[...SHORT].sort((a,b)=>rew(b.tot)-rew(a.tot)).forEach((p,i)=>{const r=rew(p.tot);const div=document.createElement('div');div.className='ptc-row';div.innerHTML=`<div><b>${p.t}</b><br><span style='font-size:11px;opacity:.55'>You will get ${r} Coins</span></div><button class="btn-cyan" style="padding:8px 12px" onclick="openShort(${i})">Open REAL</button>`;sl.appendChild(div);});
- const ol=document.getElementById('offerList');ol.innerHTML='';OFF.forEach((p,i)=>{const r=rew(p.tot);const div=document.createElement('div');div.className='ptc-row';div.innerHTML=`<div><b>${p.t}</b><br><span style='font-size:11px;opacity:.55'>You will get ${r} Coins</span></div><button class="btn-cyan" style="padding:8px 12px" onclick="openOffer(${i})">Do REAL</button>`;ol.appendChild(div);});
+ const pl=document.getElementById('ptcList');pl.innerHTML='';[..PTC].sort((a,b)=>rew(b.tot)-rew(a.tot)).forEach((p,i)=>{const r=rew(p.tot);const div=document.createElement('div');div.className='ptc-row';div.innerHTML=`<div><b>${p.t}</b><br><span style='font-size:11px;opacity:.55'>You will get ${r} Coins</span></div><button class="btn-cyan" style="padding:8px 12px" onclick="openPTC(${i})">View </button>`;pl.appendChild(div);});
+ const sl=document.getElementById('shortList');sl.innerHTML='';[..SHORT].sort((a,b)=>rew(b.tot)-rew(a.tot)).forEach((p,i)=>{const r=rew(p.tot);const div=document.createElement('div');div.className='ptc-row';div.innerHTML=`<div><b>${p.t}</b><br><span style='font-size:11px;opacity:.55'>You will get ${r} Coins</span></div><button class="btn-cyan" style="padding:8px 12px" onclick="openShort(${i})">Open </button>`;sl.appendChild(div);});
+ const ol=document.getElementById('offerList');ol.innerHTML='';OFF.forEach((p,i)=>{const r=rew(p.tot);const div=document.createElement('div');div.className='ptc-row';div.innerHTML=`<div><b>${p.t}</b><br><span style='font-size:11px;opacity:.55'>You will get ${r} Coins</span></div><button class="btn-cyan" style="padding:8px 12px" onclick="openOffer(${i})">Do </button>`;ol.appendChild(div);});
 }
 renderLists();
 function setTab(t){['faucet','ptc','short','offer','ref','wd'].forEach(x=>{const el=document.getElementById('sec-'+x); if(el) el.style.display='none';});document.getElementById('sec-'+t).style.display='block';document.querySelectorAll('.tab').forEach((e,i)=>{const names=['faucet','ptc','short','offer','ref','wd'];e.classList.toggle('active',names[i]===t);});}
 let timerInt=null;
-function openPTC(i){if(!cur){alert('Login first - Register');return;}const p=PTC[i];pendingReward={type:'ptc',coins:rew(p.tot),tot:p.tot};document.getElementById('viewTitle').textContent='PTC REAL - '+p.t;document.getElementById('viewAdInfo').textContent='REAL VIEW: Must view 2x A-Ads 2459900 for 10s. You will get '+rew(p.tot)+' Coins. Sorted high to low. No 40% text.';document.getElementById('viewModal').style.display='flex';startTimer(10);}
-function openShort(i){if(!cur){alert('Login');return;}const p=SHORT[i];pendingReward={type:'short',coins:rew(p.tot),tot:p.tot};document.getElementById('viewTitle').textContent='Shortlink REAL - '+p.t;document.getElementById('viewAdInfo').textContent='REAL Shortlink shrinkme.io style: 2x A-Ads 5s. You will get '+rew(p.tot);document.getElementById('viewModal').style.display='flex';startTimer(5);}
-function openOffer(i){if(!cur){alert('Login');return;}const p=OFF[i];pendingReward={type:'offer',coins:rew(p.tot),tot:p.tot};document.getElementById('viewTitle').textContent='Offerwall REAL - '+p.t;document.getElementById('viewAdInfo').textContent='Offerwall REAL TimeWall/OfferToro style 15s. You will get '+rew(p.tot)+' - No bonus';document.getElementById('viewModal').style.display='flex';startTimer(15);}
+function openPTC(i){if(!cur){alert('Login first - Register');return;}const p=PTC[i];pendingReward={type:'ptc',coins:rew(p.tot),tot:p.tot};document.getElementById('viewTitle').textContent='PTC - '+p.t;document.getElementById('viewAdInfo').textContent='You will get '+rew(p.tot)+' Coins. ';document.getElementById('viewModal').style.display='flex';startTimer(10);}
+function openShort(i){if(!cur){alert('Login');return;}const p=SHORT[i];pendingReward={type:'short',coins:rew(p.tot),tot:p.tot};document.getElementById('viewTitle').textContent='Shortlink - '+p.t;document.getElementById('viewAdInfo').textContent=' Shortlink shrinkme.io style: 2x A-Ads 5s. You will get '+rew(p.tot);document.getElementById('viewModal').style.display='flex';startTimer(5);}
+function openOffer(i){if(!cur){alert('Login');return;}const p=OFF[i];pendingReward={type:'offer',coins:rew(p.tot),tot:p.tot};document.getElementById('viewTitle').textContent='Offerwall - '+p.t;document.getElementById('viewAdInfo').textContent='Offerwall TimeWall/OfferToro style 15s. You will get '+rew(p.tot)+' - No bonus';document.getElementById('viewModal').style.display='flex';startTimer(15);}
 function startTimer(sec){let left=sec;const total=sec;document.getElementById('viewTimer').textContent=left+'s';document.getElementById('viewProg').style.width='0%';document.getElementById('viewClose').style.display='none';clearInterval(timerInt);timerInt=setInterval(()=>{left--;document.getElementById('viewTimer').textContent=left+'s';document.getElementById('viewProg').style.width=((total-left)/total*100)+'%';if(left<=0){clearInterval(timerInt);document.getElementById('viewTimer').textContent='DONE!';document.getElementById('viewProg').style.width='100%';document.getElementById('viewClose').style.display='block';document.getElementById('viewClose').textContent='Claim '+pendingReward.coins+' Coins';}},1000);}
 async function closeView(){
- if(!pendingReward) return;const r=pendingReward;document.getElementById('viewClose').textContent='Crediting to Firestore...';
+ if(!pendingReward) return;const r=pendingReward;document.getElementById('viewClose').textContent='Crediting to Firestore..';
  try{await db.collection('users').doc(cur).update({coins:firebase.firestore.FieldValue.increment(r.coins),ptcDone:r.type==='ptc'?firebase.firestore.FieldValue.increment(1):firebase.firestore.FieldValue.increment(0),shortDone:r.type==='short'?firebase.firestore.FieldValue.increment(1):firebase.firestore.FieldValue.increment(0),totalProfitGenerated:firebase.firestore.FieldValue.increment(Math.floor(r.tot*0.6))});await db.collection('bank').doc('main').set({balance:firebase.firestore.FieldValue.increment(Math.floor(r.tot*0.6)),totalProfit:firebase.firestore.FieldValue.increment(Math.floor(r.tot*0.6)),shortProfit:r.type==='short'?firebase.firestore.FieldValue.increment(Math.floor(r.tot*0.6)):firebase.firestore.FieldValue.increment(0)},{merge:true});loadUser();document.getElementById('viewModal').style.display='none';pendingReward=null;}catch(e){alert('Firestore error: '+e.code+' '+e.message+' - Check Rules allow read,write if true and API key None');}
 }
 function closeViewCancel(){clearInterval(timerInt);document.getElementById('viewModal').style.display='none';pendingReward=null;}
@@ -126,27 +126,27 @@ async function reg(){
  if(!u){document.getElementById('am').innerHTML='<div class="err">Username</div>';return;}
  if(!e){document.getElementById('am').innerHTML='<div class="err">Email</div>';return;}
  try{
-   document.getElementById('am').innerHTML='<div class="ok">Writing to Firestore users/'+u+' ... Direct write - like rianshsm which worked</div>';
-   const ref=db.collection('users').doc(u);const snap=await ref.get();
-   if(snap.exists){cur=u;localStorage.setItem('zuff_cur',u);document.getElementById('authCard').style.display='none';document.getElementById('userCard').style.display='block';loadUser();document.getElementById('am').innerHTML='<div class="ok">Login OK - existing user</div>';}
-   else{
-     await ref.set({username:u,email:e,coins:0,ptcDone:0,shortDone:0,faucetLast:0,totalProfitGenerated:0,referrer:'',createdAt:firebase.firestore.FieldValue.serverTimestamp()});
-     cur=u;localStorage.setItem('zuff_cur',u);document.getElementById('authCard').style.display='none';document.getElementById('userCard').style.display='block';loadUser();
-     document.getElementById('am').innerHTML='<div class="ok">✅ Registered - now visible in Firebase Console users/'+u+' + Admin - Old 204KB design but DIRECT FIRESTORE WRITE - rianshsm example worked</div>';
-   }
+  document.getElementById('am').innerHTML='<div class="ok">Writing to Firestore users/'+u+'.. Direct write - like rianshsm which worked</div>';
+  const ref=db.collection('users').doc(u);const snap=await ref.get();
+  if(snap.exists){cur=u;localStorage.setItem('zuff_cur',u);document.getElementById('authCard').style.display='none';document.getElementById('userCard').style.display='block';loadUser();document.getElementById('am').innerHTML='<div class="ok">Login OK - existing user</div>';}
+  else{
+   await ref.set({username:u,email:e,coins:0,ptcDone:0,shortDone:0,faucetLast:0,totalProfitGenerated:0,referrer:'',createdAt:firebase.firestore.FieldValue.serverTimestamp()});
+   cur=u;localStorage.setItem('zuff_cur',u);document.getElementById('authCard').style.display='none';document.getElementById('userCard').style.display='block';loadUser();
+   document.getElementById('am').innerHTML='<div class="ok">✅ Registered - now visible in Firebase Console users/'+u+' + Admin - Old 204KB design but DIRECT FIRESTORE WRITE - rianshsm example worked</div>';
+  }
  }catch(err){document.getElementById('am').innerHTML='<div class="err">Firestore error: '+err.code+' - '+err.message+'<br>Check: 1) Firestore Rules allow read,write if true 2) API key None 3) Wait 5min after changing key</div>';}
 }
 async function loadUser(){
  if(!cur) cur=localStorage.getItem('zuff_cur');if(!cur) return;
  try{
-   const snap=await db.collection('users').doc(cur).get();if(!snap.exists) return;const d=snap.data();
-   document.getElementById('bal').textContent=d.coins||0;document.getElementById('balUsd').textContent=((d.coins||0)*0.00001).toFixed(4);document.getElementById('balTop').textContent=(d.coins||0)+' Coins';
-   document.getElementById('ptcDone').textContent=d.ptcDone||0;document.getElementById('shortDone').textContent=d.shortDone||0;document.getElementById('lvl').textContent=Math.floor(((d.ptcDone||0)+(d.shortDone||0))/10)+1;
-   document.getElementById('bankProfit').textContent=d.totalProfitGenerated||0;
-   /* breakdown hidden */
-   document.getElementById('refLink').value=location.origin+location.pathname+'?ref='+cur;
-   // wd history
-   const wds=await db.collection('withdrawals').where('username','==',cur).orderBy('date','desc').limit(10).get(); let h=''; wds.forEach(doc=>{const x=doc.data(); h+=`${x.date?.toDate?.()?.toLocaleString?.()||''} - ${x.coins} Coins - ${x.status} - from BANK<br>`}); document.getElementById('wdHistory').innerHTML=h||'No withdrawals yet - will be from BANK';
+  const snap=await db.collection('users').doc(cur).get();if(!snap.exists) return;const d=snap.data();
+  document.getElementById('bal').textContent=d.coins||0;document.getElementById('balUsd').textContent=((d.coins||0)*0.00001).toFixed(4);document.getElementById('balTop').textContent=(d.coins||0)+' Coins';
+  document.getElementById('ptcDone').textContent=d.ptcDone||0;document.getElementById('shortDone').textContent=d.shortDone||0;document.getElementById('lvl').textContent=Math.floor(((d.ptcDone||0)+(d.shortDone||0))/10)+1;
+  document.getElementById('bankProfit').textContent=d.totalProfitGenerated||0;
+  /* breakdown hidden */
+  document.getElementById('refLink').value=location.origin+location.pathname+'?ref='+cur;
+  // wd history
+  const wds=await db.collection('withdrawals').where('username','==',cur).orderBy('date','desc').limit(10).get(); let h=''; wds.forEach(doc=>{const x=doc.data(); h+=`${x.date?.toDate?.()?.toLocaleString?.()||''} - ${x.coins} Coins - ${x.status} - from BANK<br>`}); document.getElementById('wdHistory').innerHTML=h||'No withdrawals yet - will be from BANK';
  }catch(e){console.log(e);}
 }
 function logout(){localStorage.removeItem('zuff_cur');location.reload();}
@@ -159,10 +159,10 @@ async function wd(){
  const amt=parseInt(document.getElementById('wa').value);const addr=document.getElementById('waddr').value.trim();const method=document.getElementById('wm').value;
  if(!amt||amt<1000){document.getElementById('wmsg').innerHTML='<div class="err">Min 1000</div>';return;}if(!addr){document.getElementById('wmsg').innerHTML='<div class="err">Enter address</div>';return;}
  try{
-   const snap=await db.collection('users').doc(cur).get();if((snap.data().coins||0)<amt){document.getElementById('wmsg').innerHTML='<div class="err">Not enough coins</div>';return;}
-   await db.collection('withdrawals').add({username:cur,coins:amt,address:addr,method,status:'pending',date:firebase.firestore.FieldValue.serverTimestamp()});
-   document.getElementById('wmsg').innerHTML='<div class="ok">Žiadosť o '+amt+' Coins odoslaná do BANK - Admin potvrdí Z BANK - nie z tvojej peňaženky - odráta BANK aj USER</div>';
-   loadUser();
+  const snap=await db.collection('users').doc(cur).get();if((snap.data().coins||0)<amt){document.getElementById('wmsg').innerHTML='<div class="err">Not enough coins</div>';return;}
+  await db.collection('withdrawals').add({username:cur,coins:amt,address:addr,method,status:'pending',date:firebase.firestore.FieldValue.serverTimestamp()});
+  document.getElementById('wmsg').innerHTML='<div class="ok">Žiadosť o '+amt+' Coins odoslaná do BANK - Admin potvrdí Z BANK - nie z tvojej peňaženky - odráta BANK aj USER</div>';
+  loadUser();
  }catch(e){document.getElementById('wmsg').innerHTML='<div class="err">'+e.message+'</div>';}
 }
 (function(){const saved=localStorage.getItem('zuff_cur');if(saved){cur=saved;document.getElementById('authCard').style.display='none';document.getElementById('userCard').style.display='block';loadUser();}})();
