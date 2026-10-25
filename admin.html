@@ -90,7 +90,7 @@ Loading...
 <div id="aadsLog" class="mono" style="font-size:10px;opacity:.7;margin-top:6px;max-height:80px;overflow:auto"></div>
 </div>
 
-<div class="tabs">
+<div class="tabs" style="border:2px solid #00e5ff;background:rgba(0,229,255,.1)"><b style="color:#00e5ff;margin-right:10px">KDE JE SCHVÁLIŤ? →</b>
 <div class="tab active" onclick="setTab('users',this)">👥 Users Detail - Každý Coin</div>
 <div class="tab" onclick="setTab('withdraw',this)">💸 Withdrawals - Žiadosti z BANK - TU POTVRDZUJEŠ</div>
 <div class="tab" onclick="setTab('ptc',this)">🖱️ PTC / Shortlink Log - 40/60 Split</div>
@@ -153,8 +153,8 @@ async function loadUsers(){
 }
 async function loadWd(){
  const snap=await db.collection('withdrawals').orderBy('date','desc').limit(200).get();
- let h='<table><tr><th>Dátum</th><th>User</th><th>Coins</th><th>$</th><th>Metóda</th><th>Adresa</th><th>Status</th><th>Z BANK - nie z tvojej peňaženky</th></tr>';
- snap.forEach(doc=>{const d=doc.data(); const usd=(d.coins*0.00001).toFixed(4); const date=d.date?.toDate?.()?.toLocaleString?.()||''; const shortAddr=(d.address||'').substring(0,22)+'...'; h+=`<tr><td>${date}</td><td><b>${d.username}</b></td><td style="font-weight:800;color:#00e5ff">${d.coins}</td><td>$${usd}</td><td>${d.method||'USDT_TRC20'}</td><td title="${d.address||''}">${shortAddr}</td><td>${d.status==='pending'?'<span class="b-red">pending - čaká na teba</span>':d.status==='approved'?'<span class="b-green">approved - odrátané z BANK aj z usera</span>':d.status}</td><td>${d.status==='pending'?`<button class="btn cyan" onclick="approve('${doc.id}',${d.coins})">✅ Schváliť Z BANK - odráta BANK aj USER</button> <button class="btn red" onclick="reject('${doc.id}')">Zamietnuť</button>`:`<span class="sub">Už spracované</span>`}</td></tr>`});
+ let h='<table><tr><th>Dátum</th><th>User</th><th>Coins</th><th>$</th><th>Metóda</th><th>Adresa</th><th>Status</th><th style=\'background:#00e5ff;color:#000;font-size:13px\'>✅ TOTO JE SCHVÁLIŤ / ZAMIETNUŤ - KLIKNI SEM</th></tr>';
+ snap.forEach(doc=>{const d=doc.data(); const usd=(d.coins*0.00001).toFixed(4); const date=d.date?.toDate?.()?.toLocaleString?.()||''; const shortAddr=(d.address||'').substring(0,22)+'...'; h+=`<tr><td>${date}</td><td><b>${d.username}</b></td><td style="font-weight:800;color:#00e5ff">${d.coins}</td><td>$${usd}</td><td>${d.method||'USDT_TRC20'}</td><td title="${d.address||''}">${shortAddr}</td><td>${d.status==='pending'?'<span class="b-red">pending - čaká na teba</span>':d.status==='approved'?'<span class="b-green">approved - odrátané z BANK aj z usera</span>':d.status}</td><td>${d.status==='pending'?`<button class="btn cyan" style="padding:12px 18px;font-size:14px;font-weight:900" onclick="approve(\'${doc.id}\',${d.coins})">✅ SCHVÁLIŤ ${d.coins} Coins Z BANK</button> <button class="btn red" style="padding:12px 18px;font-size:14px" onclick="reject(\'${doc.id}\')">❌ ZAMIETNUŤ</button>`:`<span class="sub">Už spracované</span>`}</td></tr>`});
  h+='</table>'; document.getElementById('wdList').innerHTML=h;
 }
 async function loadPtc(){
