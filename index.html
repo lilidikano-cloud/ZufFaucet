@@ -55,9 +55,9 @@ input,select{width:100%;padding:12px;border-radius:10px;background:rgba(0,0,0,.3
 </div>
 </div>
 
-<div class="tabs"><div class="tab active" onclick="setTab('faucet')">Faucet 50/20min</div><div class="tab" onclick="setTab('ptc')">PTC (25)</div><div class="tab" onclick="setTab('short')">Shortlink (25)</div><div class="tab" onclick="setTab('offer')">Offerwall</div><div class="tab" onclick="setTab('ref')">Referral 5%</div><div class="tab" onclick="setTab('wd')">Withdraw Z BANK</div></div>
+<div class="tabs"><div class="tab active" onclick="setTab('faucet')">Faucet 50/20min</div><div class="tab" onclick="setTab('ptc')">PTC (25)</div><div class="tab" onclick="setTab('short')">Shortlink (25)</div><div class="tab" onclick="setTab('offer')">Offerwall</div><div class="tab" onclick="setTab('ref')">Referral 5%</div><div class="tab" onclick="setTab('wd')">Withdraw</div></div>
 
-<div id="sec-faucet" class="card-glass"><h3>Faucet - 50 Coins / 20 min - - BANK</h3><div style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="captcha"> <label for="captcha">I'm not robot</label></div><input id="mathAns" placeholder="5+3=? Odpoveď 8"><button class="btn-cyan" onclick="claim()">Claim 50 Coins</button><div id="fm"></div><div id="tm" class="mono" style="font-size:11px;opacity:.5"></div></div>
+<div id="sec-faucet" class="card-glass"><h3>Faucet - 50 Coins / 20 min</h3><div style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="captcha"> <label for="captcha">I'm not robot</label></div><input id="mathAns" placeholder="5+3=? Odpoveď 8"><button class="btn-cyan" onclick="claim()">Claim 50 Coins</button><div id="fm"></div><div id="tm" class="mono" style="font-size:11px;opacity:.5"></div></div>
 
 <div id="sec-ptc" class="card-glass" style="display:none"><h3>PTC - 25x - = 2x zárobok - as many as A-Ads gives</h3><div class="mono" style="font-size:11px;opacity:.6;margin-bottom:8px">View ads, earn coins instantly</div><div id="ptcList"></div></div>
 
@@ -65,9 +65,9 @@ input,select{width:100%;padding:12px;border-radius:10px;background:rgba(0,0,0,.3
 
 <div id="sec-offer" class="card-glass" style="display:none"><h3>Offerwalles - Complete offers and earn</h3><div id="offerList"></div><div style="margin:12px 0;padding:10px;border:1px dashed rgba(0,229,255,.3);border-radius:10px" class="mono" style="font-size:10px">TimeWall widget - vlož svoj ID: &lt;div id="timewall-widget"&gt;&lt;/div&gt;</div></div>
 
-<div id="sec-ref" class="card-glass" style="display:none"><h3>Referral 5% - nie 20%</h3><div class="mono" style="font-size:12px">Your link - 5% z toho čo zarobí referral - nie z BANK</div><input id="refLink" readonly><div class="mono" style="font-size:11px;opacity:.6;margin-top:6px" id="refStats"></div></div>
+<div id="sec-ref" class="card-glass" style="display:none"><h3>Referral 5% - nie 20%</h3><div class="mono" style="font-size:12px">Your link - 5% z toho čo zarobí referral - nie </div><input id="refLink" readonly><div class="mono" style="font-size:11px;opacity:.6;margin-top:6px" id="refStats"></div></div>
 
-<div id="sec-wd" class="card-glass" style="display:none"><h3>Withdraw - Z BANK - nie z tvojej peňaženky - Min 1000 = $0.01</h3><div class="mono" style="font-size:11px;opacity:.7;margin-bottom:6px">User dá žiadosť 1000 Coins → ide do Firebase withdrawals pending → ty v ADMIN potvrdíš Z BANK → odráta BANK aj USER - nie tvoja peňaženka</div><select id="wm" style="width:100%;padding:12px;border-radius:10px;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.18);color:#fff;margin:6px 0"><option value="USDT_TRC20">USDT TRC20</option><option value="BTC">BTC</option><option value="FaucetPay">FaucetPay Email</option></select><input id="waddr" placeholder="FaucetPay adresa / email"><input id="wa" placeholder="1000"><button class="btn-cyan" onclick="wd()">Požiadať o výber Z BANK - 1000 Coins</button><div id="wmsg"></div><div id="wdHistory" class="mono" style="font-size:11px;margin-top:8px"></div></div>
+<div id="sec-wd" class="card-glass" style="display:none"><h3>Withdraw - - nie z tvojej peňaženky - Min 1000 = $0.01</h3><div class="mono" style="font-size:11px;opacity:.7;margin-bottom:6px">User dá žiadosť 1000 Coins → ide do Firebase withdrawals pending → ty v ADMIN potvrdíš → odráta BANK aj USER - nie tvoja peňaženka</div><select id="wm" style="width:100%;padding:12px;border-radius:10px;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.18);color:#fff;margin:6px 0"><option value="USDT_TRC20">USDT TRC20</option><option value="BTC">BTC</option><option value="FaucetPay">FaucetPay Email</option></select><input id="waddr" placeholder="FaucetPay adresa / email"><input id="wa" placeholder="1000"><button class="btn-cyan" onclick="wd()">Požiadať o výber - 1000 Coins</button><div id="wmsg"></div><div id="wdHistory" class="mono" style="font-size:11px;margin-top:8px"></div></div>
 
 <div style="margin:18px 0"><iframe data-aa='2459900' src='//ad.a-ads.com/2459900/?size=320x100' style='border:0;padding:0;width:320px;height:100px;overflow:hidden;display:block;margin:auto'></iframe></div>
 
@@ -126,43 +126,43 @@ async function reg(){
  if(!u){document.getElementById('am').innerHTML='<div class="err">Username</div>';return;}
  if(!e){document.getElementById('am').innerHTML='<div class="err">Email</div>';return;}
  try{
-  document.getElementById('am').innerHTML='<div class="ok">Writing to Firestore users/'+u+'.. Direct write - like rianshsm which worked</div>';
-  const ref=db.collection('users').doc(u);const snap=await ref.get();
-  if(snap.exists){cur=u;localStorage.setItem('zuff_cur',u);document.getElementById('authCard').style.display='none';document.getElementById('userCard').style.display='block';loadUser();document.getElementById('am').innerHTML='<div class="ok">Login OK - existing user</div>';}
-  else{
-   await ref.set({username:u,email:e,coins:0,ptcDone:0,shortDone:0,faucetLast:0,totalProfitGenerated:0,referrer:'',createdAt:firebase.firestore.FieldValue.serverTimestamp()});
-   cur=u;localStorage.setItem('zuff_cur',u);document.getElementById('authCard').style.display='none';document.getElementById('userCard').style.display='block';loadUser();
-   document.getElementById('am').innerHTML='<div class="ok">✅ Registered - now visible in Firebase Console users/'+u+' + Admin - Old 204KB design but DIRECT FIRESTORE WRITE - rianshsm example worked</div>';
-  }
+ document.getElementById('am').innerHTML='<div class="ok">Writing to Firestore users/'+u+'.. Direct write - like rianshsm which worked</div>';
+ const ref=db.collection('users').doc(u);const snap=await ref.get();
+ if(snap.exists){cur=u;localStorage.setItem('zuff_cur',u);document.getElementById('authCard').style.display='none';document.getElementById('userCard').style.display='block';loadUser();document.getElementById('am').innerHTML='<div class="ok">Login OK - existing user</div>';}
+ else{
+  await ref.set({username:u,email:e,coins:0,ptcDone:0,shortDone:0,faucetLast:0,totalProfitGenerated:0,referrer:'',createdAt:firebase.firestore.FieldValue.serverTimestamp()});
+  cur=u;localStorage.setItem('zuff_cur',u);document.getElementById('authCard').style.display='none';document.getElementById('userCard').style.display='block';loadUser();
+  document.getElementById('am').innerHTML='<div class="ok">✅ Registered - now visible in Firebase Console users/'+u+' + Admin - Old 204KB design but DIRECT FIRESTORE WRITE - rianshsm example worked</div>';
+ }
  }catch(err){document.getElementById('am').innerHTML='<div class="err">Firestore error: '+err.code+' - '+err.message+'<br>Check: 1) Firestore Rules allow read,write if true 2) API key None 3) Wait 5min after changing key</div>';}
 }
 async function loadUser(){
  if(!cur) cur=localStorage.getItem('zuff_cur');if(!cur) return;
  try{
-  const snap=await db.collection('users').doc(cur).get();if(!snap.exists) return;const d=snap.data();
-  document.getElementById('bal').textContent=d.coins||0;document.getElementById('balUsd').textContent=((d.coins||0)*0.00001).toFixed(4);document.getElementById('balTop').textContent=(d.coins||0)+' Coins';
-  document.getElementById('ptcDone').textContent=d.ptcDone||0;document.getElementById('shortDone').textContent=d.shortDone||0;document.getElementById('lvl').textContent=Math.floor(((d.ptcDone||0)+(d.shortDone||0))/10)+1;
-  document.getElementById('bankProfit').textContent=d.totalProfitGenerated||0;
-  /* breakdown hidden */
-  document.getElementById('refLink').value=location.origin+location.pathname+'?ref='+cur;
-  // wd history
-  const wds=await db.collection('withdrawals').where('username','==',cur).orderBy('date','desc').limit(10).get(); let h=''; wds.forEach(doc=>{const x=doc.data(); h+=`${x.date?.toDate?.()?.toLocaleString?.()||''} - ${x.coins} Coins - ${x.status} - from BANK<br>`}); document.getElementById('wdHistory').innerHTML=h||'No withdrawals yet - will be from BANK';
+ const snap=await db.collection('users').doc(cur).get();if(!snap.exists) return;const d=snap.data();
+ document.getElementById('bal').textContent=d.coins||0;document.getElementById('balUsd').textContent=((d.coins||0)*0.00001).toFixed(4);document.getElementById('balTop').textContent=(d.coins||0)+' Coins';
+ document.getElementById('ptcDone').textContent=d.ptcDone||0;document.getElementById('shortDone').textContent=d.shortDone||0;document.getElementById('lvl').textContent=Math.floor(((d.ptcDone||0)+(d.shortDone||0))/10)+1;
+ document.getElementById('bankProfit').textContent=d.totalProfitGenerated||0;
+ /* breakdown hidden */
+ document.getElementById('refLink').value=location.origin+location.pathname+'?ref='+cur;
+ // wd history
+ const wds=await db.collection('withdrawals').where('username','==',cur).orderBy('date','desc').limit(10).get(); let h=''; wds.forEach(doc=>{const x=doc.data(); h+=`${x.date?.toDate?.()?.toLocaleString?.()||''} - ${x.coins} Coins - ${x.status} - from BANK<br>`}); document.getElementById('wdHistory').innerHTML=h||'No withdrawals yet - will be from BANK';
  }catch(e){console.log(e);}
 }
 function logout(){localStorage.removeItem('zuff_cur');location.reload();}
 async function claim(){
  const cap=document.getElementById('captcha');if(!cap.checked){document.getElementById('fm').innerHTML='<div class="err">Check captcha</div>';return;}
  const ans=document.getElementById('mathAns').value.trim();if(ans!=='8'){document.getElementById('fm').innerHTML='<div class="err">Answer 8</div>';return;}
- try{const ref=db.collection('users').doc(cur);const snap=await ref.get();if(Date.now()-(snap.data().faucetLast||0)<20*60*1000){document.getElementById('fm').innerHTML='<div class="err">Wait 20min</div>';return;}await ref.update({coins:firebase.firestore.FieldValue.increment(50),faucetLast:Date.now()});document.getElementById('fm').innerHTML='<div class="ok">+50 Coins - BANK +30</div>';loadUser();}catch(e){document.getElementById('fm').innerHTML='<div class="err">'+e.message+'</div>';}
+ try{const ref=db.collection('users').doc(cur);const snap=await ref.get();if(Date.now()-(snap.data().faucetLast||0)<20*60*1000){document.getElementById('fm').innerHTML='<div class="err">Wait 20min</div>';return;}await ref.update({coins:firebase.firestore.FieldValue.increment(50),faucetLast:Date.now()});document.getElementById('fm').innerHTML='<div class="ok">+50 Coins +30</div>';loadUser();}catch(e){document.getElementById('fm').innerHTML='<div class="err">'+e.message+'</div>';}
 }
 async function wd(){
  const amt=parseInt(document.getElementById('wa').value);const addr=document.getElementById('waddr').value.trim();const method=document.getElementById('wm').value;
  if(!amt||amt<1000){document.getElementById('wmsg').innerHTML='<div class="err">Min 1000</div>';return;}if(!addr){document.getElementById('wmsg').innerHTML='<div class="err">Enter address</div>';return;}
  try{
-  const snap=await db.collection('users').doc(cur).get();if((snap.data().coins||0)<amt){document.getElementById('wmsg').innerHTML='<div class="err">Not enough coins</div>';return;}
-  await db.collection('withdrawals').add({username:cur,coins:amt,address:addr,method,status:'pending',date:firebase.firestore.FieldValue.serverTimestamp()});
-  document.getElementById('wmsg').innerHTML='<div class="ok">Žiadosť o '+amt+' Coins odoslaná do BANK - Admin potvrdí Z BANK - nie z tvojej peňaženky - odráta BANK aj USER</div>';
-  loadUser();
+ const snap=await db.collection('users').doc(cur).get();if((snap.data().coins||0)<amt){document.getElementById('wmsg').innerHTML='<div class="err">Not enough coins</div>';return;}
+ await db.collection('withdrawals').add({username:cur,coins:amt,address:addr,method,status:'pending',date:firebase.firestore.FieldValue.serverTimestamp()});
+ document.getElementById('wmsg').innerHTML='<div class="ok">Žiadosť o '+amt+' Coins odoslaná do BANK - Admin potvrdí - nie z tvojej peňaženky - odráta BANK aj USER</div>';
+ loadUser();
  }catch(e){document.getElementById('wmsg').innerHTML='<div class="err">'+e.message+'</div>';}
 }
 (function(){const saved=localStorage.getItem('zuff_cur');if(saved){cur=saved;document.getElementById('authCard').style.display='none';document.getElementById('userCard').style.display='block';loadUser();}})();
