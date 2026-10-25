@@ -32,38 +32,38 @@ input,select{width:100%;padding:12px;border-radius:10px;background:rgba(0,0,0,.3
 </style>
 </head><body>
 <div class="container">
-<div class="header"><div class="logo">ZUF<span>FAUCET</span></div><div style="display:flex;align-items:center;gap:10px"><div class="badge"><span class="dot"></span> LIVE PAYOUTS • OLD DESIGN 204KB • BANK - NIE Z PEŇAŽENKY</div><div id="balTop" class="mono" style="font-size:12px"></div></div></div>
+<div class="header"><div class="logo">ZUF<span>FAUCET</span></div><div style="display:flex;align-items:center;gap:10px"><div class="badge"><span class="dot"></span> LIVE PAYOUTS • LIVE PAYOUTS</div><div id="balTop" class="mono" style="font-size:12px"></div></div></div>
 
 <div class="hero">
 <div>
-<div class="badge"><span class="dot"></span> Publisher #517526 Unit 2459900 | FAUCETPAY ONLY | REFERRER 5% | NO 40% TEXT</div>
+<div class="badge"><span class="dot"></span> FAUCETPAY • INSTANT • SECURE</div>
 <h1 class="h1">Earn Crypto <span>Free, Fast.</span></h1>
-<p style="font-size:14px;color:rgba(255,255,255,.62);line-height:1.5;max-width:540px">No hidden fees. 50 Coins every 20 min. 1000 Coins = $0.01 = $0.01. 25 PTC + 25 Shortlink REAL - as many as A-Ads gives - 2x ads = 2x earnings. BANK central - user withdraw from BANK, not your wallet.</p>
+<p style="font-size:14px;color:rgba(255,255,255,.62);line-height:1.5;max-width:540px">Earn crypto without limits. Simple tasks, instant rewards, FaucetPay withdrawals.</p>
 <div class="stats"><div class="stat"><b>1 Coin</b><br><span style="font-size:11px;opacity:.6">$0.00001</span></div><div class="stat"><b>25 PTC + 25 Short</b><br><span style="font-size:11px;opacity:.6">REAL A-Ads 2459900</span></div><div class="stat"><b>1000 Coins</b><br><span style="font-size:11px;opacity:.6">$0.01 Min Withdraw</span></div></div>
 <div style="margin:12px 0"><iframe data-aa='2459900' src='//ad.a-ads.com/2459900/?size=320x100' style='border:0;padding:0;width:320px;height:100px;overflow:hidden;display:block;margin:auto'></iframe></div>
 </div>
 <div>
 <div class="card-glass" id="authCard">
-<h3 class="mono">Register / Login - DIRECT FIRESTORE - Will show in Firebase + Admin</h3>
-<input id="u" placeholder="Username malé písmená napr. rianshsm"><input id="e" placeholder="Email napr. pazuriktomo@gmail.com"><button class="btn-cyan" style="width:100%" onclick="reg()">Register - 0 Coins - Direct Firestore</button><div id="am"></div>
-<div style="font-size:10px;opacity:.5;margin-top:6px">Writes directly: db.collection('users').doc(username).set(...) - same as debug_ and rianshsm which worked. Old 204KB React used only memory, not Firestore - this version writes directly.</div>
+<h3 class="mono">Register / Login</h3>
+<input id="u" placeholder="Username malé písmená napr. rianshsm"><input id="e" placeholder="Email napr. pazuriktomo@gmail.com"><button class="btn-cyan" style="width:100%" onclick="reg()">Register</button><div id="am"></div>
+<div style="font-size:10px;opacity:.5;margin-top:6px"></div>
 </div>
 <div class="card-glass" id="userCard" style="display:none">
 <div style="display:flex;justify-content:space-between;align-items:center"><div class="mono" style="font-size:12px">Balance <b><span id="bal">0</span> Coins</b> = $<span id="balUsd">0.0000</span> | Level <span id="lvl">1</span> | PTC <span id="ptcDone">0</span> | Short <span id="shortDone">0</span> | BANK profit <span id="bankProfit">0</span></div><button class="btn-dark" onclick="logout()">Logout</button></div>
-<div class="mono" style="font-size:11px;opacity:.6;margin-top:6px" id="breakdown">0 = 0 PTC + 0 Short | BANK 0 (60%) | Total paid 0</div>
+<div class="mono" style="font-size:11px;opacity:.6;margin-top:6px" id="breakdown" style="display:none"></div>
 </div>
 </div>
 </div>
 
 <div class="tabs"><div class="tab active" onclick="setTab('faucet')">Faucet 50/20min</div><div class="tab" onclick="setTab('ptc')">PTC REAL (25)</div><div class="tab" onclick="setTab('short')">Shortlink REAL (25)</div><div class="tab" onclick="setTab('offer')">Offerwall - No Bonus</div><div class="tab" onclick="setTab('ref')">Referral 5%</div><div class="tab" onclick="setTab('wd')">Withdraw Z BANK</div></div>
 
-<div id="sec-faucet" class="card-glass"><h3>Faucet - 50 Coins / 20 min - REAL - BANK</h3><div style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="captcha"> <label for="captcha">I'm not robot</label></div><input id="mathAns" placeholder="5+3=? Odpoveď 8"><button class="btn-cyan" onclick="claim()">Claim 50 Coins - BANK +180 profit</button><div id="fm"></div><div id="tm" class="mono" style="font-size:11px;opacity:.5"></div></div>
+<div id="sec-faucet" class="card-glass"><h3>Faucet - 50 Coins / 20 min - REAL - BANK</h3><div style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="captcha"> <label for="captcha">I'm not robot</label></div><input id="mathAns" placeholder="5+3=? Odpoveď 8"><button class="btn-cyan" onclick="claim()">Claim 50 Coins</button><div id="fm"></div><div id="tm" class="mono" style="font-size:11px;opacity:.5"></div></div>
 
-<div id="sec-ptc" class="card-glass" style="display:none"><h3>PTC REAL - 25x - 2x A-Ads 2459900 = 2x zárobok - as many as A-Ads gives</h3><div class="mono" style="font-size:11px;opacity:.6;margin-bottom:8px">Každý PTC otvorí modal s 2x A-Ads 2459900 + 10s timer - až potom You will get X Coins - sorted high to low - NO 40% text</div><div id="ptcList"></div></div>
+<div id="sec-ptc" class="card-glass" style="display:none"><h3>PTC REAL - 25x - 2x A-Ads 2459900 = 2x zárobok - as many as A-Ads gives</h3><div class="mono" style="font-size:11px;opacity:.6;margin-bottom:8px">View ads, earn coins instantly</div><div id="ptcList"></div></div>
 
 <div id="sec-short" class="card-glass" style="display:none"><h3>Shortlink REAL - 25x - shrinkme.io / fc.lc štýl - 2x A-Ads</h3><div id="shortList"></div></div>
 
-<div id="sec-offer" class="card-glass" style="display:none"><h3>Offerwall - No Bonuses - You will get only base - 10 offers</h3><div id="offerList"></div><div style="margin:12px 0;padding:10px;border:1px dashed rgba(0,229,255,.3);border-radius:10px" class="mono" style="font-size:10px">TimeWall widget - vlož svoj ID: &lt;div id="timewall-widget"&gt;&lt;/div&gt;</div></div>
+<div id="sec-offer" class="card-glass" style="display:none"><h3>Offerwall - No Bonuses - Complete offers and earn</h3><div id="offerList"></div><div style="margin:12px 0;padding:10px;border:1px dashed rgba(0,229,255,.3);border-radius:10px" class="mono" style="font-size:10px">TimeWall widget - vlož svoj ID: &lt;div id="timewall-widget"&gt;&lt;/div&gt;</div></div>
 
 <div id="sec-ref" class="card-glass" style="display:none"><h3>Referral 5% - nie 20%</h3><div class="mono" style="font-size:12px">Your link - 5% z toho čo zarobí referral - nie z BANK</div><input id="refLink" readonly><div class="mono" style="font-size:11px;opacity:.6;margin-top:6px" id="refStats"></div></div>
 
@@ -71,7 +71,7 @@ input,select{width:100%;padding:12px;border-radius:10px;background:rgba(0,0,0,.3
 
 <div style="margin:18px 0"><iframe data-aa='2459900' src='//ad.a-ads.com/2459900/?size=320x100' style='border:0;padding:0;width:320px;height:100px;overflow:hidden;display:block;margin:auto'></iframe></div>
 
-<div style="text-align:center;opacity:.45;font-size:11px" class="mono">© 2025 ZUFFAUCET • OLD DESIGN 204KB • FaucetPay USDT TRC20 + BTC • 1 Coin = $0.00001 • Referrer 5% • 25 PTC + 25 Shortlink REAL • No 40% • Publisher #517526 Unit 2459900 • BANK - nie peňaženka</div>
+<div style="text-align:center;opacity:.45;font-size:11px" class="mono">© 2025 ZUFFAUCET • FaucetPay • 1 Coin = $0.00001 • Instant Payouts</div>
 </div>
 
 <div id="viewModal"><div id="viewBox">
@@ -105,9 +105,9 @@ const SHORT=[
 const OFF=[{t:'Install Trading App - Get Bonus',tot:1250},{t:'Survey - Crypto Knowledge 5min',tot:800},{t:'Sign Up Exchange - Verify KYC',tot:2000},{t:'Play Game 10 Levels',tot:600},{t:'Complete OfferToro Task',tot:900}];
 
 function renderLists(){
- const pl=document.getElementById('ptcList');pl.innerHTML='';[...PTC].sort((a,b)=>rew(b.tot)-rew(a.tot)).forEach((p,i)=>{const r=rew(p.tot);const div=document.createElement('div');div.className='ptc-row';div.innerHTML=`<div><b>${p.t}</b><br><span style='font-size:11px;opacity:.55'>You will get ${r} Coins • REAL VIEW 10s • 2x A-Ads 2459900 = 2x zárobok</span></div><button class="btn-cyan" style="padding:8px 12px" onclick="openPTC(${i})">View REAL</button>`;pl.appendChild(div);});
- const sl=document.getElementById('shortList');sl.innerHTML='';[...SHORT].sort((a,b)=>rew(b.tot)-rew(a.tot)).forEach((p,i)=>{const r=rew(p.tot);const div=document.createElement('div');div.className='ptc-row';div.innerHTML=`<div><b>${p.t}</b><br><span style='font-size:11px;opacity:.55'>You will get ${r} Coins • REAL 5s • 2x ads</span></div><button class="btn-cyan" style="padding:8px 12px" onclick="openShort(${i})">Open REAL</button>`;sl.appendChild(div);});
- const ol=document.getElementById('offerList');ol.innerHTML='';OFF.forEach((p,i)=>{const r=rew(p.tot);const div=document.createElement('div');div.className='ptc-row';div.innerHTML=`<div><b>${p.t}</b><br><span style='font-size:11px;opacity:.55'>You will get ${r} Coins - No bonus - REAL</span></div><button class="btn-cyan" style="padding:8px 12px" onclick="openOffer(${i})">Do REAL</button>`;ol.appendChild(div);});
+ const pl=document.getElementById('ptcList');pl.innerHTML='';[...PTC].sort((a,b)=>rew(b.tot)-rew(a.tot)).forEach((p,i)=>{const r=rew(p.tot);const div=document.createElement('div');div.className='ptc-row';div.innerHTML=`<div><b>${p.t}</b><br><span style='font-size:11px;opacity:.55'>You will get ${r} Coins</span></div><button class="btn-cyan" style="padding:8px 12px" onclick="openPTC(${i})">View REAL</button>`;pl.appendChild(div);});
+ const sl=document.getElementById('shortList');sl.innerHTML='';[...SHORT].sort((a,b)=>rew(b.tot)-rew(a.tot)).forEach((p,i)=>{const r=rew(p.tot);const div=document.createElement('div');div.className='ptc-row';div.innerHTML=`<div><b>${p.t}</b><br><span style='font-size:11px;opacity:.55'>You will get ${r} Coins</span></div><button class="btn-cyan" style="padding:8px 12px" onclick="openShort(${i})">Open REAL</button>`;sl.appendChild(div);});
+ const ol=document.getElementById('offerList');ol.innerHTML='';OFF.forEach((p,i)=>{const r=rew(p.tot);const div=document.createElement('div');div.className='ptc-row';div.innerHTML=`<div><b>${p.t}</b><br><span style='font-size:11px;opacity:.55'>You will get ${r} Coins</span></div><button class="btn-cyan" style="padding:8px 12px" onclick="openOffer(${i})">Do REAL</button>`;ol.appendChild(div);});
 }
 renderLists();
 function setTab(t){['faucet','ptc','short','offer','ref','wd'].forEach(x=>{const el=document.getElementById('sec-'+x); if(el) el.style.display='none';});document.getElementById('sec-'+t).style.display='block';document.querySelectorAll('.tab').forEach((e,i)=>{const names=['faucet','ptc','short','offer','ref','wd'];e.classList.toggle('active',names[i]===t);});}
@@ -143,7 +143,7 @@ async function loadUser(){
    document.getElementById('bal').textContent=d.coins||0;document.getElementById('balUsd').textContent=((d.coins||0)*0.00001).toFixed(4);document.getElementById('balTop').textContent=(d.coins||0)+' Coins';
    document.getElementById('ptcDone').textContent=d.ptcDone||0;document.getElementById('shortDone').textContent=d.shortDone||0;document.getElementById('lvl').textContent=Math.floor(((d.ptcDone||0)+(d.shortDone||0))/10)+1;
    document.getElementById('bankProfit').textContent=d.totalProfitGenerated||0;
-   document.getElementById('breakdown').textContent=`Balance ${d.coins||0} = PTC ${d.ptcDone||0} + Short ${d.shortDone||0} | BANK profit ${d.totalProfitGenerated||0} (60%) = owner - total paid ${ (d.coins||0)+(d.totalProfitGenerated||0)} | Example rianshsm had 200 coins = 120+80 + BANK 300`;
+   /* breakdown hidden */
    document.getElementById('refLink').value=location.origin+location.pathname+'?ref='+cur;
    // wd history
    const wds=await db.collection('withdrawals').where('username','==',cur).orderBy('date','desc').limit(10).get(); let h=''; wds.forEach(doc=>{const x=doc.data(); h+=`${x.date?.toDate?.()?.toLocaleString?.()||''} - ${x.coins} Coins - ${x.status} - from BANK<br>`}); document.getElementById('wdHistory').innerHTML=h||'No withdrawals yet - will be from BANK';
